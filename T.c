@@ -19,7 +19,7 @@ int frequency_of_primes (int n) {
 }
 
 int main ()
-
+//Testing branch capabilities
 {
     double diftick;
     double mm, ss;
