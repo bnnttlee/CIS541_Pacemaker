@@ -31,7 +31,7 @@ int main ()
         
         elapsed_time = ((float)diftick)/CLOCKS_PER_SEC; // in seconds
         mm = floor(elapsed_time/60);
-        ss = fmod(elapsed_time, 60);
+        ss = floor(fmod(elapsed_time, 60));
         
         //account for rounding error
         if (ss >= 59.5 && ss <60.5) {
