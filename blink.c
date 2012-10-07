@@ -11,7 +11,7 @@
 
 int TIMER_COUNT = 0;
 int LED_STATE = 0;
-void TIMER0_INIT(void);
+void Timer0_Init(void);
 
 int main(){
 	int i = 0;
@@ -22,9 +22,11 @@ int main(){
 	DDRD = 0xFF;
 	//Set portD0 to high
 	PORTD = 0x01;
-	//Initialization of Timer 0
+	
+    //Initialization of Timer 0
 	Timer0_Init();
-	while(1)
+	
+    while(1)
         //Do nothing
 	{
         i = i+1;
@@ -33,12 +35,11 @@ int main(){
 } //end main
 
 
-
-
 void Timer0_Init(void)
 {
 	//set Clock prescaler Change Enable
 	CLKPR = (1<<CLKPCE);
+    
 	//set prescaler = 8, Inter RC 8 MHz / 8 = 1 MHz
 	CLKPR = (1<<CLKPS1) | (1<<CLKPS0);
 	//Enable timer0 compare interrupt
@@ -64,7 +65,7 @@ SIGNAL(SIG_OUTPUT_COMPARE0)
 {
 	uint8_t i;
 	TIMER_COUNT++;
-	if(TIMER_COUNT ==1)
+	if(TIMER_COUNT == 1)
 	{
 		if(LED_STATE == 0){
             LED_STATE = 1;

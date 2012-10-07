@@ -1,0 +1,235 @@
+
+Blinky.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000012e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000004  00800100  00800100  000001a2  2**0
+                  ALLOC
+  2 .debug_aranges 00000020  00000000  00000000  000001a2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 00000059  00000000  00000000  000001c2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   000000fd  00000000  00000000  0000021b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 000000b0  00000000  00000000  00000318  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000155  00000000  00000000  000003c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000040  00000000  00000000  00000520  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    000000d6  00000000  00000000  00000560  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2e 00 	jmp	0x5c	; 0x5c <__ctors_end>
+   4:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+   8:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+   c:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  10:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  14:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  18:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  1c:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  20:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  24:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  28:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__vector_10>
+  2c:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  30:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  34:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  38:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  3c:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  40:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  44:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  48:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  4c:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  50:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  54:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+  58:	0c 94 40 00 	jmp	0x80	; 0x80 <__bad_interrupt>
+
+0000005c <__ctors_end>:
+  5c:	11 24       	eor	r1, r1
+  5e:	1f be       	out	0x3f, r1	; 63
+  60:	cf ef       	ldi	r28, 0xFF	; 255
+  62:	d4 e0       	ldi	r29, 0x04	; 4
+  64:	de bf       	out	0x3e, r29	; 62
+  66:	cd bf       	out	0x3d, r28	; 61
+
+00000068 <__do_clear_bss>:
+  68:	11 e0       	ldi	r17, 0x01	; 1
+  6a:	a0 e0       	ldi	r26, 0x00	; 0
+  6c:	b1 e0       	ldi	r27, 0x01	; 1
+  6e:	01 c0       	rjmp	.+2      	; 0x72 <.do_clear_bss_start>
+
+00000070 <.do_clear_bss_loop>:
+  70:	1d 92       	st	X+, r1
+
+00000072 <.do_clear_bss_start>:
+  72:	a4 30       	cpi	r26, 0x04	; 4
+  74:	b1 07       	cpc	r27, r17
+  76:	e1 f7       	brne	.-8      	; 0x70 <.do_clear_bss_loop>
+  78:	0e 94 42 00 	call	0x84	; 0x84 <main>
+  7c:	0c 94 95 00 	jmp	0x12a	; 0x12a <_exit>
+
+00000080 <__bad_interrupt>:
+  80:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000084 <main>:
+	
+	/******************
+	Enable Interrupt
+	********************/
+	
+	sei();
+  84:	78 94       	sei
+	/******************
+		PORTD init
+	*******************/
+	
+	//Set direction to [OUTPUT]
+	DDRD = 0xFF;
+  86:	8f ef       	ldi	r24, 0xFF	; 255
+  88:	8a b9       	out	0x0a, r24	; 10
+	
+	//set the PORTD0 to high(1)
+	PORTD = 0x01;
+  8a:	81 e0       	ldi	r24, 0x01	; 1
+  8c:	8b b9       	out	0x0b, r24	; 11
+}
+
+void Timer0_Init(void)
+{
+	//set Clock Prescaler Change Enable
+	CLKPR = (1<<CLKPCE);
+  8e:	80 e8       	ldi	r24, 0x80	; 128
+  90:	80 93 61 00 	sts	0x0061, r24
+	
+	//set prescaler = 8, Inter RC 8MHz/8 = 1MHz
+	CLKPR = (1<<CLKPS1) | (1<<CLKPS0);
+  94:	83 e0       	ldi	r24, 0x03	; 3
+  96:	80 93 61 00 	sts	0x0061, r24
+	
+	//Enable timer0 compare interrupt
+	TIMSK0 = (1<<OCIE0A);
+  9a:	82 e0       	ldi	r24, 0x02	; 2
+  9c:	80 93 6e 00 	sts	0x006E, r24
+	
+	//Sets the compare value
+	OCR0A = 38;
+  a0:	86 e2       	ldi	r24, 0x26	; 38
+  a2:	87 bd       	out	0x27, r24	; 39
+	
+	//Now, Timer will run 1Mhz/38 = 26315 Hz
+	
+	//Set Clear on Timer Compare (CTC) mode, CLK/256 prescaler
+	TCCR0A = (1<<WGM01) | (0<<WGM00) | (4<<CS00);
+  a4:	8c e0       	ldi	r24, 0x0C	; 12
+  a6:	84 bd       	out	0x24, r24	; 36
+  a8:	ff cf       	rjmp	.-2      	; 0xa8 <main+0x24>
+
+000000aa <Timer0_Init>:
+}
+
+void Timer0_Init(void)
+{
+	//set Clock Prescaler Change Enable
+	CLKPR = (1<<CLKPCE);
+  aa:	e1 e6       	ldi	r30, 0x61	; 97
+  ac:	f0 e0       	ldi	r31, 0x00	; 0
+  ae:	80 e8       	ldi	r24, 0x80	; 128
+  b0:	80 83       	st	Z, r24
+	
+	//set prescaler = 8, Inter RC 8MHz/8 = 1MHz
+	CLKPR = (1<<CLKPS1) | (1<<CLKPS0);
+  b2:	83 e0       	ldi	r24, 0x03	; 3
+  b4:	80 83       	st	Z, r24
+	
+	//Enable timer0 compare interrupt
+	TIMSK0 = (1<<OCIE0A);
+  b6:	82 e0       	ldi	r24, 0x02	; 2
+  b8:	80 93 6e 00 	sts	0x006E, r24
+	
+	//Sets the compare value
+	OCR0A = 38;
+  bc:	86 e2       	ldi	r24, 0x26	; 38
+  be:	87 bd       	out	0x27, r24	; 39
+	
+	//Now, Timer will run 1Mhz/38 = 26315 Hz
+	
+	//Set Clear on Timer Compare (CTC) mode, CLK/256 prescaler
+	TCCR0A = (1<<WGM01) | (0<<WGM00) | (4<<CS00);
+  c0:	8c e0       	ldi	r24, 0x0C	; 12
+  c2:	84 bd       	out	0x24, r24	; 36
+	
+	//Now Timer will run 26315Hz/256 = 102Hz => .01 s (10 ms)
+	
+}
+  c4:	08 95       	ret
+
+000000c6 <__vector_10>:
+	Interrupt Serve Routine of Timer 0
+	(Clear on Timer Compare (CTC) Mode)
+***********************************/
+
+SIGNAL(SIG_OUTPUT_COMPARE0)
+{
+  c6:	1f 92       	push	r1
+  c8:	0f 92       	push	r0
+  ca:	0f b6       	in	r0, 0x3f	; 63
+  cc:	0f 92       	push	r0
+  ce:	11 24       	eor	r1, r1
+  d0:	8f 93       	push	r24
+  d2:	9f 93       	push	r25
+	uint8_t i;
+	TIMER_COUNT++;
+  d4:	80 91 00 01 	lds	r24, 0x0100
+  d8:	90 91 01 01 	lds	r25, 0x0101
+  dc:	01 96       	adiw	r24, 0x01	; 1
+  de:	90 93 01 01 	sts	0x0101, r25
+  e2:	80 93 00 01 	sts	0x0100, r24
+	if (TIMER_COUNT == 100){
+  e6:	84 36       	cpi	r24, 0x64	; 100
+  e8:	91 05       	cpc	r25, r1
+  ea:	c1 f4       	brne	.+48     	; 0x11c <__vector_10+0x56>
+		if (LED_STATE == 0){
+  ec:	80 91 02 01 	lds	r24, 0x0102
+  f0:	90 91 03 01 	lds	r25, 0x0103
+  f4:	89 2b       	or	r24, r25
+  f6:	49 f4       	brne	.+18     	; 0x10a <__vector_10+0x44>
+			LED_STATE = 1;
+  f8:	81 e0       	ldi	r24, 0x01	; 1
+  fa:	90 e0       	ldi	r25, 0x00	; 0
+  fc:	90 93 03 01 	sts	0x0103, r25
+ 100:	80 93 02 01 	sts	0x0102, r24
+			PORTD = 0x01;
+ 104:	81 e0       	ldi	r24, 0x01	; 1
+ 106:	8b b9       	out	0x0b, r24	; 11
+ 108:	05 c0       	rjmp	.+10     	; 0x114 <__vector_10+0x4e>
+		}
+		else{
+		LED_STATE = 0;
+ 10a:	10 92 03 01 	sts	0x0103, r1
+ 10e:	10 92 02 01 	sts	0x0102, r1
+		PORTD = 0x00;
+ 112:	1b b8       	out	0x0b, r1	; 11
+		}
+		TIMER_COUNT = 0;
+ 114:	10 92 01 01 	sts	0x0101, r1
+ 118:	10 92 00 01 	sts	0x0100, r1
+	}
+}
+ 11c:	9f 91       	pop	r25
+ 11e:	8f 91       	pop	r24
+ 120:	0f 90       	pop	r0
+ 122:	0f be       	out	0x3f, r0	; 63
+ 124:	0f 90       	pop	r0
+ 126:	1f 90       	pop	r1
+ 128:	18 95       	reti
+
+0000012a <_exit>:
+ 12a:	f8 94       	cli
+
+0000012c <__stop_program>:
+ 12c:	ff cf       	rjmp	.-2      	; 0x12c <__stop_program>

@@ -1,0 +1,159 @@
+   1               		.file	"Blinky.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24               	/* #APP */
+  25               	 ;  19 "Blinky.c" 1
+  26 0000 7894      		sei
+  27               	 ;  0 "" 2
+  28               	.LM3:
+  29               	/* #NOAPP */
+  30 0002 8FEF      		ldi r24,lo8(-1)
+  31 0004 8AB9      		out 42-32,r24
+  32               	.LM4:
+  33 0006 81E0      		ldi r24,lo8(1)
+  34 0008 8BB9      		out 43-32,r24
+  35               	.LBB4:
+  36               	.LBB5:
+  37               	.LM5:
+  38 000a 80E8      		ldi r24,lo8(-128)
+  39 000c 8093 6100 		sts 97,r24
+  40               	.LM6:
+  41 0010 83E0      		ldi r24,lo8(3)
+  42 0012 8093 6100 		sts 97,r24
+  43               	.LM7:
+  44 0016 82E0      		ldi r24,lo8(2)
+  45 0018 8093 6E00 		sts 110,r24
+  46               	.LM8:
+  47 001c 86E2      		ldi r24,lo8(38)
+  48 001e 87BD      		out 71-32,r24
+  49               	.LM9:
+  50 0020 8CE0      		ldi r24,lo8(12)
+  51 0022 84BD      		out 68-32,r24
+  52               	.L2:
+  53 0024 00C0      		rjmp .L2
+  54               	.LBE5:
+  55               	.LBE4:
+  56               	.LFE2:
+  58               	.global	Timer0_Init
+  60               	Timer0_Init:
+  61               	.LFB3:
+  62               	.LM10:
+  63               	/* prologue: function */
+  64               	/* frame size = 0 */
+  65               	.LM11:
+  66 0026 E1E6      		ldi r30,lo8(97)
+  67 0028 F0E0      		ldi r31,hi8(97)
+  68 002a 80E8      		ldi r24,lo8(-128)
+  69 002c 8083      		st Z,r24
+  70               	.LM12:
+  71 002e 83E0      		ldi r24,lo8(3)
+  72 0030 8083      		st Z,r24
+  73               	.LM13:
+  74 0032 82E0      		ldi r24,lo8(2)
+  75 0034 8093 6E00 		sts 110,r24
+  76               	.LM14:
+  77 0038 86E2      		ldi r24,lo8(38)
+  78 003a 87BD      		out 71-32,r24
+  79               	.LM15:
+  80 003c 8CE0      		ldi r24,lo8(12)
+  81 003e 84BD      		out 68-32,r24
+  82               	/* epilogue start */
+  83               	.LM16:
+  84 0040 0895      		ret
+  85               	.LFE3:
+  87               	.global	__vector_10
+  89               	__vector_10:
+  90               	.LFB4:
+  91               	.LM17:
+  92 0042 1F92      		push __zero_reg__
+  93 0044 0F92      		push r0
+  94 0046 0FB6      		in r0,__SREG__
+  95 0048 0F92      		push r0
+  96 004a 1124      		clr __zero_reg__
+  97 004c 8F93      		push r24
+  98 004e 9F93      		push r25
+  99               	/* prologue: Signal */
+ 100               	/* frame size = 0 */
+ 101               	.LM18:
+ 102 0050 8091 0000 		lds r24,TIMER_COUNT
+ 103 0054 9091 0000 		lds r25,(TIMER_COUNT)+1
+ 104 0058 0196      		adiw r24,1
+ 105 005a 9093 0000 		sts (TIMER_COUNT)+1,r25
+ 106 005e 8093 0000 		sts TIMER_COUNT,r24
+ 107               	.LM19:
+ 108 0062 8436      		cpi r24,100
+ 109 0064 9105      		cpc r25,__zero_reg__
+ 110 0066 01F4      		brne .L10
+ 111               	.LM20:
+ 112 0068 8091 0000 		lds r24,LED_STATE
+ 113 006c 9091 0000 		lds r25,(LED_STATE)+1
+ 114 0070 892B      		or r24,r25
+ 115 0072 01F4      		brne .L8
+ 116               	.LM21:
+ 117 0074 81E0      		ldi r24,lo8(1)
+ 118 0076 90E0      		ldi r25,hi8(1)
+ 119 0078 9093 0000 		sts (LED_STATE)+1,r25
+ 120 007c 8093 0000 		sts LED_STATE,r24
+ 121               	.LM22:
+ 122 0080 81E0      		ldi r24,lo8(1)
+ 123 0082 8BB9      		out 43-32,r24
+ 124 0084 00C0      		rjmp .L9
+ 125               	.L8:
+ 126               	.LM23:
+ 127 0086 1092 0000 		sts (LED_STATE)+1,__zero_reg__
+ 128 008a 1092 0000 		sts LED_STATE,__zero_reg__
+ 129               	.LM24:
+ 130 008e 1BB8      		out 43-32,__zero_reg__
+ 131               	.L9:
+ 132               	.LM25:
+ 133 0090 1092 0000 		sts (TIMER_COUNT)+1,__zero_reg__
+ 134 0094 1092 0000 		sts TIMER_COUNT,__zero_reg__
+ 135               	.L10:
+ 136               	/* epilogue start */
+ 137               	.LM26:
+ 138 0098 9F91      		pop r25
+ 139 009a 8F91      		pop r24
+ 140 009c 0F90      		pop r0
+ 141 009e 0FBE      		out __SREG__,r0
+ 142 00a0 0F90      		pop r0
+ 143 00a2 1F90      		pop __zero_reg__
+ 144 00a4 1895      		reti
+ 145               	.LFE4:
+ 147               	.global	TIMER_COUNT
+ 148               	.global	TIMER_COUNT
+ 149               		.section .bss
+ 152               	TIMER_COUNT:
+ 153 0000 0000      		.skip 2,0
+ 154               	.global	LED_STATE
+ 155               	.global	LED_STATE
+ 158               	LED_STATE:
+ 159 0002 0000      		.skip 2,0
+ 200               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Blinky.c
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:18     .text:00000000 main
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:60     .text:00000026 Timer0_Init
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:89     .text:00000042 __vector_10
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:152    .bss:00000000 TIMER_COUNT
+C:\Users\Bennett\AppData\Local\Temp/ccpaSUNi.s:158    .bss:00000002 LED_STATE
+
+UNDEFINED SYMBOLS
+__do_clear_bss
