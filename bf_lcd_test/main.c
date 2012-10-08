@@ -32,24 +32,23 @@
 int main(void)
 {    
 	// mt static char __flash *statetext;
-	//PGM_P const char*
+	//(PGM_P const char*)
 	PGM_P statetext;
-	PGM_P number = 20;
+	
 	// Initial state variables
-	statetext = PSTR("AVR BUTTERFLY GCC");
+	statetext = PSTR("HHMMSS");
 	//digit = CHAR2BCD2(number);
 
 	// Program initalization
-    Initialization();
+    LCD_Init();
     sei(); // mt __enable_interrupt();
 	
 	for (;;)            // Main loop
     {
 		if (statetext)
         {
-			//LCD_puts_f(statetext, 1);
-			LCD_putc(1, number);
-			LCD_Colon(0);
+			LCD_puts_f(statetext, 1);
+			LCD_Colon(1);
 			statetext = NULL;   
 		}
     } //End Main loop
@@ -68,8 +67,8 @@ int main(void)
 *   Purpose :       Initializate the different modules
 *
 *****************************************************************************/
-void Initialization(void)
-{
+//void Initialization(void)
+//{
 	/*
 	CLKPR = (1<<CLKPCE);        // set Clock Prescaler Change Enable
 
@@ -91,8 +90,8 @@ void Initialization(void)
     sbi(PORTB, 5);              // set OC1A high
 	*/
                 
-    LCD_Init();                 // initialize the LCD
-}
+    //LCD_Init();                 // initialize the LCD
+//}
 
 
 

@@ -81,14 +81,14 @@
  124               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 bcd.c
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:2      *ABS*:0000003f __SREG__
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:3      *ABS*:0000003e __SP_H__
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:4      *ABS*:0000003d __SP_L__
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:5      *ABS*:00000034 __CCP__
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:18     .text:00000000 CHAR2BCD2
-C:\Users\Bennett\AppData\Local\Temp/ccboEJqe.s:47     .text:00000022 CHAR2BCD3
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:18     .text:00000000 CHAR2BCD2
+C:\Users\Bennett\AppData\Local\Temp/ccnsI9Ax.s:47     .text:00000022 CHAR2BCD3
 
 UNDEFINED SYMBOLS
 __udivmodqi4
