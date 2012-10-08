@@ -1,0 +1,1161 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  000005e2  00000676  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000005e2  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000038  00800102  00800102  00000678  2**0
+                  ALLOC
+  3 .debug_aranges 00000080  00000000  00000000  00000678  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 0000022b  00000000  00000000  000006f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000075f  00000000  00000000  00000923  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000037d  00000000  00000000  00001082  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000072e  00000000  00000000  000013ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000150  00000000  00000000  00001b30  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000002b0  00000000  00000000  00001c80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000322  00000000  00000000  00001f30  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 64 00 	jmp	0xc8	; 0xc8 <__ctors_end>
+   4:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+   8:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+   c:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  10:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  14:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  18:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  1c:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  20:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  24:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  28:	0c 94 97 00 	jmp	0x12e	; 0x12e <__vector_10>
+  2c:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  30:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  34:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  38:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  3c:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  40:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  44:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  48:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  4c:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  50:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  54:	0c 94 81 00 	jmp	0x102	; 0x102 <__bad_interrupt>
+  58:	0c 94 b3 01 	jmp	0x366	; 0x366 <__vector_22>
+
+0000005c <LCD_character_table>:
+  5c:	51 0a 80 2a 00 00 00 0a 51 0a 00 00 59 55 18 01     Q..*....Q...YU..
+  6c:	11 1e 11 1b 50 0b 41 1b 41 1f 11 01 51 1f 51 1b     ....P.A.A...Q.Q.
+	...
+  88:	00 00 51 0f 91 39 41 14 91 31 41 1e 41 0e 41 1d     ..Q..9A..1A.A.A.
+  98:	50 0f 80 20 10 15 48 86 40 14 78 05 70 85 51 15     P.. ..H.@.x.p.Q.
+  a8:	51 0e 51 95 51 8e 21 90 81 20 50 15 48 44 50 c5     Q.Q.Q.!.. P.HDP.
+  b8:	28 c0 28 20 09 50 00 00 00 00 00 00 00 00 00 00     (.( .P..........
+
+000000c8 <__ctors_end>:
+  c8:	11 24       	eor	r1, r1
+  ca:	1f be       	out	0x3f, r1	; 63
+  cc:	cf ef       	ldi	r28, 0xFF	; 255
+  ce:	d4 e0       	ldi	r29, 0x04	; 4
+  d0:	de bf       	out	0x3e, r29	; 62
+  d2:	cd bf       	out	0x3d, r28	; 61
+
+000000d4 <__do_copy_data>:
+  d4:	11 e0       	ldi	r17, 0x01	; 1
+  d6:	a0 e0       	ldi	r26, 0x00	; 0
+  d8:	b1 e0       	ldi	r27, 0x01	; 1
+  da:	e2 ee       	ldi	r30, 0xE2	; 226
+  dc:	f5 e0       	ldi	r31, 0x05	; 5
+  de:	02 c0       	rjmp	.+4      	; 0xe4 <.do_copy_data_start>
+
+000000e0 <.do_copy_data_loop>:
+  e0:	05 90       	lpm	r0, Z+
+  e2:	0d 92       	st	X+, r0
+
+000000e4 <.do_copy_data_start>:
+  e4:	a2 30       	cpi	r26, 0x02	; 2
+  e6:	b1 07       	cpc	r27, r17
+  e8:	d9 f7       	brne	.-10     	; 0xe0 <.do_copy_data_loop>
+
+000000ea <__do_clear_bss>:
+  ea:	11 e0       	ldi	r17, 0x01	; 1
+  ec:	a2 e0       	ldi	r26, 0x02	; 2
+  ee:	b1 e0       	ldi	r27, 0x01	; 1
+  f0:	01 c0       	rjmp	.+2      	; 0xf4 <.do_clear_bss_start>
+
+000000f2 <.do_clear_bss_loop>:
+  f2:	1d 92       	st	X+, r1
+
+000000f4 <.do_clear_bss_start>:
+  f4:	aa 33       	cpi	r26, 0x3A	; 58
+  f6:	b1 07       	cpc	r27, r17
+  f8:	e1 f7       	brne	.-8      	; 0xf2 <.do_clear_bss_loop>
+  fa:	0e 94 1d 01 	call	0x23a	; 0x23a <main>
+  fe:	0c 94 ef 02 	jmp	0x5de	; 0x5de <_exit>
+
+00000102 <__bad_interrupt>:
+ 102:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000106 <RTC_init>:
+{ 
+	//Wait for 1 sec
+	//delay(1000);
+	
+	//set Clock Prescaler Change Enable
+	CLKPR = (1<<CLKPCE);
+ 106:	e1 e6       	ldi	r30, 0x61	; 97
+ 108:	f0 e0       	ldi	r31, 0x00	; 0
+ 10a:	80 e8       	ldi	r24, 0x80	; 128
+ 10c:	80 83       	st	Z, r24
+	
+	//set prescaler = 8, Inter RC 8MHz/8 = 1MHz
+	CLKPR = (1<<CLKPS1) | (1<<CLKPS0);
+ 10e:	83 e0       	ldi	r24, 0x03	; 3
+ 110:	80 83       	st	Z, r24
+	
+	//Enable timer0 compare interrupt
+	TIMSK0 = (1<<OCIE0A);
+ 112:	82 e0       	ldi	r24, 0x02	; 2
+ 114:	80 93 6e 00 	sts	0x006E, r24
+	
+	//Sets the compare value
+	OCR0A = 38;
+ 118:	86 e2       	ldi	r24, 0x26	; 38
+ 11a:	87 bd       	out	0x27, r24	; 39
+	
+	//Now, Timer will run 1Mhz/38 = 26315 Hz
+	//Set Clear on Timer Compare (CTC) mode, CLK/256 prescaler
+	
+	TCCR0A = (1<<WGM01) | (0<<WGM00) | (4<<CS00);
+ 11c:	8c e0       	ldi	r24, 0x0C	; 12
+ 11e:	84 bd       	out	0x24, r24	; 36
+
+    // initial time and date setting
+    gMILLISECOND  = 0;
+ 120:	10 92 06 01 	sts	0x0106, r1
+    gSECOND  = 0;
+ 124:	10 92 09 01 	sts	0x0109, r1
+    gMINUTE    = 0;
+ 128:	10 92 0a 01 	sts	0x010A, r1
+}
+ 12c:	08 95       	ret
+
+0000012e <__vector_10>:
+
+
+SIGNAL(SIG_OUTPUT_COMPARE0)
+{
+ 12e:	1f 92       	push	r1
+ 130:	0f 92       	push	r0
+ 132:	0f b6       	in	r0, 0x3f	; 63
+ 134:	0f 92       	push	r0
+ 136:	11 24       	eor	r1, r1
+ 138:	8f 93       	push	r24
+    gMILLISECOND++;		// increment second
+ 13a:	80 91 06 01 	lds	r24, 0x0106
+ 13e:	8f 5f       	subi	r24, 0xFF	; 255
+ 140:	80 93 06 01 	sts	0x0106, r24
+
+    if (gMILLISECOND == 99)
+ 144:	80 91 06 01 	lds	r24, 0x0106
+ 148:	83 36       	cpi	r24, 0x63	; 99
+ 14a:	c1 f4       	brne	.+48     	; 0x17c <__vector_10+0x4e>
+    {
+        gMILLISECOND = 0;
+ 14c:	10 92 06 01 	sts	0x0106, r1
+        gSECOND++;		// increment minute
+ 150:	80 91 09 01 	lds	r24, 0x0109
+ 154:	8f 5f       	subi	r24, 0xFF	; 255
+ 156:	80 93 09 01 	sts	0x0109, r24
+        
+        if (gSECOND > 59)
+ 15a:	80 91 09 01 	lds	r24, 0x0109
+ 15e:	8c 33       	cpi	r24, 0x3C	; 60
+ 160:	68 f0       	brcs	.+26     	; 0x17c <__vector_10+0x4e>
+        {
+            gSECOND = 0;
+ 162:	10 92 09 01 	sts	0x0109, r1
+            gMINUTE++;	// increment hour
+ 166:	80 91 0a 01 	lds	r24, 0x010A
+ 16a:	8f 5f       	subi	r24, 0xFF	; 255
+ 16c:	80 93 0a 01 	sts	0x010A, r24
+            
+            if (gMINUTE > 59)
+ 170:	80 91 0a 01 	lds	r24, 0x010A
+ 174:	8c 33       	cpi	r24, 0x3C	; 60
+ 176:	10 f0       	brcs	.+4      	; 0x17c <__vector_10+0x4e>
+            {             
+                gMINUTE = 0;
+ 178:	10 92 0a 01 	sts	0x010A, r1
+			}
+        }
+    }
+}
+ 17c:	8f 91       	pop	r24
+ 17e:	0f 90       	pop	r0
+ 180:	0f be       	out	0x3f, r0	; 63
+ 182:	0f 90       	pop	r0
+ 184:	1f 90       	pop	r1
+ 186:	18 95       	reti
+
+00000188 <showClock>:
+	return 0;
+}
+
+
+void showClock(void)
+{
+ 188:	cf 92       	push	r12
+ 18a:	df 92       	push	r13
+ 18c:	ef 92       	push	r14
+ 18e:	ff 92       	push	r15
+ 190:	0f 93       	push	r16
+ 192:	1f 93       	push	r17
+	uint8_t MH, ML, SH, SL, MSH, MSL;
+
+    MH= CHAR2BCD2(gMINUTE);   
+ 194:	80 91 0a 01 	lds	r24, 0x010A
+ 198:	0e 94 25 01 	call	0x24a	; 0x24a <CHAR2BCD2>
+ 19c:	18 2f       	mov	r17, r24
+        
+    ML = (MH & 0x0F) + '0';
+    MH = (MH >> 4) + '0';
+ 19e:	08 2f       	mov	r16, r24
+ 1a0:	02 95       	swap	r16
+ 1a2:	0f 70       	andi	r16, 0x0F	; 15
+
+    SH = CHAR2BCD2(gSECOND);
+ 1a4:	80 91 09 01 	lds	r24, 0x0109
+ 1a8:	0e 94 25 01 	call	0x24a	; 0x24a <CHAR2BCD2>
+ 1ac:	f8 2e       	mov	r15, r24
+    SL = (SH & 0x0F) + '0';
+    SH = (SH >> 4) + '0';
+ 1ae:	d8 2e       	mov	r13, r24
+ 1b0:	d2 94       	swap	r13
+ 1b2:	9f e0       	ldi	r25, 0x0F	; 15
+ 1b4:	d9 22       	and	r13, r25
+
+    MSH = CHAR2BCD2(gMILLISECOND);
+ 1b6:	80 91 06 01 	lds	r24, 0x0106
+ 1ba:	0e 94 25 01 	call	0x24a	; 0x24a <CHAR2BCD2>
+ 1be:	e8 2e       	mov	r14, r24
+    MSL = (MSH & 0x0F) + '0';
+    MSH = (MSH >> 4) + '0';
+ 1c0:	c8 2e       	mov	r12, r24
+ 1c2:	c2 94       	swap	r12
+ 1c4:	8f e0       	ldi	r24, 0x0F	; 15
+ 1c6:	c8 22       	and	r12, r24
+    
+    LCD_putc(0, MH);
+ 1c8:	00 5d       	subi	r16, 0xD0	; 208
+ 1ca:	80 e0       	ldi	r24, 0x00	; 0
+ 1cc:	60 2f       	mov	r22, r16
+ 1ce:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    LCD_putc(1, ML);
+ 1d2:	1f 70       	andi	r17, 0x0F	; 15
+ 1d4:	10 5d       	subi	r17, 0xD0	; 208
+ 1d6:	81 e0       	ldi	r24, 0x01	; 1
+ 1d8:	61 2f       	mov	r22, r17
+ 1da:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    LCD_putc(2, SH);
+ 1de:	80 e3       	ldi	r24, 0x30	; 48
+ 1e0:	d8 0e       	add	r13, r24
+ 1e2:	82 e0       	ldi	r24, 0x02	; 2
+ 1e4:	6d 2d       	mov	r22, r13
+ 1e6:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    LCD_putc(3, SL);
+ 1ea:	8f e0       	ldi	r24, 0x0F	; 15
+ 1ec:	f8 22       	and	r15, r24
+ 1ee:	80 e3       	ldi	r24, 0x30	; 48
+ 1f0:	f8 0e       	add	r15, r24
+ 1f2:	83 e0       	ldi	r24, 0x03	; 3
+ 1f4:	6f 2d       	mov	r22, r15
+ 1f6:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    LCD_putc(4, MSH);
+ 1fa:	80 e3       	ldi	r24, 0x30	; 48
+ 1fc:	c8 0e       	add	r12, r24
+ 1fe:	84 e0       	ldi	r24, 0x04	; 4
+ 200:	6c 2d       	mov	r22, r12
+ 202:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    LCD_putc(5, MSL);
+ 206:	8f e0       	ldi	r24, 0x0F	; 15
+ 208:	e8 22       	and	r14, r24
+ 20a:	80 e3       	ldi	r24, 0x30	; 48
+ 20c:	e8 0e       	add	r14, r24
+ 20e:	85 e0       	ldi	r24, 0x05	; 5
+ 210:	6e 2d       	mov	r22, r14
+ 212:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    LCD_putc(6, '\0');
+ 216:	86 e0       	ldi	r24, 0x06	; 6
+ 218:	60 e0       	ldi	r22, 0x00	; 0
+ 21a:	0e 94 c0 02 	call	0x580	; 0x580 <LCD_putc>
+    
+    LCD_Colon(1);
+ 21e:	81 e0       	ldi	r24, 0x01	; 1
+ 220:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <LCD_Colon>
+    
+    LCD_UpdateRequired(TRUE, 0);
+ 224:	81 e0       	ldi	r24, 0x01	; 1
+ 226:	60 e0       	ldi	r22, 0x00	; 0
+ 228:	0e 94 d4 02 	call	0x5a8	; 0x5a8 <LCD_UpdateRequired>
+}
+ 22c:	1f 91       	pop	r17
+ 22e:	0f 91       	pop	r16
+ 230:	ff 90       	pop	r15
+ 232:	ef 90       	pop	r14
+ 234:	df 90       	pop	r13
+ 236:	cf 90       	pop	r12
+ 238:	08 95       	ret
+
+0000023a <main>:
+   // OSCCAL_calibration();   
+
+	// Initialize the USART
+	//USARTinit();
+	
+	sei();					// enable global interrupt
+ 23a:	78 94       	sei
+	
+	// Initialize the RTC
+	RTC_init();
+ 23c:	0e 94 83 00 	call	0x106	; 0x106 <RTC_init>
+	// Program initalization
+    LCD_Init();
+ 240:	0e 94 9d 01 	call	0x33a	; 0x33a <LCD_Init>
+		
+	while(1){
+	i = i+1;
+	showClock();
+ 244:	0e 94 c4 00 	call	0x188	; 0x188 <showClock>
+ 248:	fd cf       	rjmp	.-6      	; 0x244 <main+0xa>
+
+0000024a <CHAR2BCD2>:
+*                   The input must be in the range 0 to 99.
+*                   The result is byte where the high and low nibbles
+*                   contain the tens and ones of the input.
+*****************************************************************************/
+char CHAR2BCD2(char input)
+{
+ 24a:	48 2f       	mov	r20, r24
+ 24c:	6a e0       	ldi	r22, 0x0A	; 10
+ 24e:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <__udivmodqi4>
+ 252:	28 2f       	mov	r18, r24
+ 254:	30 e0       	ldi	r19, 0x00	; 0
+ 256:	84 e0       	ldi	r24, 0x04	; 4
+ 258:	22 0f       	add	r18, r18
+ 25a:	33 1f       	adc	r19, r19
+ 25c:	8a 95       	dec	r24
+ 25e:	e1 f7       	brne	.-8      	; 0x258 <CHAR2BCD2+0xe>
+ 260:	84 2f       	mov	r24, r20
+ 262:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <__udivmodqi4>
+        high++;
+        input -= 10;
+    }
+
+    return  (high << 4) | input;        // Add ones and return answer
+}
+ 266:	89 2f       	mov	r24, r25
+ 268:	82 2b       	or	r24, r18
+ 26a:	08 95       	ret
+
+0000026c <CHAR2BCD3>:
+*                   The result is an integer where the three lowest nibbles
+*                   contain the ones, tens and hundreds of the input.
+*
+*****************************************************************************/
+unsigned int CHAR2BCD3(char input)
+{
+ 26c:	28 2f       	mov	r18, r24
+ 26e:	64 e6       	ldi	r22, 0x64	; 100
+ 270:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <__udivmodqi4>
+ 274:	49 2f       	mov	r20, r25
+ 276:	82 2f       	mov	r24, r18
+ 278:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <__udivmodqi4>
+ 27c:	28 2f       	mov	r18, r24
+ 27e:	30 e0       	ldi	r19, 0x00	; 0
+    {
+        high++;
+        input -= 100;
+    }
+
+    high <<= 4;
+ 280:	54 e0       	ldi	r21, 0x04	; 4
+ 282:	22 0f       	add	r18, r18
+ 284:	33 1f       	adc	r19, r19
+ 286:	5a 95       	dec	r21
+ 288:	e1 f7       	brne	.-8      	; 0x282 <CHAR2BCD3+0x16>
+ 28a:	84 2f       	mov	r24, r20
+ 28c:	6a e0       	ldi	r22, 0x0A	; 10
+ 28e:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <__udivmodqi4>
+ 292:	28 0f       	add	r18, r24
+ 294:	31 1d       	adc	r19, r1
+ 296:	94 e0       	ldi	r25, 0x04	; 4
+ 298:	22 0f       	add	r18, r18
+ 29a:	33 1f       	adc	r19, r19
+ 29c:	9a 95       	dec	r25
+ 29e:	e1 f7       	brne	.-8      	; 0x298 <CHAR2BCD3+0x2c>
+ 2a0:	84 2f       	mov	r24, r20
+ 2a2:	0e 94 e3 02 	call	0x5c6	; 0x5c6 <__udivmodqi4>
+ 2a6:	89 2f       	mov	r24, r25
+ 2a8:	90 e0       	ldi	r25, 0x00	; 0
+ 2aa:	28 2b       	or	r18, r24
+ 2ac:	39 2b       	or	r19, r25
+        high++;
+        input -= 10;
+    }
+
+    return  (high << 4) | input;        // Add ones and return answer
+}
+ 2ae:	c9 01       	movw	r24, r18
+ 2b0:	08 95       	ret
+
+000002b2 <LCD_WriteDigit>:
+*   Purpose :       Stores LCD control data in the LCD_displayData buffer.
+*                   (The LCD_displayData is latched in the LCD_SOF interrupt.)
+*
+*****************************************************************************/
+void LCD_WriteDigit(char c, char digit)
+{
+ 2b2:	98 2f       	mov	r25, r24
+    char mask, nibble;
+    char *ptr;
+    char i;
+
+
+    if (digit > 5)                              // Skip if digit is illegal
+ 2b4:	66 30       	cpi	r22, 0x06	; 6
+ 2b6:	b0 f5       	brcc	.+108    	; 0x324 <LCD_WriteDigit+0x72>
+        return;
+
+    //Lookup character table for segmet data
+    if ((c >= '*') && (c <= 'z'))
+ 2b8:	8a 52       	subi	r24, 0x2A	; 42
+ 2ba:	81 35       	cpi	r24, 0x51	; 81
+ 2bc:	18 f0       	brcs	.+6      	; 0x2c4 <LCD_WriteDigit+0x12>
+ 2be:	40 e0       	ldi	r20, 0x00	; 0
+ 2c0:	50 e0       	ldi	r21, 0x00	; 0
+ 2c2:	0c c0       	rjmp	.+24     	; 0x2dc <LCD_WriteDigit+0x2a>
+    {
+        // c is a letter
+        if (c >= 'a')                           // Convert to upper case
+ 2c4:	91 36       	cpi	r25, 0x61	; 97
+ 2c6:	08 f0       	brcs	.+2      	; 0x2ca <LCD_WriteDigit+0x18>
+            c &= ~0x20;                         // if necessarry
+ 2c8:	9f 7d       	andi	r25, 0xDF	; 223
+
+        c -= '*';
+
+		//mt seg = LCD_character_table[c];
+		seg = (unsigned int) pgm_read_word(&LCD_character_table[(uint8_t)c]); 
+ 2ca:	9a 52       	subi	r25, 0x2A	; 42
+ 2cc:	e9 2f       	mov	r30, r25
+ 2ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d0:	ee 0f       	add	r30, r30
+ 2d2:	ff 1f       	adc	r31, r31
+ 2d4:	e4 5a       	subi	r30, 0xA4	; 164
+ 2d6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2d8:	45 91       	lpm	r20, Z+
+ 2da:	54 91       	lpm	r21, Z+
+	}
+
+    // Adjust mask according to LCD segment mapping
+    if (digit & 0x01)
+ 2dc:	86 2f       	mov	r24, r22
+ 2de:	90 e0       	ldi	r25, 0x00	; 0
+ 2e0:	dc 01       	movw	r26, r24
+ 2e2:	a1 70       	andi	r26, 0x01	; 1
+ 2e4:	b0 70       	andi	r27, 0x00	; 0
+ 2e6:	60 fd       	sbrc	r22, 0
+ 2e8:	02 c0       	rjmp	.+4      	; 0x2ee <LCD_WriteDigit+0x3c>
+ 2ea:	90 ef       	ldi	r25, 0xF0	; 240
+ 2ec:	01 c0       	rjmp	.+2      	; 0x2f0 <LCD_WriteDigit+0x3e>
+ 2ee:	9f e0       	ldi	r25, 0x0F	; 15
+        mask = 0x0F;                // Digit 1, 3, 5
+    else
+        mask = 0xF0;                // Digit 0, 2, 4
+
+    ptr = LCD_Data + (digit >> 1);  // digit = {0,0,1,1,2,2}
+ 2f0:	66 95       	lsr	r22
+ 2f2:	e6 2f       	mov	r30, r22
+ 2f4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2f6:	e4 5f       	subi	r30, 0xF4	; 244
+ 2f8:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2fa:	30 e0       	ldi	r19, 0x00	; 0
+
+    for (i = 0; i < 4; i++)
+    {
+        nibble = seg & 0x000F;
+ 2fc:	24 2f       	mov	r18, r20
+ 2fe:	2f 70       	andi	r18, 0x0F	; 15
+        seg >>= 4;
+ 300:	84 e0       	ldi	r24, 0x04	; 4
+ 302:	56 95       	lsr	r21
+ 304:	47 95       	ror	r20
+ 306:	8a 95       	dec	r24
+ 308:	e1 f7       	brne	.-8      	; 0x302 <LCD_WriteDigit+0x50>
+        if (digit & 0x01)
+ 30a:	10 97       	sbiw	r26, 0x00	; 0
+ 30c:	11 f0       	breq	.+4      	; 0x312 <LCD_WriteDigit+0x60>
+            nibble <<= 4;
+ 30e:	22 95       	swap	r18
+ 310:	20 7f       	andi	r18, 0xF0	; 240
+        *ptr = (*ptr & mask) | nibble;
+ 312:	80 81       	ld	r24, Z
+ 314:	89 23       	and	r24, r25
+ 316:	28 2b       	or	r18, r24
+ 318:	20 83       	st	Z, r18
+    else
+        mask = 0xF0;                // Digit 0, 2, 4
+
+    ptr = LCD_Data + (digit >> 1);  // digit = {0,0,1,1,2,2}
+
+    for (i = 0; i < 4; i++)
+ 31a:	3f 5f       	subi	r19, 0xFF	; 255
+ 31c:	34 30       	cpi	r19, 0x04	; 4
+ 31e:	11 f0       	breq	.+4      	; 0x324 <LCD_WriteDigit+0x72>
+        nibble = seg & 0x000F;
+        seg >>= 4;
+        if (digit & 0x01)
+            nibble <<= 4;
+        *ptr = (*ptr & mask) | nibble;
+        ptr += 5;
+ 320:	35 96       	adiw	r30, 0x05	; 5
+ 322:	ec cf       	rjmp	.-40     	; 0x2fc <LCD_WriteDigit+0x4a>
+ 324:	08 95       	ret
+
+00000326 <LCD_AllSegments>:
+*****************************************************************************/
+void LCD_AllSegments(char show)
+{
+    unsigned char i;
+
+    if (show)
+ 326:	81 11       	cpse	r24, r1
+ 328:	8f ef       	ldi	r24, 0xFF	; 255
+ 32a:	ec e0       	ldi	r30, 0x0C	; 12
+ 32c:	f1 e0       	ldi	r31, 0x01	; 1
+        show = 0xFF;
+
+    // Set/clear all bits in all LCD registers
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+        *(LCD_Data + i) = show;
+ 32e:	81 93       	st	Z+, r24
+
+    if (show)
+        show = 0xFF;
+
+    // Set/clear all bits in all LCD registers
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+ 330:	91 e0       	ldi	r25, 0x01	; 1
+ 332:	e0 32       	cpi	r30, 0x20	; 32
+ 334:	f9 07       	cpc	r31, r25
+ 336:	d9 f7       	brne	.-10     	; 0x32e <LCD_AllSegments+0x8>
+        *(LCD_Data + i) = show;
+}
+ 338:	08 95       	ret
+
+0000033a <LCD_Init>:
+*                   Set up the LCD (timing, contrast, etc.)
+*
+*****************************************************************************/
+void LCD_Init (void)
+{
+    LCD_AllSegments(FALSE);                     // Clear segment buffer.
+ 33a:	80 e0       	ldi	r24, 0x00	; 0
+ 33c:	0e 94 93 01 	call	0x326	; 0x326 <LCD_AllSegments>
+
+    LCD_CONTRAST_LEVEL(LCD_INITIAL_CONTRAST);    //Set the LCD contrast level
+ 340:	8f e0       	ldi	r24, 0x0F	; 15
+ 342:	80 93 e7 00 	sts	0x00E7, r24
+
+    // Select asynchronous clock source, enable all COM pins and enable all
+    // segment pins.
+    LCDCRB = (1<<LCDCS) | (3<<LCDMUX0) | (7<<LCDPM0);
+ 346:	87 eb       	ldi	r24, 0xB7	; 183
+ 348:	80 93 e5 00 	sts	0x00E5, r24
+
+    // Set LCD prescaler to give a framerate of 32,0 Hz
+    LCDFRR = (0<<LCDPS0) | (7<<LCDCD0);    
+ 34c:	87 e0       	ldi	r24, 0x07	; 7
+ 34e:	80 93 e6 00 	sts	0x00E6, r24
+
+    LCDCRA = (1<<LCDEN) | (1<<LCDAB);           // Enable LCD and set low power waveform
+ 352:	e4 ee       	ldi	r30, 0xE4	; 228
+ 354:	f0 e0       	ldi	r31, 0x00	; 0
+ 356:	80 ec       	ldi	r24, 0xC0	; 192
+ 358:	80 83       	st	Z, r24
+
+    //Enable LCD start of frame interrupt
+    LCDCRA |= (1<<LCDIE);
+ 35a:	80 81       	ld	r24, Z
+ 35c:	88 60       	ori	r24, 0x08	; 8
+ 35e:	80 83       	st	Z, r24
+
+    gLCD_Update_Required = FALSE;
+ 360:	10 92 02 01 	sts	0x0102, r1
+
+
+}
+ 364:	08 95       	ret
+
+00000366 <__vector_22>:
+*   Purpose: Latch the LCD_displayData and Set LCD_status.updateComplete
+*
+*****************************************************************************/
+
+SIGNAL(SIG_LCD)
+{
+ 366:	1f 92       	push	r1
+ 368:	0f 92       	push	r0
+ 36a:	0f b6       	in	r0, 0x3f	; 63
+ 36c:	0f 92       	push	r0
+ 36e:	11 24       	eor	r1, r1
+ 370:	ef 92       	push	r14
+ 372:	ff 92       	push	r15
+ 374:	0f 93       	push	r16
+ 376:	1f 93       	push	r17
+ 378:	2f 93       	push	r18
+ 37a:	3f 93       	push	r19
+ 37c:	4f 93       	push	r20
+ 37e:	5f 93       	push	r21
+ 380:	6f 93       	push	r22
+ 382:	7f 93       	push	r23
+ 384:	8f 93       	push	r24
+ 386:	9f 93       	push	r25
+ 388:	af 93       	push	r26
+ 38a:	bf 93       	push	r27
+ 38c:	cf 93       	push	r28
+ 38e:	df 93       	push	r29
+ 390:	ef 93       	push	r30
+ 392:	ff 93       	push	r31
+        auto_joystick_count = 0;
+*/
+
+/**************** Auto press joystick for the main.c, END ***************/    
+
+    LCD_timer--;                    // Decreased every LCD frame
+ 394:	00 91 00 01 	lds	r16, 0x0100
+ 398:	01 50       	subi	r16, 0x01	; 1
+ 39a:	00 93 00 01 	sts	0x0100, r16
+
+    if (gScrollMode)
+ 39e:	80 91 0b 01 	lds	r24, 0x010B
+ 3a2:	88 23       	and	r24, r24
+ 3a4:	71 f0       	breq	.+28     	; 0x3c2 <__vector_22+0x5c>
+    {
+        // If we are in scroll mode, and the timer has expired,
+        // we will update the LCD
+        if (LCD_timer == 0)
+ 3a6:	00 23       	and	r16, r16
+ 3a8:	71 f4       	brne	.+28     	; 0x3c6 <__vector_22+0x60>
+        {
+            if (gLCD_Start_Scroll_Timer == 0)
+ 3aa:	80 91 03 01 	lds	r24, 0x0103
+ 3ae:	88 23       	and	r24, r24
+ 3b0:	21 f4       	brne	.+8      	; 0x3ba <__vector_22+0x54>
+            {
+                gLCD_Update_Required = TRUE;
+ 3b2:	81 e0       	ldi	r24, 0x01	; 1
+ 3b4:	80 93 02 01 	sts	0x0102, r24
+ 3b8:	06 c0       	rjmp	.+12     	; 0x3c6 <__vector_22+0x60>
+            }
+            else
+                gLCD_Start_Scroll_Timer--;
+ 3ba:	81 50       	subi	r24, 0x01	; 1
+ 3bc:	80 93 03 01 	sts	0x0103, r24
+ 3c0:	02 c0       	rjmp	.+4      	; 0x3c6 <__vector_22+0x60>
+    }
+    else    
+    {   // if not scrolling,
+        // disble LCD start of frame interrupt
+//        cbi(LCDCRA, LCDIE);   //DEBUG
+        gScroll = 0;
+ 3c2:	10 92 39 01 	sts	0x0139, r1
+    }
+
+
+    EOL = FALSE;
+    if (gLCD_Update_Required == TRUE)
+ 3c6:	80 91 02 01 	lds	r24, 0x0102
+ 3ca:	81 30       	cpi	r24, 0x01	; 1
+ 3cc:	09 f0       	breq	.+2      	; 0x3d0 <__vector_22+0x6a>
+ 3ce:	53 c0       	rjmp	.+166    	; 0x476 <__vector_22+0x110>
+    {
+        // Duty cycle of flashing characters
+        if (gFlashTimer < (LCD_FLASH_SEED >> 1))
+ 3d0:	e0 90 04 01 	lds	r14, 0x0104
+ 3d4:	ff 24       	eor	r15, r15
+ 3d6:	10 e0       	ldi	r17, 0x00	; 0
+ 3d8:	c0 e0       	ldi	r28, 0x00	; 0
+ 3da:	d0 e0       	ldi	r29, 0x00	; 0
+ 3dc:	6c 2f       	mov	r22, r28
+            flash = 1;
+
+        // Repeat for the six LCD characters
+        for (i = 0; i < 6; i++)
+        {
+            if ((gScroll+i) >= 0 && (!EOL))
+ 3de:	80 91 39 01 	lds	r24, 0x0139
+ 3e2:	99 27       	eor	r25, r25
+ 3e4:	87 fd       	sbrc	r24, 7
+ 3e6:	90 95       	com	r25
+ 3e8:	8c 0f       	add	r24, r28
+ 3ea:	9d 1f       	adc	r25, r29
+ 3ec:	97 fd       	sbrc	r25, 7
+ 3ee:	16 c0       	rjmp	.+44     	; 0x41c <__vector_22+0xb6>
+ 3f0:	11 23       	and	r17, r17
+ 3f2:	a1 f4       	brne	.+40     	; 0x41c <__vector_22+0xb6>
+            {
+                // We have some visible characters
+                c = gTextBuffer[i + gScroll];
+ 3f4:	80 91 39 01 	lds	r24, 0x0139
+ 3f8:	99 27       	eor	r25, r25
+ 3fa:	87 fd       	sbrc	r24, 7
+ 3fc:	90 95       	com	r25
+ 3fe:	fe 01       	movw	r30, r28
+ 400:	e0 5e       	subi	r30, 0xE0	; 224
+ 402:	fe 4f       	sbci	r31, 0xFE	; 254
+ 404:	e8 0f       	add	r30, r24
+ 406:	f9 1f       	adc	r31, r25
+ 408:	80 81       	ld	r24, Z
+                c_flash = c & 0x80 ? 1 : 0;
+ 40a:	f8 2e       	mov	r15, r24
+ 40c:	ff 1c       	adc	r15, r15
+ 40e:	ff 24       	eor	r15, r15
+ 410:	ff 1c       	adc	r15, r15
+                c = c & 0x7F;
+ 412:	8f 77       	andi	r24, 0x7F	; 127
+
+                if (c == '\0')
+ 414:	21 f4       	brne	.+8      	; 0x41e <__vector_22+0xb8>
+ 416:	1c 2f       	mov	r17, r28
+ 418:	1f 5f       	subi	r17, 0xFF	; 255
+ 41a:	01 c0       	rjmp	.+2      	; 0x41e <__vector_22+0xb8>
+ 41c:	80 e2       	ldi	r24, 0x20	; 32
+            else
+                c = ' ';
+
+            // Check if this character is flashing
+
+            if (c_flash && flash)
+ 41e:	ff 20       	and	r15, r15
+ 420:	21 f0       	breq	.+8      	; 0x42a <__vector_22+0xc4>
+ 422:	94 e0       	ldi	r25, 0x04	; 4
+ 424:	9e 15       	cp	r25, r14
+ 426:	08 f4       	brcc	.+2      	; 0x42a <__vector_22+0xc4>
+                LCD_WriteDigit(' ', i);
+ 428:	80 e2       	ldi	r24, 0x20	; 32
+            else
+                LCD_WriteDigit(c, i);
+ 42a:	0e 94 59 01 	call	0x2b2	; 0x2b2 <LCD_WriteDigit>
+ 42e:	21 96       	adiw	r28, 0x01	; 1
+            flash = 0;
+        else
+            flash = 1;
+
+        // Repeat for the six LCD characters
+        for (i = 0; i < 6; i++)
+ 430:	c6 30       	cpi	r28, 0x06	; 6
+ 432:	d1 05       	cpc	r29, r1
+ 434:	99 f6       	brne	.-90     	; 0x3dc <__vector_22+0x76>
+ 436:	ac ee       	ldi	r26, 0xEC	; 236
+ 438:	b0 e0       	ldi	r27, 0x00	; 0
+                LCD_WriteDigit(c, i);
+        }
+
+        // Copy the segment buffer to the real segments
+        for (i = 0; i < LCD_REGISTER_COUNT; i++)
+            *(pLCDREG + i) = *(LCD_Data+i);
+ 43a:	fd 01       	movw	r30, r26
+ 43c:	e0 5e       	subi	r30, 0xE0	; 224
+ 43e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 440:	80 81       	ld	r24, Z
+ 442:	8d 93       	st	X+, r24
+            else
+                LCD_WriteDigit(c, i);
+        }
+
+        // Copy the segment buffer to the real segments
+        for (i = 0; i < LCD_REGISTER_COUNT; i++)
+ 444:	81 e0       	ldi	r24, 0x01	; 1
+ 446:	a0 30       	cpi	r26, 0x00	; 0
+ 448:	b8 07       	cpc	r27, r24
+ 44a:	b9 f7       	brne	.-18     	; 0x43a <__vector_22+0xd4>
+            *(pLCDREG + i) = *(LCD_Data+i);
+
+        // Handle colon
+        if (gColon)
+ 44c:	80 91 05 01 	lds	r24, 0x0105
+ 450:	88 23       	and	r24, r24
+ 452:	21 f0       	breq	.+8      	; 0x45c <__vector_22+0xf6>
+            *(pLCDREG + 8) = 0x01;
+ 454:	81 e0       	ldi	r24, 0x01	; 1
+ 456:	80 93 f4 00 	sts	0x00F4, r24
+ 45a:	02 c0       	rjmp	.+4      	; 0x460 <__vector_22+0xfa>
+        else
+            *(pLCDREG + 8) = 0x00;
+ 45c:	10 92 f4 00 	sts	0x00F4, r1
+
+        // If the text scrolled off the display,
+        // we have to start over again.
+        if (EOL == 1)
+ 460:	11 30       	cpi	r17, 0x01	; 1
+ 462:	11 f4       	brne	.+4      	; 0x468 <__vector_22+0x102>
+            gScroll = -6;
+ 464:	8a ef       	ldi	r24, 0xFA	; 250
+ 466:	03 c0       	rjmp	.+6      	; 0x46e <__vector_22+0x108>
+        else
+            gScroll++;
+ 468:	80 91 39 01 	lds	r24, 0x0139
+ 46c:	8f 5f       	subi	r24, 0xFF	; 255
+ 46e:	80 93 39 01 	sts	0x0139, r24
+
+        // No need to update anymore
+        gLCD_Update_Required = FALSE;
+ 472:	10 92 02 01 	sts	0x0102, r1
+    }
+
+
+    // LCD_timer is used when scrolling text
+    if (LCD_timer == 0)
+ 476:	00 23       	and	r16, r16
+ 478:	19 f4       	brne	.+6      	; 0x480 <__vector_22+0x11a>
+    {
+/*        if ((gScroll <= 0) || EOL)
+            LCD_timer = LCD_TIMER_SEED/2;
+        else*/
+            LCD_timer = LCD_TIMER_SEED;
+ 47a:	83 e0       	ldi	r24, 0x03	; 3
+ 47c:	80 93 00 01 	sts	0x0100, r24
+    }
+
+    // gFlashTimer is used when flashing characters
+    if (gFlashTimer == LCD_FLASH_SEED)
+ 480:	80 91 04 01 	lds	r24, 0x0104
+ 484:	8a 30       	cpi	r24, 0x0A	; 10
+ 486:	19 f4       	brne	.+6      	; 0x48e <__vector_22+0x128>
+        gFlashTimer= 0;
+ 488:	10 92 04 01 	sts	0x0104, r1
+ 48c:	03 c0       	rjmp	.+6      	; 0x494 <__vector_22+0x12e>
+    else
+        gFlashTimer++;
+ 48e:	8f 5f       	subi	r24, 0xFF	; 255
+ 490:	80 93 04 01 	sts	0x0104, r24
+
+}
+ 494:	ff 91       	pop	r31
+ 496:	ef 91       	pop	r30
+ 498:	df 91       	pop	r29
+ 49a:	cf 91       	pop	r28
+ 49c:	bf 91       	pop	r27
+ 49e:	af 91       	pop	r26
+ 4a0:	9f 91       	pop	r25
+ 4a2:	8f 91       	pop	r24
+ 4a4:	7f 91       	pop	r23
+ 4a6:	6f 91       	pop	r22
+ 4a8:	5f 91       	pop	r21
+ 4aa:	4f 91       	pop	r20
+ 4ac:	3f 91       	pop	r19
+ 4ae:	2f 91       	pop	r18
+ 4b0:	1f 91       	pop	r17
+ 4b2:	0f 91       	pop	r16
+ 4b4:	ff 90       	pop	r15
+ 4b6:	ef 90       	pop	r14
+ 4b8:	0f 90       	pop	r0
+ 4ba:	0f be       	out	0x3f, r0	; 63
+ 4bc:	0f 90       	pop	r0
+ 4be:	1f 90       	pop	r1
+ 4c0:	18 95       	reti
+
+000004c2 <LCD_puts_f>:
+*
+*****************************************************************************/
+
+// mt void LCD_puts_f(char __flash *pFlashStr, char scrollmode)
+void LCD_puts_f(const char *pFlashStr, char scrollmode)
+{
+ 4c2:	38 2f       	mov	r19, r24
+ 4c4:	29 2f       	mov	r18, r25
+    // char i;
+	uint8_t i;
+
+    while (gLCD_Update_Required);      // Wait for access to buffer
+ 4c6:	80 91 02 01 	lds	r24, 0x0102
+ 4ca:	88 23       	and	r24, r24
+ 4cc:	e1 f7       	brne	.-8      	; 0x4c6 <LCD_puts_f+0x4>
+ 4ce:	a0 e2       	ldi	r26, 0x20	; 32
+ 4d0:	b1 e0       	ldi	r27, 0x01	; 1
+ 4d2:	83 2f       	mov	r24, r19
+ 4d4:	92 2f       	mov	r25, r18
+ 4d6:	fc 01       	movw	r30, r24
+ 4d8:	01 c0       	rjmp	.+2      	; 0x4dc <LCD_puts_f+0x1a>
+
+    // mt: for (i = 0; pFlashStr[i] && i < TEXTBUFFER_SIZE; i++)
+	for (i = 0; pgm_read_byte(&pFlashStr[i]) && i < TEXTBUFFER_SIZE; i++)
+    {
+        // mt: gTextBuffer[i] = pFlashStr[i];
+		gTextBuffer[i] = pgm_read_byte(&pFlashStr[i]);
+ 4da:	8d 93       	st	X+, r24
+ 4dc:	9e 2f       	mov	r25, r30
+ 4de:	93 1b       	sub	r25, r19
+	uint8_t i;
+
+    while (gLCD_Update_Required);      // Wait for access to buffer
+
+    // mt: for (i = 0; pFlashStr[i] && i < TEXTBUFFER_SIZE; i++)
+	for (i = 0; pgm_read_byte(&pFlashStr[i]) && i < TEXTBUFFER_SIZE; i++)
+ 4e0:	84 91       	lpm	r24, Z+
+ 4e2:	88 23       	and	r24, r24
+ 4e4:	29 f0       	breq	.+10     	; 0x4f0 <LCD_puts_f+0x2e>
+ 4e6:	31 96       	adiw	r30, 0x01	; 1
+ 4e8:	21 e0       	ldi	r18, 0x01	; 1
+ 4ea:	a9 33       	cpi	r26, 0x39	; 57
+ 4ec:	b2 07       	cpc	r27, r18
+ 4ee:	a9 f7       	brne	.-22     	; 0x4da <LCD_puts_f+0x18>
+    {
+        // mt: gTextBuffer[i] = pFlashStr[i];
+		gTextBuffer[i] = pgm_read_byte(&pFlashStr[i]);
+    }
+
+    gTextBuffer[i] = '\0';
+ 4f0:	e9 2f       	mov	r30, r25
+ 4f2:	f0 e0       	ldi	r31, 0x00	; 0
+ 4f4:	e0 5e       	subi	r30, 0xE0	; 224
+ 4f6:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4f8:	10 82       	st	Z, r1
+
+    if (i > 6)
+ 4fa:	97 30       	cpi	r25, 0x07	; 7
+ 4fc:	48 f0       	brcs	.+18     	; 0x510 <__stack+0x11>
+    {
+        gScrollMode = 1;        // Scroll if text is longer than display size
+ 4fe:	81 e0       	ldi	r24, 0x01	; 1
+ 500:	80 93 0b 01 	sts	0x010B, r24
+        gScroll = 0;
+ 504:	10 92 39 01 	sts	0x0139, r1
+        gLCD_Start_Scroll_Timer = 3;    //Start-up delay before scrolling the text
+ 508:	83 e0       	ldi	r24, 0x03	; 3
+ 50a:	80 93 03 01 	sts	0x0103, r24
+ 50e:	04 c0       	rjmp	.+8      	; 0x518 <__stack+0x19>
+    }
+    else
+    {
+        gScrollMode = 0;        
+ 510:	10 92 0b 01 	sts	0x010B, r1
+        gScroll = 0;
+ 514:	10 92 39 01 	sts	0x0139, r1
+    }
+
+    gLCD_Update_Required = 1;
+ 518:	81 e0       	ldi	r24, 0x01	; 1
+ 51a:	80 93 02 01 	sts	0x0102, r24
+}
+ 51e:	08 95       	ret
+
+00000520 <LCD_puts>:
+*
+*	Purpose :		Writes a string to the LCD
+*
+*****************************************************************************/
+void LCD_puts(char *pStr, char scrollmode)
+{
+ 520:	48 2f       	mov	r20, r24
+ 522:	29 2f       	mov	r18, r25
+	uint8_t i; // char i;
+	
+	while (gLCD_Update_Required);      // Wait for access to buffer
+ 524:	80 91 02 01 	lds	r24, 0x0102
+ 528:	88 23       	and	r24, r24
+ 52a:	e1 f7       	brne	.-8      	; 0x524 <LCD_puts+0x4>
+ 52c:	a0 e2       	ldi	r26, 0x20	; 32
+ 52e:	b1 e0       	ldi	r27, 0x01	; 1
+ 530:	84 2f       	mov	r24, r20
+ 532:	92 2f       	mov	r25, r18
+ 534:	9c 01       	movw	r18, r24
+ 536:	f9 01       	movw	r30, r18
+ 538:	01 c0       	rjmp	.+2      	; 0x53c <LCD_puts+0x1c>
+
+    for (i = 0; pStr[i] && i < TEXTBUFFER_SIZE; i++)
+    {
+        gTextBuffer[i] = pStr[i];
+ 53a:	8d 93       	st	X+, r24
+ 53c:	9e 2f       	mov	r25, r30
+ 53e:	94 1b       	sub	r25, r20
+{
+	uint8_t i; // char i;
+	
+	while (gLCD_Update_Required);      // Wait for access to buffer
+
+    for (i = 0; pStr[i] && i < TEXTBUFFER_SIZE; i++)
+ 540:	80 81       	ld	r24, Z
+ 542:	88 23       	and	r24, r24
+ 544:	29 f0       	breq	.+10     	; 0x550 <LCD_puts+0x30>
+ 546:	31 96       	adiw	r30, 0x01	; 1
+ 548:	21 e0       	ldi	r18, 0x01	; 1
+ 54a:	a9 33       	cpi	r26, 0x39	; 57
+ 54c:	b2 07       	cpc	r27, r18
+ 54e:	a9 f7       	brne	.-22     	; 0x53a <LCD_puts+0x1a>
+    {
+        gTextBuffer[i] = pStr[i];
+    }
+
+    gTextBuffer[i] = '\0';
+ 550:	e9 2f       	mov	r30, r25
+ 552:	f0 e0       	ldi	r31, 0x00	; 0
+ 554:	e0 5e       	subi	r30, 0xE0	; 224
+ 556:	fe 4f       	sbci	r31, 0xFE	; 254
+ 558:	10 82       	st	Z, r1
+
+    if (i > 6)
+ 55a:	97 30       	cpi	r25, 0x07	; 7
+ 55c:	48 f0       	brcs	.+18     	; 0x570 <LCD_puts+0x50>
+    {
+        gScrollMode = 1;        // Scroll if text is longer than display size
+ 55e:	81 e0       	ldi	r24, 0x01	; 1
+ 560:	80 93 0b 01 	sts	0x010B, r24
+        gScroll = 0;
+ 564:	10 92 39 01 	sts	0x0139, r1
+        gLCD_Start_Scroll_Timer = 3;    //Start-up delay before scrolling the text
+ 568:	83 e0       	ldi	r24, 0x03	; 3
+ 56a:	80 93 03 01 	sts	0x0103, r24
+ 56e:	04 c0       	rjmp	.+8      	; 0x578 <LCD_puts+0x58>
+    }
+    else
+    {
+        gScrollMode = 0;        
+ 570:	10 92 0b 01 	sts	0x010B, r1
+        gScroll = 0;
+ 574:	10 92 39 01 	sts	0x0139, r1
+    }
+
+    gLCD_Update_Required = 1;
+ 578:	81 e0       	ldi	r24, 0x01	; 1
+ 57a:	80 93 02 01 	sts	0x0102, r24
+}
+ 57e:	08 95       	ret
+
+00000580 <LCD_putc>:
+*****************************************************************************/
+// mt void LCD_putc(char digit, char character)
+// mt void LCD_putc(char digit, char character)
+void LCD_putc(uint8_t digit, char character)
+{
+    if (digit < TEXTBUFFER_SIZE)
+ 580:	89 31       	cpi	r24, 0x19	; 25
+ 582:	28 f4       	brcc	.+10     	; 0x58e <LCD_putc+0xe>
+        gTextBuffer[digit] = character;
+ 584:	e8 2f       	mov	r30, r24
+ 586:	f0 e0       	ldi	r31, 0x00	; 0
+ 588:	e0 5e       	subi	r30, 0xE0	; 224
+ 58a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 58c:	60 83       	st	Z, r22
+ 58e:	08 95       	ret
+
+00000590 <LCD_Clear>:
+*
+*	Purpose :		Clear the LCD
+*
+*****************************************************************************/
+void LCD_Clear(void)
+{
+ 590:	e0 e2       	ldi	r30, 0x20	; 32
+ 592:	f1 e0       	ldi	r31, 0x01	; 1
+    uint8_t i; // char i;
+	   
+    for (i=0; i<TEXTBUFFER_SIZE; i++)
+        gTextBuffer[i] = ' ';
+ 594:	80 e2       	ldi	r24, 0x20	; 32
+ 596:	81 93       	st	Z+, r24
+*****************************************************************************/
+void LCD_Clear(void)
+{
+    uint8_t i; // char i;
+	   
+    for (i=0; i<TEXTBUFFER_SIZE; i++)
+ 598:	91 e0       	ldi	r25, 0x01	; 1
+ 59a:	e9 33       	cpi	r30, 0x39	; 57
+ 59c:	f9 07       	cpc	r31, r25
+ 59e:	d9 f7       	brne	.-10     	; 0x596 <LCD_Clear+0x6>
+        gTextBuffer[i] = ' ';
+}
+ 5a0:	08 95       	ret
+
+000005a2 <LCD_Colon>:
+*	Purpose :		Enable/disable colons on the LCD
+*
+*****************************************************************************/
+void LCD_Colon(char show)
+{
+    gColon = show;
+ 5a2:	80 93 05 01 	sts	0x0105, r24
+}
+ 5a6:	08 95       	ret
+
+000005a8 <LCD_UpdateRequired>:
+*
+*	Purpose :		Tells the LCD that there is new data to be presented
+*
+*****************************************************************************/
+void LCD_UpdateRequired(char update, char scrollmode)
+{
+ 5a8:	98 2f       	mov	r25, r24
+
+    while (gLCD_Update_Required);
+ 5aa:	80 91 02 01 	lds	r24, 0x0102
+ 5ae:	88 23       	and	r24, r24
+ 5b0:	e1 f7       	brne	.-8      	; 0x5aa <LCD_UpdateRequired+0x2>
+    
+    gScrollMode = scrollmode;
+ 5b2:	60 93 0b 01 	sts	0x010B, r22
+    gScroll = 0;
+ 5b6:	10 92 39 01 	sts	0x0139, r1
+
+    gLCD_Update_Required = update;
+ 5ba:	90 93 02 01 	sts	0x0102, r25
+}
+ 5be:	08 95       	ret
+
+000005c0 <LCD_FlashReset>:
+*	Purpose :		This function resets the blinking cycle of a flashing digit
+*
+*****************************************************************************/
+void LCD_FlashReset(void)
+{
+    gFlashTimer = 0;
+ 5c0:	10 92 04 01 	sts	0x0104, r1
+}
+ 5c4:	08 95       	ret
+
+000005c6 <__udivmodqi4>:
+ 5c6:	99 1b       	sub	r25, r25
+ 5c8:	79 e0       	ldi	r23, 0x09	; 9
+ 5ca:	04 c0       	rjmp	.+8      	; 0x5d4 <__udivmodqi4_ep>
+
+000005cc <__udivmodqi4_loop>:
+ 5cc:	99 1f       	adc	r25, r25
+ 5ce:	96 17       	cp	r25, r22
+ 5d0:	08 f0       	brcs	.+2      	; 0x5d4 <__udivmodqi4_ep>
+ 5d2:	96 1b       	sub	r25, r22
+
+000005d4 <__udivmodqi4_ep>:
+ 5d4:	88 1f       	adc	r24, r24
+ 5d6:	7a 95       	dec	r23
+ 5d8:	c9 f7       	brne	.-14     	; 0x5cc <__udivmodqi4_loop>
+ 5da:	80 95       	com	r24
+ 5dc:	08 95       	ret
+
+000005de <_exit>:
+ 5de:	f8 94       	cli
+
+000005e0 <__stop_program>:
+ 5e0:	ff cf       	rjmp	.-2      	; 0x5e0 <__stop_program>

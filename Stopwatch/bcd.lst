@@ -1,0 +1,94 @@
+   1               		.file	"bcd.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	CHAR2BCD2
+  18               	CHAR2BCD2:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 482F      		mov r20,r24
+  25               	.LM2:
+  26 0002 6AE0      		ldi r22,lo8(10)
+  27 0004 0E94 0000 		call __udivmodqi4
+  28               	.LVL1:
+  29 0008 282F      		mov r18,r24
+  30 000a 30E0      		ldi r19,lo8(0)
+  31 000c 84E0      		ldi r24,4
+  32 000e 220F      	1:	lsl r18
+  33 0010 331F      		rol r19
+  34 0012 8A95      		dec r24
+  35 0014 01F4      		brne 1b
+  36 0016 842F      		mov r24,r20
+  37 0018 0E94 0000 		call __udivmodqi4
+  38               	.LM3:
+  39 001c 892F      		mov r24,r25
+  40 001e 822B      		or r24,r18
+  41               	/* epilogue start */
+  42 0020 0895      		ret
+  43               	.LFE2:
+  45               	.global	CHAR2BCD3
+  47               	CHAR2BCD3:
+  48               	.LFB3:
+  49               	.LM4:
+  50               	.LVL2:
+  51               	/* prologue: function */
+  52               	/* frame size = 0 */
+  53 0022 282F      		mov r18,r24
+  54               	.LM5:
+  55 0024 64E6      		ldi r22,lo8(100)
+  56 0026 0E94 0000 		call __udivmodqi4
+  57               	.LVL3:
+  58 002a 492F      		mov r20,r25
+  59 002c 822F      		mov r24,r18
+  60 002e 0E94 0000 		call __udivmodqi4
+  61 0032 282F      		mov r18,r24
+  62               	.LVL4:
+  63 0034 30E0      		ldi r19,lo8(0)
+  64               	.LM6:
+  65 0036 54E0      		ldi r21,4
+  66 0038 220F      	1:	lsl r18
+  67 003a 331F      		rol r19
+  68 003c 5A95      		dec r21
+  69 003e 01F4      		brne 1b
+  70 0040 842F      		mov r24,r20
+  71 0042 6AE0      		ldi r22,lo8(10)
+  72 0044 0E94 0000 		call __udivmodqi4
+  73 0048 280F      		add r18,r24
+  74 004a 311D      		adc r19,__zero_reg__
+  75 004c 94E0      		ldi r25,4
+  76 004e 220F      	1:	lsl r18
+  77 0050 331F      		rol r19
+  78 0052 9A95      		dec r25
+  79 0054 01F4      		brne 1b
+  80 0056 842F      		mov r24,r20
+  81 0058 0E94 0000 		call __udivmodqi4
+  82 005c 892F      		mov r24,r25
+  83 005e 90E0      		ldi r25,lo8(0)
+  84 0060 282B      		or r18,r24
+  85 0062 392B      		or r19,r25
+  86               	.LM7:
+  87 0064 C901      		movw r24,r18
+  88               	/* epilogue start */
+  89 0066 0895      		ret
+  90               	.LFE3:
+ 124               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 bcd.c
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:18     .text:00000000 CHAR2BCD2
+C:\Users\Bennett\AppData\Local\Temp/ccywkGM2.s:47     .text:00000022 CHAR2BCD3
+
+UNDEFINED SYMBOLS
+__udivmodqi4

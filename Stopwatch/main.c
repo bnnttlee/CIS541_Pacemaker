@@ -7,15 +7,21 @@
 #include "main.h"
 #include "lcd_functions.h"
 #include "lcd_driver.h"
+#include "bcd.h"
 
 #define pLCDREG_test (*(char *)(0xEC))
 
-unsigned char gMILLISECOND;
-unsigned char gSECOND;
-unsigned char gMINUTE;
+volatile uint8_t gMILLISECOND;
+volatile uint8_t gSECOND;
+volatile uint8_t gMINUTE;
+// mt static char __flash *statetext;
+//(PGM_P const char*)
 
-void initializer()
-{
+PGM_P time;
+	
+int main(){ 
+
+	int i;
 	// Calibrate the oscillator:
    // OSCCAL_calibration();   
 
@@ -26,7 +32,15 @@ void initializer()
 	
 	// Initialize the RTC
 	RTC_init();
+	// Program initalization
+    LCD_Init();
 		
+	while(1){
+	i = i+1;
+	showClock();
+	}
+	
+	return 0;
 }
 
 
@@ -46,31 +60,27 @@ void showClock(void)
     MSH = CHAR2BCD2(gMILLISECOND);
     MSL = (MSH & 0x0F) + '0';
     MSH = (MSH >> 4) + '0';
- 
-}
-
-// convert a character into a binary coded decimal chracter in the range 0 to 99
-// resulting byte has tens in high nibble and ones in low nibble
-char CHAR2BCD2(char input)
-{
-    char high = 0;
     
-    while (input >= 10)                 // Count tens
-    {
-        high++;
-        input -= 10;
-    }
-
-    return  (high << 4) | input;        // Add ones and return answer
+    LCD_putc(0, MH);
+    LCD_putc(1, ML);
+    LCD_putc(2, SH);
+    LCD_putc(3, SL);
+    LCD_putc(4, MSH);
+    LCD_putc(5, MSL);
+    LCD_putc(6, '\0');
+    
+    LCD_Colon(1);
+    
+    LCD_UpdateRequired(TRUE, 0);
 }
 
 
-
-// initialize Timer/counter2 as asynchronous using the 32.768kHz watch crystal.
 void RTC_init(void)
 { 
+	//Wait for 1 sec
+	//delay(1000);
 	
-	/set Clock Prescaler Change Enable
+	//set Clock Prescaler Change Enable
 	CLKPR = (1<<CLKPCE);
 	
 	//set prescaler = 8, Inter RC 8MHz/8 = 1MHz
