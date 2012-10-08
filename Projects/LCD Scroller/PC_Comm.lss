@@ -1,0 +1,1825 @@
+
+PC_Comm.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000024  00800100  000008b4  00000948  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000008b4  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000009b  00800124  00800124  0000096c  2**0
+                  ALLOC
+  3 .debug_aranges 000000a0  00000000  00000000  0000096c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 0000030d  00000000  00000000  00000a0c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000dba  00000000  00000000  00000d19  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000665  00000000  00000000  00001ad3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000bcc  00000000  00000000  00002138  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001f0  00000000  00000000  00002d04  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000040f  00000000  00000000  00002ef4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000525  00000000  00000000  00003303  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 b6 00 	jmp	0x16c	; 0x16c <__ctors_end>
+   4:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+   8:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+   c:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  10:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  14:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  18:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  1c:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  20:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  24:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  28:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  2c:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  30:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  34:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  38:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  3c:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  40:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  44:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  48:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  4c:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  50:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  54:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__bad_interrupt>
+  58:	0c 94 d5 02 	jmp	0x5aa	; 0x5aa <__vector_22>
+
+0000005c <TALKING_TO>:
+  5c:	0d 0d 59 6f 75 20 61 72 65 20 74 61 6c 6b 69 6e     ..You are talkin
+  6c:	67 20 74 6f 20 74 68 65 20 00 00                    g to the ..
+
+00000077 <WHO_DEMO>:
+  77:	27 73 63 72 6f 6c 6c 65 72 27 20 64 65 6d 6f 2e     'scroller' demo.
+  87:	0d 0d 00 00                                         ....
+
+0000008b <BAD_COMMAND1>:
+  8b:	0d 59 6f 75 20 73 65 6e 74 3a 20 27 00 00           .You sent: '..
+
+00000099 <BAD_COMMAND2>:
+  99:	27 20 2d 20 49 20 64 6f 6e 27 74 20 75 6e 64 65     ' - I don't unde
+  a9:	72 73 74 61 6e 64 2e 0d 00 00                       rstand....
+
+000000b3 <Scroller_msg>:
+  b3:	53 63 72 6f 6c 6c 65 72 20 64 65 6d 6f 0d 00 00     Scroller demo...
+
+000000c3 <OnMSG_msg>:
+  c3:	4c 6f 61 64 69 6e 67 20 74 68 65 20 6d 65 73 73     Loading the mess
+  d3:	61 67 65 20 74 6f 20 73 63 72 6f 6c 6c 0d 00 00     age to scroll...
+
+000000e3 <INVALID_msg>:
+  e3:	49 6e 76 61 6c 69 64 20 6d 65 73 73 61 67 65 20     Invalid message 
+  f3:	69 6e 20 45 45 50 52 4f 4d 0d 00 00                 in EEPROM...
+
+000000ff <LCD_character_table>:
+  ff:	51 0a 80 2a 00 00 00 0a 51 0a 00 00 59 55 18 01     Q..*....Q...YU..
+ 10f:	11 1e 11 1b 50 0b 41 1b 41 1f 11 01 51 1f 51 1b     ....P.A.A...Q.Q.
+	...
+ 12b:	00 00 51 0f 91 39 41 14 91 31 41 1e 41 0e 41 1d     ..Q..9A..1A.A.A.
+ 13b:	50 0f 80 20 10 15 48 86 40 14 78 05 70 85 51 15     P.. ..H.@.x.p.Q.
+ 14b:	51 0e 51 95 51 8e 21 90 81 20 50 15 48 44 50 c5     Q.Q.Q.!.. P.HDP.
+ 15b:	28 c0 28 20 09 50 00 00 00 00 00 00 00 00 00 00     (.( .P..........
+	...
+
+0000016c <__ctors_end>:
+ 16c:	11 24       	eor	r1, r1
+ 16e:	1f be       	out	0x3f, r1	; 63
+ 170:	cf ef       	ldi	r28, 0xFF	; 255
+ 172:	d4 e0       	ldi	r29, 0x04	; 4
+ 174:	de bf       	out	0x3e, r29	; 62
+ 176:	cd bf       	out	0x3d, r28	; 61
+
+00000178 <__do_copy_data>:
+ 178:	11 e0       	ldi	r17, 0x01	; 1
+ 17a:	a0 e0       	ldi	r26, 0x00	; 0
+ 17c:	b1 e0       	ldi	r27, 0x01	; 1
+ 17e:	e4 eb       	ldi	r30, 0xB4	; 180
+ 180:	f8 e0       	ldi	r31, 0x08	; 8
+ 182:	02 c0       	rjmp	.+4      	; 0x188 <.do_copy_data_start>
+
+00000184 <.do_copy_data_loop>:
+ 184:	05 90       	lpm	r0, Z+
+ 186:	0d 92       	st	X+, r0
+
+00000188 <.do_copy_data_start>:
+ 188:	a4 32       	cpi	r26, 0x24	; 36
+ 18a:	b1 07       	cpc	r27, r17
+ 18c:	d9 f7       	brne	.-10     	; 0x184 <.do_copy_data_loop>
+
+0000018e <__do_clear_bss>:
+ 18e:	11 e0       	ldi	r17, 0x01	; 1
+ 190:	a4 e2       	ldi	r26, 0x24	; 36
+ 192:	b1 e0       	ldi	r27, 0x01	; 1
+ 194:	01 c0       	rjmp	.+2      	; 0x198 <.do_clear_bss_start>
+
+00000196 <.do_clear_bss_loop>:
+ 196:	1d 92       	st	X+, r1
+
+00000198 <.do_clear_bss_start>:
+ 198:	af 3b       	cpi	r26, 0xBF	; 191
+ 19a:	b1 07       	cpc	r27, r17
+ 19c:	e1 f7       	brne	.-8      	; 0x196 <.do_clear_bss_loop>
+ 19e:	0e 94 ab 01 	call	0x356	; 0x356 <main>
+ 1a2:	0c 94 58 04 	jmp	0x8b0	; 0x8b0 <_exit>
+
+000001a6 <__bad_interrupt>:
+ 1a6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000001aa <isCharAvailable>:
+
+char isCharAvailable()
+{	
+	// Does the RX0 bit of the USART Status and Control Register
+	// indicate a char has been received?
+	if ( (UCSR0A & (0x80)) ) return 1;
+ 1aa:	80 91 c0 00 	lds	r24, 0x00C0
+	else return 0;
+}
+ 1ae:	88 1f       	adc	r24, r24
+ 1b0:	88 27       	eor	r24, r24
+ 1b2:	88 1f       	adc	r24, r24
+ 1b4:	08 95       	ret
+
+000001b6 <receiveChar>:
+
+char receiveChar()
+{
+	// Return the char in the UDR0 register
+	return UDR0;
+ 1b6:	80 91 c6 00 	lds	r24, 0x00C6
+}
+ 1ba:	08 95       	ret
+
+000001bc <sendChar>:
+void sendChar(char data)
+{
+    int i = 0;
+
+    // To send data with the USART put the data in the USART data register 
+    UDR0 = data;
+ 1bc:	80 93 c6 00 	sts	0x00C6, r24
+
+    // Check to see if the global interrupts are enabled
+    if(SREG & 0x80)
+ 1c0:	0f b6       	in	r0, 0x3f	; 63
+ 1c2:	07 fe       	sbrs	r0, 7
+ 1c4:	0e c0       	rjmp	.+28     	; 0x1e2 <sendChar+0x26>
+ 1c6:	20 e0       	ldi	r18, 0x00	; 0
+ 1c8:	30 e0       	ldi	r19, 0x00	; 0
+ 1ca:	02 c0       	rjmp	.+4      	; 0x1d0 <sendChar+0x14>
+    {
+	// Wait until the byte is sent or we count out
+		while ( !(UCSR0A&0x40) && (i<10000) )
+		{
+			i++;
+ 1cc:	2f 5f       	subi	r18, 0xFF	; 255
+ 1ce:	3f 4f       	sbci	r19, 0xFF	; 255
+
+    // Check to see if the global interrupts are enabled
+    if(SREG & 0x80)
+    {
+	// Wait until the byte is sent or we count out
+		while ( !(UCSR0A&0x40) && (i<10000) )
+ 1d0:	80 91 c0 00 	lds	r24, 0x00C0
+ 1d4:	86 fd       	sbrc	r24, 6
+ 1d6:	09 c0       	rjmp	.+18     	; 0x1ea <sendChar+0x2e>
+ 1d8:	87 e2       	ldi	r24, 0x27	; 39
+ 1da:	20 31       	cpi	r18, 0x10	; 16
+ 1dc:	38 07       	cpc	r19, r24
+ 1de:	b1 f7       	brne	.-20     	; 0x1cc <sendChar+0x10>
+ 1e0:	04 c0       	rjmp	.+8      	; 0x1ea <sendChar+0x2e>
+		{
+			i++;
+		}
+    }
+    else  // Wait until the byte is sent
+        while( !(UCSR0A&0x40) );
+ 1e2:	80 91 c0 00 	lds	r24, 0x00C0
+ 1e6:	86 ff       	sbrs	r24, 6
+ 1e8:	fc cf       	rjmp	.-8      	; 0x1e2 <sendChar+0x26>
+        
+    	// Clear the TXCflag        
+	UCSR0A=UCSR0A|0x40;          
+ 1ea:	80 91 c0 00 	lds	r24, 0x00C0
+ 1ee:	80 64       	ori	r24, 0x40	; 64
+ 1f0:	80 93 c0 00 	sts	0x00C0, r24
+}
+ 1f4:	08 95       	ret
+
+000001f6 <sendString>:
+
+void sendString(char s[])
+{
+ 1f6:	0f 93       	push	r16
+ 1f8:	1f 93       	push	r17
+ 1fa:	cf 93       	push	r28
+ 1fc:	df 93       	push	r29
+ 1fe:	8c 01       	movw	r16, r24
+ 200:	c0 e0       	ldi	r28, 0x00	; 0
+ 202:	d0 e0       	ldi	r29, 0x00	; 0
+	int i = 0;
+	
+	while(i < 64) // don't get stuck if it is a bad string
+	{
+		if( s[i] == '\0' ) break; // quit on string terminator
+ 204:	f8 01       	movw	r30, r16
+ 206:	ec 0f       	add	r30, r28
+ 208:	fd 1f       	adc	r31, r29
+ 20a:	80 81       	ld	r24, Z
+ 20c:	88 23       	and	r24, r24
+ 20e:	31 f0       	breq	.+12     	; 0x21c <sendString+0x26>
+		sendChar(s[i++]);
+ 210:	21 96       	adiw	r28, 0x01	; 1
+ 212:	0e 94 de 00 	call	0x1bc	; 0x1bc <sendChar>
+
+void sendString(char s[])
+{
+	int i = 0;
+	
+	while(i < 64) // don't get stuck if it is a bad string
+ 216:	c0 34       	cpi	r28, 0x40	; 64
+ 218:	d1 05       	cpc	r29, r1
+ 21a:	a1 f7       	brne	.-24     	; 0x204 <sendString+0xe>
+	{
+		if( s[i] == '\0' ) break; // quit on string terminator
+		sendChar(s[i++]);
+	}
+}
+ 21c:	df 91       	pop	r29
+ 21e:	cf 91       	pop	r28
+ 220:	1f 91       	pop	r17
+ 222:	0f 91       	pop	r16
+ 224:	08 95       	ret
+
+00000226 <sendFString>:
+
+// Send a string located in Flash ROM
+void sendFString(const char *pFlashStr)
+{
+ 226:	0f 93       	push	r16
+ 228:	1f 93       	push	r17
+ 22a:	cf 93       	push	r28
+ 22c:	df 93       	push	r29
+ 22e:	8c 01       	movw	r16, r24
+ 230:	c0 e0       	ldi	r28, 0x00	; 0
+ 232:	d0 e0       	ldi	r29, 0x00	; 0
+ 234:	02 c0       	rjmp	.+4      	; 0x23a <sendFString+0x14>
+	// '\0' is 'null' and terminates C strings
+	// The 60 prevents too much overrun if we get a bad pointer
+	// and it limits the string size
+	for (i = 0; pgm_read_byte(&pFlashStr[i]) && i < 60; i++)
+    {
+		sendChar(pgm_read_byte(&pFlashStr[i]));
+ 236:	0e 94 de 00 	call	0x1bc	; 0x1bc <sendChar>
+ 23a:	f8 01       	movw	r30, r16
+ 23c:	ec 0f       	add	r30, r28
+ 23e:	fd 1f       	adc	r31, r29
+
+	// The 'for' logic terminates if the byte is '\0' or if i = 60.
+	// '\0' is 'null' and terminates C strings
+	// The 60 prevents too much overrun if we get a bad pointer
+	// and it limits the string size
+	for (i = 0; pgm_read_byte(&pFlashStr[i]) && i < 60; i++)
+ 240:	84 91       	lpm	r24, Z+
+ 242:	88 23       	and	r24, r24
+ 244:	21 f0       	breq	.+8      	; 0x24e <sendFString+0x28>
+ 246:	21 96       	adiw	r28, 0x01	; 1
+ 248:	cd 33       	cpi	r28, 0x3D	; 61
+ 24a:	d1 05       	cpc	r29, r1
+ 24c:	a1 f7       	brne	.-24     	; 0x236 <sendFString+0x10>
+    {
+		sendChar(pgm_read_byte(&pFlashStr[i]));
+	}
+}
+ 24e:	df 91       	pop	r29
+ 250:	cf 91       	pop	r28
+ 252:	1f 91       	pop	r17
+ 254:	0f 91       	pop	r16
+ 256:	08 95       	ret
+
+00000258 <USARTinit>:
+
+
+void USARTinit()
+{
+    // Increase the oscillator to 2 Mhz for the 19200 baudrate:  
+    CLKPR = (1<<CLKPCE);        // set Clock Prescaler Change Enable
+ 258:	e1 e6       	ldi	r30, 0x61	; 97
+ 25a:	f0 e0       	ldi	r31, 0x00	; 0
+ 25c:	80 e8       	ldi	r24, 0x80	; 128
+ 25e:	80 83       	st	Z, r24
+    // set prescaler = 4, Inter RC 8Mhz / 4 = 2Mhz
+    CLKPR = (1<<CLKPS1);    
+ 260:	92 e0       	ldi	r25, 0x02	; 2
+ 262:	90 83       	st	Z, r25
+
+    // Set the USART baudrate registers for 19200
+    UBRR0H = 0;//(unsigned char)(baudrate>>8);
+ 264:	10 92 c5 00 	sts	0x00C5, r1
+    UBRR0L = 12;//(unsigned char)baudrate;
+ 268:	8c e0       	ldi	r24, 0x0C	; 12
+ 26a:	80 93 c4 00 	sts	0x00C4, r24
+
+    // Enable 2x speed change
+    UCSR0A = (1<<U2X0);
+ 26e:	90 93 c0 00 	sts	0x00C0, r25
+
+    // Enable receiver and transmitter
+    UCSR0B = (1<<RXEN0)|(1<<TXEN0)|(0<<RXCIE0)|(0<<UDRIE0);
+ 272:	88 e1       	ldi	r24, 0x18	; 24
+ 274:	80 93 c1 00 	sts	0x00C1, r24
+
+    // Set the USART to asynchronous at 8 bits no parity and 1 stop bit
+    UCSR0C = (0<<UMSEL0)|(0<<UPM00)|(0<<USBS0)|(3<<UCSZ00)|(0<<UCPOL0);
+ 278:	86 e0       	ldi	r24, 0x06	; 6
+ 27a:	80 93 c2 00 	sts	0x00C2, r24
+        
+    // Enable interrupts
+    sei(); 
+ 27e:	78 94       	sei
+    
+    // Setup the interrupt mask and flags
+	PCMSK1 = (1<<PINB6) | (1<<PINB4);       // set pin-change interrupt mask
+ 280:	80 e5       	ldi	r24, 0x50	; 80
+ 282:	80 93 6c 00 	sts	0x006C, r24
+  	EIFR   = (1<<PCIF1);                    // clear external intterupt flag 1
+ 286:	80 e8       	ldi	r24, 0x80	; 128
+ 288:	8c bb       	out	0x1c, r24	; 28
+	EIMSK  = (1<<PCIE1);                // enable external interrupt 1    
+ 28a:	8d bb       	out	0x1d, r24	; 29
+}
+ 28c:	08 95       	ret
+
+0000028e <OSCCAL_calibration>:
+{
+    unsigned char calibrate = 0;//FALSE;
+    int temp;
+    unsigned char tempL;
+
+    CLKPR = (1<<CLKPCE);        // set Clock Prescaler Change Enable
+ 28e:	80 e8       	ldi	r24, 0x80	; 128
+ 290:	80 93 61 00 	sts	0x0061, r24
+    // set prescaler = 8, Inter RC 8Mhz / 8 = 1Mhz
+    CLKPR = (1<<CLKPS1) | (1<<CLKPS0);
+ 294:	83 e0       	ldi	r24, 0x03	; 3
+ 296:	80 93 61 00 	sts	0x0061, r24
+    
+    TIMSK2 = 0;             //disable OCIE2A and TOIE2
+ 29a:	10 92 70 00 	sts	0x0070, r1
+
+    ASSR = (1<<AS2);        //select asynchronous operation of timer2 (32,768kHz)
+ 29e:	88 e0       	ldi	r24, 0x08	; 8
+ 2a0:	80 93 b6 00 	sts	0x00B6, r24
+    
+    OCR2A = 200;            // set timer2 compare value 
+ 2a4:	88 ec       	ldi	r24, 0xC8	; 200
+ 2a6:	80 93 b3 00 	sts	0x00B3, r24
+
+    TIMSK0 = 0;             // delete any interrupt sources
+ 2aa:	10 92 6e 00 	sts	0x006E, r1
+        
+    TCCR1B = (1<<CS10);     // start timer1 with no prescaling
+ 2ae:	81 e0       	ldi	r24, 0x01	; 1
+ 2b0:	80 93 81 00 	sts	0x0081, r24
+    TCCR2A = (1<<CS20);     // start timer2 with no prescaling
+ 2b4:	80 93 b0 00 	sts	0x00B0, r24
+
+    while((ASSR & 0x01) | (ASSR & 0x04));       //wait for TCN2UB and TCR2UB to be cleared
+ 2b8:	20 91 b6 00 	lds	r18, 0x00B6
+ 2bc:	80 91 b6 00 	lds	r24, 0x00B6
+ 2c0:	90 e0       	ldi	r25, 0x00	; 0
+ 2c2:	84 70       	andi	r24, 0x04	; 4
+ 2c4:	90 70       	andi	r25, 0x00	; 0
+ 2c6:	30 e0       	ldi	r19, 0x00	; 0
+ 2c8:	21 70       	andi	r18, 0x01	; 1
+ 2ca:	30 70       	andi	r19, 0x00	; 0
+ 2cc:	82 2b       	or	r24, r18
+ 2ce:	93 2b       	or	r25, r19
+ 2d0:	89 2b       	or	r24, r25
+ 2d2:	91 f7       	brne	.-28     	; 0x2b8 <OSCCAL_calibration+0x2a>
+ 2d4:	80 e0       	ldi	r24, 0x00	; 0
+ 2d6:	90 e0       	ldi	r25, 0x00	; 0
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 2d8:	20 e3       	ldi	r18, 0x30	; 48
+ 2da:	35 e7       	ldi	r19, 0x75	; 117
+ 2dc:	f9 01       	movw	r30, r18
+ 2de:	31 97       	sbiw	r30, 0x01	; 1
+ 2e0:	f1 f7       	brne	.-4      	; 0x2de <OSCCAL_calibration+0x50>
+
+    // wait for external crystal to stabilise
+	for(int i = 0; i < 10; i++)
+ 2e2:	01 96       	adiw	r24, 0x01	; 1
+ 2e4:	8a 30       	cpi	r24, 0x0A	; 10
+ 2e6:	91 05       	cpc	r25, r1
+ 2e8:	c9 f7       	brne	.-14     	; 0x2dc <OSCCAL_calibration+0x4e>
+			
+    while(!calibrate)
+    {
+        cli(); // mt __disable_interrupt();  // disable global interrupt
+        
+        TIFR1 = 0xFF;   // delete TIFR1 flags
+ 2ea:	4f ef       	ldi	r20, 0xFF	; 255
+    
+        if (temp > 6250)
+        {
+            OSCCAL--;   // the internRC oscillator runs to fast, decrease the OSCCAL
+        }
+        else if (temp < 6120)
+ 2ec:	51 e0       	ldi	r21, 0x01	; 1
+	for(int i = 0; i < 10; i++)
+			_delay_loop_2(30000);   
+			
+    while(!calibrate)
+    {
+        cli(); // mt __disable_interrupt();  // disable global interrupt
+ 2ee:	f8 94       	cli
+        
+        TIFR1 = 0xFF;   // delete TIFR1 flags
+ 2f0:	46 bb       	out	0x16, r20	; 22
+        TIFR2 = 0xFF;   // delete TIFR2 flags
+ 2f2:	47 bb       	out	0x17, r20	; 23
+        
+        TCNT1H = 0;     // clear timer1 counter
+ 2f4:	10 92 85 00 	sts	0x0085, r1
+        TCNT1L = 0;
+ 2f8:	10 92 84 00 	sts	0x0084, r1
+        TCNT2 = 0;      // clear timer2 counter
+ 2fc:	10 92 b2 00 	sts	0x00B2, r1
+           
+        while ( !(TIFR2 && (1<<OCF2A)) );   // wait for timer2 compareflag
+ 300:	87 b3       	in	r24, 0x17	; 23
+ 302:	88 23       	and	r24, r24
+ 304:	e9 f3       	breq	.-6      	; 0x300 <OSCCAL_calibration+0x72>
+    
+        TCCR1B = 0; // stop timer1
+ 306:	10 92 81 00 	sts	0x0081, r1
+
+        sei(); // __enable_interrupt();  // enable global interrupt
+ 30a:	78 94       	sei
+    
+        if ( (TIFR1 && (1<<TOV1)) )
+ 30c:	86 b3       	in	r24, 0x16	; 22
+ 30e:	88 23       	and	r24, r24
+ 310:	b9 f4       	brne	.+46     	; 0x340 <OSCCAL_calibration+0xb2>
+        {
+            temp = 0xFFFF;      // if timer1 overflows, set the temp to 0xFFFF
+        }
+        else
+        {   // read out the timer1 counter value
+            tempL = TCNT1L;
+ 312:	90 91 84 00 	lds	r25, 0x0084
+            temp = TCNT1H;
+ 316:	80 91 85 00 	lds	r24, 0x0085
+            temp = (temp << 8);
+ 31a:	38 2f       	mov	r19, r24
+ 31c:	20 e0       	ldi	r18, 0x00	; 0
+            temp += tempL;
+ 31e:	b9 01       	movw	r22, r18
+ 320:	69 0f       	add	r22, r25
+ 322:	71 1d       	adc	r23, r1
+ 324:	cb 01       	movw	r24, r22
+        }
+    
+        if (temp > 6250)
+ 326:	78 e1       	ldi	r23, 0x18	; 24
+ 328:	8b 36       	cpi	r24, 0x6B	; 107
+ 32a:	97 07       	cpc	r25, r23
+ 32c:	24 f0       	brlt	.+8      	; 0x336 <OSCCAL_calibration+0xa8>
+        {
+            OSCCAL--;   // the internRC oscillator runs to fast, decrease the OSCCAL
+ 32e:	80 91 66 00 	lds	r24, 0x0066
+ 332:	81 50       	subi	r24, 0x01	; 1
+ 334:	08 c0       	rjmp	.+16     	; 0x346 <OSCCAL_calibration+0xb8>
+        }
+        else if (temp < 6120)
+ 336:	88 5e       	subi	r24, 0xE8	; 232
+ 338:	97 41       	sbci	r25, 0x17	; 23
+ 33a:	14 f0       	brlt	.+4      	; 0x340 <OSCCAL_calibration+0xb2>
+ 33c:	81 e0       	ldi	r24, 0x01	; 1
+ 33e:	06 c0       	rjmp	.+12     	; 0x34c <OSCCAL_calibration+0xbe>
+        {
+            OSCCAL++;   // the internRC oscillator runs to slow, increase the OSCCAL
+ 340:	80 91 66 00 	lds	r24, 0x0066
+ 344:	8f 5f       	subi	r24, 0xFF	; 255
+ 346:	80 93 66 00 	sts	0x0066, r24
+ 34a:	80 e0       	ldi	r24, 0x00	; 0
+        }
+        else
+            calibrate = 1;//TRUE;   // the interRC is correct
+    
+        TCCR1B = (1<<CS10); // start timer1
+ 34c:	50 93 81 00 	sts	0x0081, r21
+
+    // wait for external crystal to stabilise
+	for(int i = 0; i < 10; i++)
+			_delay_loop_2(30000);   
+			
+    while(!calibrate)
+ 350:	88 23       	and	r24, r24
+ 352:	69 f2       	breq	.-102    	; 0x2ee <OSCCAL_calibration+0x60>
+        else
+            calibrate = 1;//TRUE;   // the interRC is correct
+    
+        TCCR1B = (1<<CS10); // start timer1
+    }
+}
+ 354:	08 95       	ret
+
+00000356 <main>:
+#include "Demonstrator.h"
+#include "PC_Comm.h"
+
+
+int main(void)
+{
+ 356:	cf 92       	push	r12
+ 358:	df 92       	push	r13
+ 35a:	ef 92       	push	r14
+ 35c:	ff 92       	push	r15
+ 35e:	0f 93       	push	r16
+ 360:	1f 93       	push	r17
+ 362:	df 93       	push	r29
+ 364:	cf 93       	push	r28
+ 366:	cd b7       	in	r28, 0x3d	; 61
+ 368:	de b7       	in	r29, 0x3e	; 62
+ 36a:	c0 54       	subi	r28, 0x40	; 64
+ 36c:	d0 40       	sbci	r29, 0x00	; 0
+ 36e:	0f b6       	in	r0, 0x3f	; 63
+ 370:	f8 94       	cli
+ 372:	de bf       	out	0x3e, r29	; 62
+ 374:	0f be       	out	0x3f, r0	; 63
+ 376:	cd bf       	out	0x3d, r28	; 61
+	char string[64];
+	unsigned char count = 0;
+	
+	// run the initialization routines
+	initializer();
+ 378:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <initializer>
+ 37c:	90 e0       	ldi	r25, 0x00	; 0
+	 {	
+		// Check to see if a character is waiting
+		if( isCharAvailable() == 1 )
+		{
+			// If a new character is received, get it
+			string[count++] = receiveChar();
+ 37e:	7e 01       	movw	r14, r28
+ 380:	08 94       	sec
+ 382:	e1 1c       	adc	r14, r1
+ 384:	f1 1c       	adc	r15, r1
+			else if(count > 64)
+			{
+				//count = 0;
+				//string[0] = '\0';
+				sendString("Error - received > 64 characters");	
+				string[count-2] = '\0'; //convert to a string
+ 386:	6e 01       	movw	r12, r28
+ 388:	08 94       	sec
+ 38a:	c1 08       	sbc	r12, r1
+ 38c:	d1 08       	sbc	r13, r1
+
+char isCharAvailable()
+{	
+	// Does the RX0 bit of the USART Status and Control Register
+	// indicate a char has been received?
+	if ( (UCSR0A & (0x80)) ) return 1;
+ 38e:	80 91 c0 00 	lds	r24, 0x00C0
+ 392:	87 ff       	sbrs	r24, 7
+ 394:	fc cf       	rjmp	.-8      	; 0x38e <main+0x38>
+}
+
+char receiveChar()
+{
+	// Return the char in the UDR0 register
+	return UDR0;
+ 396:	80 91 c6 00 	lds	r24, 0x00C6
+	 {	
+		// Check to see if a character is waiting
+		if( isCharAvailable() == 1 )
+		{
+			// If a new character is received, get it
+			string[count++] = receiveChar();
+ 39a:	f7 01       	movw	r30, r14
+ 39c:	e9 0f       	add	r30, r25
+ 39e:	f1 1d       	adc	r31, r1
+ 3a0:	80 83       	st	Z, r24
+ 3a2:	9f 5f       	subi	r25, 0xFF	; 255
+			
+			// receive a packet up to 64 bytes long
+			if(string[count-1] == '\n')// Hyperterminal string ends with \r\n
+ 3a4:	09 2f       	mov	r16, r25
+ 3a6:	10 e0       	ldi	r17, 0x00	; 0
+ 3a8:	fe 01       	movw	r30, r28
+ 3aa:	e0 0f       	add	r30, r16
+ 3ac:	f1 1f       	adc	r31, r17
+ 3ae:	80 81       	ld	r24, Z
+ 3b0:	8a 30       	cpi	r24, 0x0A	; 10
+ 3b2:	31 f0       	breq	.+12     	; 0x3c0 <main+0x6a>
+				string[count-2] = '\0'; //convert to a string
+				parseInput(string);
+				string[0] = '\0';
+				count = 0;
+			}
+			else if(count > 64)
+ 3b4:	91 34       	cpi	r25, 0x41	; 65
+ 3b6:	58 f3       	brcs	.-42     	; 0x38e <main+0x38>
+			{
+				//count = 0;
+				//string[0] = '\0';
+				sendString("Error - received > 64 characters");	
+ 3b8:	80 e0       	ldi	r24, 0x00	; 0
+ 3ba:	91 e0       	ldi	r25, 0x01	; 1
+ 3bc:	0e 94 fb 00 	call	0x1f6	; 0x1f6 <sendString>
+				string[count-2] = '\0'; //convert to a string
+ 3c0:	0c 0d       	add	r16, r12
+ 3c2:	1d 1d       	adc	r17, r13
+ 3c4:	f8 01       	movw	r30, r16
+ 3c6:	10 82       	st	Z, r1
+				parseInput(string);
+ 3c8:	c7 01       	movw	r24, r14
+ 3ca:	0e 94 37 02 	call	0x46e	; 0x46e <parseInput>
+				string[0] = '\0';
+ 3ce:	19 82       	std	Y+1, r1	; 0x01
+ 3d0:	90 e0       	ldi	r25, 0x00	; 0
+ 3d2:	dd cf       	rjmp	.-70     	; 0x38e <main+0x38>
+
+000003d4 <showEEPROM>:
+   
+	showEEPROM();
+}
+
+void showEEPROM()
+{
+ 3d4:	01 c0       	rjmp	.+2      	; 0x3d8 <showEEPROM+0x4>
+
+static inline uint8_t eeprom_read_byte_169(const uint16_t *addr)
+{
+	// cli();
+	/* Wait for completion of previous write */
+	while(EECR & (1<<EEWE)) asm volatile ("nop"::);
+ 3d6:	00 00       	nop
+ 3d8:	f9 99       	sbic	0x1f, 1	; 31
+ 3da:	fd cf       	rjmp	.-6      	; 0x3d6 <showEEPROM+0x2>
+	/* Set up address register */
+	EEAR = *addr;
+ 3dc:	80 e0       	ldi	r24, 0x00	; 0
+ 3de:	91 e0       	ldi	r25, 0x01	; 1
+ 3e0:	92 bd       	out	0x22, r25	; 34
+ 3e2:	81 bd       	out	0x21, r24	; 33
+	/* Start eeprom read by writing EERE */
+	EECR |= (1<<EERE);
+ 3e4:	f8 9a       	sbi	0x1f, 0	; 31
+	/* Return data from Data Register */
+	// sei();
+	return EEDR;
+ 3e6:	60 b5       	in	r22, 0x20	; 32
+	const uint16_t lenAddr=EEPROM_START;
+	uint8_t indexps = 0;
+	
+ 	indexps=eeprom_read_byte_169(&lenAddr); // get the string length
+	
+	if( (indexps > 0) && (indexps <= 64) ) // a valid length?
+ 3e8:	86 2f       	mov	r24, r22
+ 3ea:	81 50       	subi	r24, 0x01	; 1
+ 3ec:	80 34       	cpi	r24, 0x40	; 64
+ 3ee:	60 f4       	brcc	.+24     	; 0x408 <showEEPROM+0x34>
+	{
+		LoadEEPROM(buffer, indexps, EEPROM_START + 4);  // Load message the + 4 skips the MSG 
+ 3f0:	84 e2       	ldi	r24, 0x24	; 36
+ 3f2:	91 e0       	ldi	r25, 0x01	; 1
+ 3f4:	44 e0       	ldi	r20, 0x04	; 4
+ 3f6:	51 e0       	ldi	r21, 0x01	; 1
+ 3f8:	0e 94 47 04 	call	0x88e	; 0x88e <LoadEEPROM>
+		LCD_puts(buffer, 1);
+ 3fc:	84 e2       	ldi	r24, 0x24	; 36
+ 3fe:	91 e0       	ldi	r25, 0x01	; 1
+ 400:	61 e0       	ldi	r22, 0x01	; 1
+ 402:	0e 94 b2 03 	call	0x764	; 0x764 <LCD_puts>
+ 406:	08 95       	ret
+	}
+	else
+	{
+		LCD_puts_f(INVALID_msg, 1); // if not, show alternate message
+ 408:	83 ee       	ldi	r24, 0xE3	; 227
+ 40a:	90 e0       	ldi	r25, 0x00	; 0
+ 40c:	61 e0       	ldi	r22, 0x01	; 1
+ 40e:	0e 94 83 03 	call	0x706	; 0x706 <LCD_puts_f>
+ 412:	08 95       	ret
+
+00000414 <OnMSG>:
+	}
+}
+
+
+void OnMSG(char *pMSG)
+{
+ 414:	cf 93       	push	r28
+ 416:	df 93       	push	r29
+ 418:	ec 01       	movw	r28, r24
+ 	static uint8_t temp_index = 0;
+	uint16_t lenAddr=EEPROM_START;
+	
+	sendFString(OnMSG_msg);
+ 41a:	83 ec       	ldi	r24, 0xC3	; 195
+ 41c:	90 e0       	ldi	r25, 0x00	; 0
+ 41e:	0e 94 13 01 	call	0x226	; 0x226 <sendFString>
+ 422:	60 91 64 01 	lds	r22, 0x0164
+	
+	while(pMSG[temp_index++] != '\0'); // get the string length
+ 426:	fe 01       	movw	r30, r28
+ 428:	e6 0f       	add	r30, r22
+ 42a:	f1 1d       	adc	r31, r1
+ 42c:	80 81       	ld	r24, Z
+ 42e:	6f 5f       	subi	r22, 0xFF	; 255
+ 430:	88 23       	and	r24, r24
+ 432:	c9 f7       	brne	.-14     	; 0x426 <OnMSG+0x12>
+ 434:	60 93 64 01 	sts	0x0164, r22
+}
+
+static inline void eeprom_write_byte_169(uint16_t *addr, uint8_t val) 
+{
+	cli();
+ 438:	f8 94       	cli
+ 43a:	01 c0       	rjmp	.+2      	; 0x43e <OnMSG+0x2a>
+	/* Wait for completion of previous write */
+	while(EECR & (1<<EEWE)) asm volatile ("nop"::);
+ 43c:	00 00       	nop
+ 43e:	f9 99       	sbic	0x1f, 1	; 31
+ 440:	fd cf       	rjmp	.-6      	; 0x43c <OnMSG+0x28>
+	/* Set up address and Data Registers */
+	EEAR = *addr;
+ 442:	80 e0       	ldi	r24, 0x00	; 0
+ 444:	91 e0       	ldi	r25, 0x01	; 1
+ 446:	92 bd       	out	0x22, r25	; 34
+ 448:	81 bd       	out	0x21, r24	; 33
+	EEDR = val;
+ 44a:	60 bd       	out	0x20, r22	; 32
+	/* Write logical one to EEMWE */
+	EECR |= (1<<EEMWE);
+ 44c:	fa 9a       	sbi	0x1f, 2	; 31
+	/* Start eeprom write by setting EEWE */
+	EECR |= (1<<EEWE);
+ 44e:	f9 9a       	sbi	0x1f, 1	; 31
+ 450:	01 c0       	rjmp	.+2      	; 0x454 <OnMSG+0x40>
+	while(EECR & (1<<EEWE)) asm volatile ("nop"::);
+ 452:	00 00       	nop
+ 454:	f9 99       	sbic	0x1f, 1	; 31
+ 456:	fd cf       	rjmp	.-6      	; 0x452 <OnMSG+0x3e>
+	sei();
+ 458:	78 94       	sei
+	
+  	eeprom_write_byte_169(&lenAddr,temp_index); // store string length
+    StoreEEPROM(pMSG, temp_index, EEPROM_START + 1);  //store the string in EEPROM
+ 45a:	ce 01       	movw	r24, r28
+ 45c:	41 e0       	ldi	r20, 0x01	; 1
+ 45e:	51 e0       	ldi	r21, 0x01	; 1
+ 460:	0e 94 2d 04 	call	0x85a	; 0x85a <StoreEEPROM>
+   
+	showEEPROM();
+ 464:	0e 94 ea 01 	call	0x3d4	; 0x3d4 <showEEPROM>
+}
+ 468:	df 91       	pop	r29
+ 46a:	cf 91       	pop	r28
+ 46c:	08 95       	ret
+
+0000046e <parseInput>:
+
+
+}
+
+void parseInput(char s[])
+{
+ 46e:	cf 93       	push	r28
+ 470:	df 93       	push	r29
+ 472:	ec 01       	movw	r28, r24
+	// parse first character	
+	switch (s[0])
+ 474:	88 81       	ld	r24, Y
+ 476:	8d 34       	cpi	r24, 0x4D	; 77
+ 478:	a9 f0       	breq	.+42     	; 0x4a4 <parseInput+0x36>
+ 47a:	84 36       	cpi	r24, 0x64	; 100
+ 47c:	e9 f4       	brne	.+58     	; 0x4b8 <parseInput+0x4a>
+	{
+		case 'd':
+			if( (s[1] == 'e') && (s[2] == 'm') && (s[3] == 'o') && (s[4] == '?') )
+ 47e:	89 81       	ldd	r24, Y+1	; 0x01
+ 480:	85 36       	cpi	r24, 0x65	; 101
+ 482:	29 f5       	brne	.+74     	; 0x4ce <parseInput+0x60>
+ 484:	8a 81       	ldd	r24, Y+2	; 0x02
+ 486:	8d 36       	cpi	r24, 0x6D	; 109
+ 488:	11 f5       	brne	.+68     	; 0x4ce <parseInput+0x60>
+ 48a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 48c:	8f 36       	cpi	r24, 0x6F	; 111
+ 48e:	f9 f4       	brne	.+62     	; 0x4ce <parseInput+0x60>
+ 490:	8c 81       	ldd	r24, Y+4	; 0x04
+ 492:	8f 33       	cpi	r24, 0x3F	; 63
+ 494:	e1 f4       	brne	.+56     	; 0x4ce <parseInput+0x60>
+			{
+				sendFString(TALKING_TO);
+ 496:	8c e5       	ldi	r24, 0x5C	; 92
+ 498:	90 e0       	ldi	r25, 0x00	; 0
+ 49a:	0e 94 13 01 	call	0x226	; 0x226 <sendFString>
+				sendFString(WHO_DEMO);
+ 49e:	87 e7       	ldi	r24, 0x77	; 119
+ 4a0:	90 e0       	ldi	r25, 0x00	; 0
+ 4a2:	13 c0       	rjmp	.+38     	; 0x4ca <parseInput+0x5c>
+			}
+			break;
+		case 'M':
+			if( (s[1] == 'S') && (s[2] == 'G'))
+ 4a4:	89 81       	ldd	r24, Y+1	; 0x01
+ 4a6:	83 35       	cpi	r24, 0x53	; 83
+ 4a8:	91 f4       	brne	.+36     	; 0x4ce <parseInput+0x60>
+ 4aa:	8a 81       	ldd	r24, Y+2	; 0x02
+ 4ac:	87 34       	cpi	r24, 0x47	; 71
+ 4ae:	79 f4       	brne	.+30     	; 0x4ce <parseInput+0x60>
+				OnMSG(s);
+ 4b0:	ce 01       	movw	r24, r28
+ 4b2:	0e 94 0a 02 	call	0x414	; 0x414 <OnMSG>
+ 4b6:	0b c0       	rjmp	.+22     	; 0x4ce <parseInput+0x60>
+			break;		
+		default:
+			sendFString(BAD_COMMAND1);
+ 4b8:	8b e8       	ldi	r24, 0x8B	; 139
+ 4ba:	90 e0       	ldi	r25, 0x00	; 0
+ 4bc:	0e 94 13 01 	call	0x226	; 0x226 <sendFString>
+			sendChar(s[0]);
+ 4c0:	88 81       	ld	r24, Y
+ 4c2:	0e 94 de 00 	call	0x1bc	; 0x1bc <sendChar>
+			sendFString(BAD_COMMAND2);
+ 4c6:	89 e9       	ldi	r24, 0x99	; 153
+ 4c8:	90 e0       	ldi	r25, 0x00	; 0
+ 4ca:	0e 94 13 01 	call	0x226	; 0x226 <sendFString>
+
+			break;
+	
+	s[0] = '\0';
+	}
+}
+ 4ce:	df 91       	pop	r29
+ 4d0:	cf 91       	pop	r28
+ 4d2:	08 95       	ret
+
+000004d4 <initializer>:
+const char INVALID_msg[] PROGMEM = "Invalid message in EEPROM\r\0";
+	
+void initializer()
+{
+	// Calibrate the oscillator:
+    OSCCAL_calibration();   
+ 4d4:	0e 94 47 01 	call	0x28e	; 0x28e <OSCCAL_calibration>
+
+	// Initialize the USART
+	USARTinit();
+ 4d8:	0e 94 2c 01 	call	0x258	; 0x258 <USARTinit>
+	
+	// initialize the LCD
+    LCD_Init();                 
+ 4dc:	0e 94 bf 02 	call	0x57e	; 0x57e <LCD_Init>
+	
+	// Display instructions on PC
+	sendFString(TALKING_TO);
+ 4e0:	8c e5       	ldi	r24, 0x5C	; 92
+ 4e2:	90 e0       	ldi	r25, 0x00	; 0
+ 4e4:	0e 94 13 01 	call	0x226	; 0x226 <sendFString>
+	sendFString(WHO_DEMO);
+ 4e8:	87 e7       	ldi	r24, 0x77	; 119
+ 4ea:	90 e0       	ldi	r25, 0x00	; 0
+ 4ec:	0e 94 13 01 	call	0x226	; 0x226 <sendFString>
+	
+	showEEPROM();
+ 4f0:	0e 94 ea 01 	call	0x3d4	; 0x3d4 <showEEPROM>
+
+
+}
+ 4f4:	08 95       	ret
+
+000004f6 <LCD_WriteDigit>:
+*   Purpose :       Stores LCD control data in the LCD_displayData buffer.
+*                   (The LCD_displayData is latched in the LCD_SOF interrupt.)
+*
+*****************************************************************************/
+void LCD_WriteDigit(char c, char digit)
+{
+ 4f6:	98 2f       	mov	r25, r24
+    char mask, nibble;
+    char *ptr;
+    char i;
+
+
+    if (digit > 5)                              // Skip if digit is illegal
+ 4f8:	66 30       	cpi	r22, 0x06	; 6
+ 4fa:	b0 f5       	brcc	.+108    	; 0x568 <__stack+0x69>
+        return;
+
+    //Lookup character table for segmet data
+    if ((c >= '*') && (c <= 'z'))
+ 4fc:	8a 52       	subi	r24, 0x2A	; 42
+ 4fe:	81 35       	cpi	r24, 0x51	; 81
+ 500:	18 f0       	brcs	.+6      	; 0x508 <__stack+0x9>
+ 502:	40 e0       	ldi	r20, 0x00	; 0
+ 504:	50 e0       	ldi	r21, 0x00	; 0
+ 506:	0c c0       	rjmp	.+24     	; 0x520 <__stack+0x21>
+    {
+        // c is a letter
+        if (c >= 'a')                           // Convert to upper case
+ 508:	91 36       	cpi	r25, 0x61	; 97
+ 50a:	08 f0       	brcs	.+2      	; 0x50e <__stack+0xf>
+            c &= ~0x20;                         // if necessarry
+ 50c:	9f 7d       	andi	r25, 0xDF	; 223
+
+        c -= '*';
+
+		//mt seg = LCD_character_table[c];
+		seg = (unsigned int) pgm_read_word(&LCD_character_table[(uint8_t)c]); 
+ 50e:	9a 52       	subi	r25, 0x2A	; 42
+ 510:	e9 2f       	mov	r30, r25
+ 512:	f0 e0       	ldi	r31, 0x00	; 0
+ 514:	ee 0f       	add	r30, r30
+ 516:	ff 1f       	adc	r31, r31
+ 518:	e1 50       	subi	r30, 0x01	; 1
+ 51a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 51c:	45 91       	lpm	r20, Z+
+ 51e:	54 91       	lpm	r21, Z+
+	}
+
+    // Adjust mask according to LCD segment mapping
+    if (digit & 0x01)
+ 520:	86 2f       	mov	r24, r22
+ 522:	90 e0       	ldi	r25, 0x00	; 0
+ 524:	dc 01       	movw	r26, r24
+ 526:	a1 70       	andi	r26, 0x01	; 1
+ 528:	b0 70       	andi	r27, 0x00	; 0
+ 52a:	60 fd       	sbrc	r22, 0
+ 52c:	02 c0       	rjmp	.+4      	; 0x532 <__stack+0x33>
+ 52e:	90 ef       	ldi	r25, 0xF0	; 240
+ 530:	01 c0       	rjmp	.+2      	; 0x534 <__stack+0x35>
+ 532:	9f e0       	ldi	r25, 0x0F	; 15
+        mask = 0x0F;                // Digit 1, 3, 5
+    else
+        mask = 0xF0;                // Digit 0, 2, 4
+
+    ptr = LCD_Data + (digit >> 1);  // digit = {0,0,1,1,2,2}
+ 534:	66 95       	lsr	r22
+ 536:	e6 2f       	mov	r30, r22
+ 538:	f0 e0       	ldi	r31, 0x00	; 0
+ 53a:	e6 59       	subi	r30, 0x96	; 150
+ 53c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 53e:	30 e0       	ldi	r19, 0x00	; 0
+
+    for (i = 0; i < 4; i++)
+    {
+        nibble = seg & 0x000F;
+ 540:	24 2f       	mov	r18, r20
+ 542:	2f 70       	andi	r18, 0x0F	; 15
+        seg >>= 4;
+ 544:	84 e0       	ldi	r24, 0x04	; 4
+ 546:	56 95       	lsr	r21
+ 548:	47 95       	ror	r20
+ 54a:	8a 95       	dec	r24
+ 54c:	e1 f7       	brne	.-8      	; 0x546 <__stack+0x47>
+        if (digit & 0x01)
+ 54e:	10 97       	sbiw	r26, 0x00	; 0
+ 550:	11 f0       	breq	.+4      	; 0x556 <__stack+0x57>
+            nibble <<= 4;
+ 552:	22 95       	swap	r18
+ 554:	20 7f       	andi	r18, 0xF0	; 240
+        *ptr = (*ptr & mask) | nibble;
+ 556:	80 81       	ld	r24, Z
+ 558:	89 23       	and	r24, r25
+ 55a:	28 2b       	or	r18, r24
+ 55c:	20 83       	st	Z, r18
+    else
+        mask = 0xF0;                // Digit 0, 2, 4
+
+    ptr = LCD_Data + (digit >> 1);  // digit = {0,0,1,1,2,2}
+
+    for (i = 0; i < 4; i++)
+ 55e:	3f 5f       	subi	r19, 0xFF	; 255
+ 560:	34 30       	cpi	r19, 0x04	; 4
+ 562:	11 f0       	breq	.+4      	; 0x568 <__stack+0x69>
+        nibble = seg & 0x000F;
+        seg >>= 4;
+        if (digit & 0x01)
+            nibble <<= 4;
+        *ptr = (*ptr & mask) | nibble;
+        ptr += 5;
+ 564:	35 96       	adiw	r30, 0x05	; 5
+ 566:	ec cf       	rjmp	.-40     	; 0x540 <__stack+0x41>
+ 568:	08 95       	ret
+
+0000056a <LCD_AllSegments>:
+*****************************************************************************/
+void LCD_AllSegments(char show)
+{
+    unsigned char i;
+
+    if (show)
+ 56a:	81 11       	cpse	r24, r1
+ 56c:	8f ef       	ldi	r24, 0xFF	; 255
+ 56e:	ea e6       	ldi	r30, 0x6A	; 106
+ 570:	f1 e0       	ldi	r31, 0x01	; 1
+        show = 0xFF;
+
+    // Set/clear all bits in all LCD registers
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+        *(LCD_Data + i) = show;
+ 572:	81 93       	st	Z+, r24
+
+    if (show)
+        show = 0xFF;
+
+    // Set/clear all bits in all LCD registers
+    for (i=0; i < LCD_REGISTER_COUNT; i++)
+ 574:	91 e0       	ldi	r25, 0x01	; 1
+ 576:	ee 37       	cpi	r30, 0x7E	; 126
+ 578:	f9 07       	cpc	r31, r25
+ 57a:	d9 f7       	brne	.-10     	; 0x572 <LCD_AllSegments+0x8>
+        *(LCD_Data + i) = show;
+}
+ 57c:	08 95       	ret
+
+0000057e <LCD_Init>:
+*                   Set up the LCD (timing, contrast, etc.)
+*
+*****************************************************************************/
+void LCD_Init (void)
+{
+    LCD_AllSegments(FALSE);                     // Clear segment buffer.
+ 57e:	80 e0       	ldi	r24, 0x00	; 0
+ 580:	0e 94 b5 02 	call	0x56a	; 0x56a <LCD_AllSegments>
+
+    LCD_CONTRAST_LEVEL(LCD_INITIAL_CONTRAST);    //Set the LCD contrast level
+ 584:	8f e0       	ldi	r24, 0x0F	; 15
+ 586:	80 93 e7 00 	sts	0x00E7, r24
+
+    // Select asynchronous clock source, enable all COM pins and enable all
+    // segment pins.
+    LCDCRB = (1<<LCDCS) | (3<<LCDMUX0) | (7<<LCDPM0);
+ 58a:	87 eb       	ldi	r24, 0xB7	; 183
+ 58c:	80 93 e5 00 	sts	0x00E5, r24
+
+    // Set LCD prescaler to give a framerate of 32,0 Hz
+    LCDFRR = (0<<LCDPS0) | (7<<LCDCD0);    
+ 590:	87 e0       	ldi	r24, 0x07	; 7
+ 592:	80 93 e6 00 	sts	0x00E6, r24
+
+    LCDCRA = (1<<LCDEN) | (1<<LCDAB);           // Enable LCD and set low power waveform
+ 596:	e4 ee       	ldi	r30, 0xE4	; 228
+ 598:	f0 e0       	ldi	r31, 0x00	; 0
+ 59a:	80 ec       	ldi	r24, 0xC0	; 192
+ 59c:	80 83       	st	Z, r24
+
+    //Enable LCD start of frame interrupt
+    LCDCRA |= (1<<LCDIE);
+ 59e:	80 81       	ld	r24, Z
+ 5a0:	88 60       	ori	r24, 0x08	; 8
+ 5a2:	80 83       	st	Z, r24
+
+    gLCD_Update_Required = FALSE;
+ 5a4:	10 92 65 01 	sts	0x0165, r1
+
+
+}
+ 5a8:	08 95       	ret
+
+000005aa <__vector_22>:
+*   Purpose: Latch the LCD_displayData and Set LCD_status.updateComplete
+*
+*****************************************************************************/
+
+SIGNAL(SIG_LCD)
+{
+ 5aa:	1f 92       	push	r1
+ 5ac:	0f 92       	push	r0
+ 5ae:	0f b6       	in	r0, 0x3f	; 63
+ 5b0:	0f 92       	push	r0
+ 5b2:	11 24       	eor	r1, r1
+ 5b4:	ef 92       	push	r14
+ 5b6:	ff 92       	push	r15
+ 5b8:	0f 93       	push	r16
+ 5ba:	1f 93       	push	r17
+ 5bc:	2f 93       	push	r18
+ 5be:	3f 93       	push	r19
+ 5c0:	4f 93       	push	r20
+ 5c2:	5f 93       	push	r21
+ 5c4:	6f 93       	push	r22
+ 5c6:	7f 93       	push	r23
+ 5c8:	8f 93       	push	r24
+ 5ca:	9f 93       	push	r25
+ 5cc:	af 93       	push	r26
+ 5ce:	bf 93       	push	r27
+ 5d0:	cf 93       	push	r28
+ 5d2:	df 93       	push	r29
+ 5d4:	ef 93       	push	r30
+ 5d6:	ff 93       	push	r31
+        auto_joystick_count = 0;
+*/
+
+/**************** Auto press joystick for the main.c, END ***************/    
+
+    LCD_timer--;                    // Decreased every LCD frame
+ 5d8:	00 91 21 01 	lds	r16, 0x0121
+ 5dc:	01 50       	subi	r16, 0x01	; 1
+ 5de:	00 93 21 01 	sts	0x0121, r16
+
+    if (gScrollMode)
+ 5e2:	80 91 69 01 	lds	r24, 0x0169
+ 5e6:	88 23       	and	r24, r24
+ 5e8:	71 f0       	breq	.+28     	; 0x606 <__vector_22+0x5c>
+    {
+        // If we are in scroll mode, and the timer has expired,
+        // we will update the LCD
+        if (LCD_timer == 0)
+ 5ea:	00 23       	and	r16, r16
+ 5ec:	71 f4       	brne	.+28     	; 0x60a <__vector_22+0x60>
+        {
+            if (gLCD_Start_Scroll_Timer == 0)
+ 5ee:	80 91 66 01 	lds	r24, 0x0166
+ 5f2:	88 23       	and	r24, r24
+ 5f4:	21 f4       	brne	.+8      	; 0x5fe <__vector_22+0x54>
+            {
+                gLCD_Update_Required = TRUE;
+ 5f6:	81 e0       	ldi	r24, 0x01	; 1
+ 5f8:	80 93 65 01 	sts	0x0165, r24
+ 5fc:	06 c0       	rjmp	.+12     	; 0x60a <__vector_22+0x60>
+            }
+            else
+                gLCD_Start_Scroll_Timer--;
+ 5fe:	81 50       	subi	r24, 0x01	; 1
+ 600:	80 93 66 01 	sts	0x0166, r24
+ 604:	02 c0       	rjmp	.+4      	; 0x60a <__vector_22+0x60>
+    }
+    else    
+    {   // if not scrolling,
+        // disble LCD start of frame interrupt
+//        cbi(LCDCRA, LCDIE);   //DEBUG
+        gScroll = 0;
+ 606:	10 92 be 01 	sts	0x01BE, r1
+    }
+
+
+    EOL = FALSE;
+    if (gLCD_Update_Required == TRUE)
+ 60a:	80 91 65 01 	lds	r24, 0x0165
+ 60e:	81 30       	cpi	r24, 0x01	; 1
+ 610:	09 f0       	breq	.+2      	; 0x614 <__vector_22+0x6a>
+ 612:	53 c0       	rjmp	.+166    	; 0x6ba <__vector_22+0x110>
+    {
+        // Duty cycle of flashing characters
+        if (gFlashTimer < (LCD_FLASH_SEED >> 1))
+ 614:	e0 90 67 01 	lds	r14, 0x0167
+ 618:	ff 24       	eor	r15, r15
+ 61a:	10 e0       	ldi	r17, 0x00	; 0
+ 61c:	c0 e0       	ldi	r28, 0x00	; 0
+ 61e:	d0 e0       	ldi	r29, 0x00	; 0
+ 620:	6c 2f       	mov	r22, r28
+            flash = 1;
+
+        // Repeat for the six LCD characters
+        for (i = 0; i < 6; i++)
+        {
+            if ((gScroll+i) >= 0 && (!EOL))
+ 622:	80 91 be 01 	lds	r24, 0x01BE
+ 626:	99 27       	eor	r25, r25
+ 628:	87 fd       	sbrc	r24, 7
+ 62a:	90 95       	com	r25
+ 62c:	8c 0f       	add	r24, r28
+ 62e:	9d 1f       	adc	r25, r29
+ 630:	97 fd       	sbrc	r25, 7
+ 632:	16 c0       	rjmp	.+44     	; 0x660 <__vector_22+0xb6>
+ 634:	11 23       	and	r17, r17
+ 636:	a1 f4       	brne	.+40     	; 0x660 <__vector_22+0xb6>
+            {
+                // We have some visible characters
+                c = gTextBuffer[i + gScroll];
+ 638:	80 91 be 01 	lds	r24, 0x01BE
+ 63c:	99 27       	eor	r25, r25
+ 63e:	87 fd       	sbrc	r24, 7
+ 640:	90 95       	com	r25
+ 642:	fe 01       	movw	r30, r28
+ 644:	e2 58       	subi	r30, 0x82	; 130
+ 646:	fe 4f       	sbci	r31, 0xFE	; 254
+ 648:	e8 0f       	add	r30, r24
+ 64a:	f9 1f       	adc	r31, r25
+ 64c:	80 81       	ld	r24, Z
+                c_flash = c & 0x80 ? 1 : 0;
+ 64e:	f8 2e       	mov	r15, r24
+ 650:	ff 1c       	adc	r15, r15
+ 652:	ff 24       	eor	r15, r15
+ 654:	ff 1c       	adc	r15, r15
+                c = c & 0x7F;
+ 656:	8f 77       	andi	r24, 0x7F	; 127
+
+                if (c == '\0')
+ 658:	21 f4       	brne	.+8      	; 0x662 <__vector_22+0xb8>
+ 65a:	1c 2f       	mov	r17, r28
+ 65c:	1f 5f       	subi	r17, 0xFF	; 255
+ 65e:	01 c0       	rjmp	.+2      	; 0x662 <__vector_22+0xb8>
+ 660:	80 e2       	ldi	r24, 0x20	; 32
+            else
+                c = ' ';
+
+            // Check if this character is flashing
+
+            if (c_flash && flash)
+ 662:	ff 20       	and	r15, r15
+ 664:	21 f0       	breq	.+8      	; 0x66e <__vector_22+0xc4>
+ 666:	94 e0       	ldi	r25, 0x04	; 4
+ 668:	9e 15       	cp	r25, r14
+ 66a:	08 f4       	brcc	.+2      	; 0x66e <__vector_22+0xc4>
+                LCD_WriteDigit(' ', i);
+ 66c:	80 e2       	ldi	r24, 0x20	; 32
+            else
+                LCD_WriteDigit(c, i);
+ 66e:	0e 94 7b 02 	call	0x4f6	; 0x4f6 <LCD_WriteDigit>
+ 672:	21 96       	adiw	r28, 0x01	; 1
+            flash = 0;
+        else
+            flash = 1;
+
+        // Repeat for the six LCD characters
+        for (i = 0; i < 6; i++)
+ 674:	c6 30       	cpi	r28, 0x06	; 6
+ 676:	d1 05       	cpc	r29, r1
+ 678:	99 f6       	brne	.-90     	; 0x620 <__vector_22+0x76>
+ 67a:	ac ee       	ldi	r26, 0xEC	; 236
+ 67c:	b0 e0       	ldi	r27, 0x00	; 0
+                LCD_WriteDigit(c, i);
+        }
+
+        // Copy the segment buffer to the real segments
+        for (i = 0; i < LCD_REGISTER_COUNT; i++)
+            *(pLCDREG + i) = *(LCD_Data+i);
+ 67e:	fd 01       	movw	r30, r26
+ 680:	e2 58       	subi	r30, 0x82	; 130
+ 682:	ff 4f       	sbci	r31, 0xFF	; 255
+ 684:	80 81       	ld	r24, Z
+ 686:	8d 93       	st	X+, r24
+            else
+                LCD_WriteDigit(c, i);
+        }
+
+        // Copy the segment buffer to the real segments
+        for (i = 0; i < LCD_REGISTER_COUNT; i++)
+ 688:	81 e0       	ldi	r24, 0x01	; 1
+ 68a:	a0 30       	cpi	r26, 0x00	; 0
+ 68c:	b8 07       	cpc	r27, r24
+ 68e:	b9 f7       	brne	.-18     	; 0x67e <__vector_22+0xd4>
+            *(pLCDREG + i) = *(LCD_Data+i);
+
+        // Handle colon
+        if (gColon)
+ 690:	80 91 68 01 	lds	r24, 0x0168
+ 694:	88 23       	and	r24, r24
+ 696:	21 f0       	breq	.+8      	; 0x6a0 <__vector_22+0xf6>
+            *(pLCDREG + 8) = 0x01;
+ 698:	81 e0       	ldi	r24, 0x01	; 1
+ 69a:	80 93 f4 00 	sts	0x00F4, r24
+ 69e:	02 c0       	rjmp	.+4      	; 0x6a4 <__vector_22+0xfa>
+        else
+            *(pLCDREG + 8) = 0x00;
+ 6a0:	10 92 f4 00 	sts	0x00F4, r1
+
+        // If the text scrolled off the display,
+        // we have to start over again.
+        if (EOL == 1)
+ 6a4:	11 30       	cpi	r17, 0x01	; 1
+ 6a6:	11 f4       	brne	.+4      	; 0x6ac <__vector_22+0x102>
+            gScroll = -6;
+ 6a8:	8a ef       	ldi	r24, 0xFA	; 250
+ 6aa:	03 c0       	rjmp	.+6      	; 0x6b2 <__vector_22+0x108>
+        else
+            gScroll++;
+ 6ac:	80 91 be 01 	lds	r24, 0x01BE
+ 6b0:	8f 5f       	subi	r24, 0xFF	; 255
+ 6b2:	80 93 be 01 	sts	0x01BE, r24
+
+        // No need to update anymore
+        gLCD_Update_Required = FALSE;
+ 6b6:	10 92 65 01 	sts	0x0165, r1
+    }
+
+
+    // LCD_timer is used when scrolling text
+    if (LCD_timer == 0)
+ 6ba:	00 23       	and	r16, r16
+ 6bc:	19 f4       	brne	.+6      	; 0x6c4 <__vector_22+0x11a>
+    {
+/*        if ((gScroll <= 0) || EOL)
+            LCD_timer = LCD_TIMER_SEED/2;
+        else*/
+            LCD_timer = LCD_TIMER_SEED;
+ 6be:	83 e0       	ldi	r24, 0x03	; 3
+ 6c0:	80 93 21 01 	sts	0x0121, r24
+    }
+
+    // gFlashTimer is used when flashing characters
+    if (gFlashTimer == LCD_FLASH_SEED)
+ 6c4:	80 91 67 01 	lds	r24, 0x0167
+ 6c8:	8a 30       	cpi	r24, 0x0A	; 10
+ 6ca:	19 f4       	brne	.+6      	; 0x6d2 <__vector_22+0x128>
+        gFlashTimer= 0;
+ 6cc:	10 92 67 01 	sts	0x0167, r1
+ 6d0:	03 c0       	rjmp	.+6      	; 0x6d8 <__vector_22+0x12e>
+    else
+        gFlashTimer++;
+ 6d2:	8f 5f       	subi	r24, 0xFF	; 255
+ 6d4:	80 93 67 01 	sts	0x0167, r24
+
+}
+ 6d8:	ff 91       	pop	r31
+ 6da:	ef 91       	pop	r30
+ 6dc:	df 91       	pop	r29
+ 6de:	cf 91       	pop	r28
+ 6e0:	bf 91       	pop	r27
+ 6e2:	af 91       	pop	r26
+ 6e4:	9f 91       	pop	r25
+ 6e6:	8f 91       	pop	r24
+ 6e8:	7f 91       	pop	r23
+ 6ea:	6f 91       	pop	r22
+ 6ec:	5f 91       	pop	r21
+ 6ee:	4f 91       	pop	r20
+ 6f0:	3f 91       	pop	r19
+ 6f2:	2f 91       	pop	r18
+ 6f4:	1f 91       	pop	r17
+ 6f6:	0f 91       	pop	r16
+ 6f8:	ff 90       	pop	r15
+ 6fa:	ef 90       	pop	r14
+ 6fc:	0f 90       	pop	r0
+ 6fe:	0f be       	out	0x3f, r0	; 63
+ 700:	0f 90       	pop	r0
+ 702:	1f 90       	pop	r1
+ 704:	18 95       	reti
+
+00000706 <LCD_puts_f>:
+*
+*****************************************************************************/
+
+// mt void LCD_puts_f(char __flash *pFlashStr, char scrollmode)
+void LCD_puts_f(const char *pFlashStr, char scrollmode)
+{
+ 706:	38 2f       	mov	r19, r24
+ 708:	29 2f       	mov	r18, r25
+    // char i;
+	uint8_t i;
+
+    while (gLCD_Update_Required);      // Wait for access to buffer
+ 70a:	80 91 65 01 	lds	r24, 0x0165
+ 70e:	88 23       	and	r24, r24
+ 710:	e1 f7       	brne	.-8      	; 0x70a <LCD_puts_f+0x4>
+ 712:	ae e7       	ldi	r26, 0x7E	; 126
+ 714:	b1 e0       	ldi	r27, 0x01	; 1
+ 716:	83 2f       	mov	r24, r19
+ 718:	92 2f       	mov	r25, r18
+ 71a:	fc 01       	movw	r30, r24
+ 71c:	01 c0       	rjmp	.+2      	; 0x720 <LCD_puts_f+0x1a>
+
+    // mt: for (i = 0; pFlashStr[i] && i < TEXTBUFFER_SIZE; i++)
+	for (i = 0; pgm_read_byte(&pFlashStr[i]) && i < TEXTBUFFER_SIZE; i++)
+    {
+        // mt: gTextBuffer[i] = pFlashStr[i];
+		gTextBuffer[i] = pgm_read_byte(&pFlashStr[i]);
+ 71e:	8d 93       	st	X+, r24
+ 720:	9e 2f       	mov	r25, r30
+ 722:	93 1b       	sub	r25, r19
+	uint8_t i;
+
+    while (gLCD_Update_Required);      // Wait for access to buffer
+
+    // mt: for (i = 0; pFlashStr[i] && i < TEXTBUFFER_SIZE; i++)
+	for (i = 0; pgm_read_byte(&pFlashStr[i]) && i < TEXTBUFFER_SIZE; i++)
+ 724:	84 91       	lpm	r24, Z+
+ 726:	88 23       	and	r24, r24
+ 728:	29 f0       	breq	.+10     	; 0x734 <LCD_puts_f+0x2e>
+ 72a:	31 96       	adiw	r30, 0x01	; 1
+ 72c:	21 e0       	ldi	r18, 0x01	; 1
+ 72e:	ae 3b       	cpi	r26, 0xBE	; 190
+ 730:	b2 07       	cpc	r27, r18
+ 732:	a9 f7       	brne	.-22     	; 0x71e <LCD_puts_f+0x18>
+    {
+        // mt: gTextBuffer[i] = pFlashStr[i];
+		gTextBuffer[i] = pgm_read_byte(&pFlashStr[i]);
+    }
+
+    gTextBuffer[i] = '\0';
+ 734:	e9 2f       	mov	r30, r25
+ 736:	f0 e0       	ldi	r31, 0x00	; 0
+ 738:	e2 58       	subi	r30, 0x82	; 130
+ 73a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 73c:	10 82       	st	Z, r1
+
+    if (i > 6)
+ 73e:	97 30       	cpi	r25, 0x07	; 7
+ 740:	48 f0       	brcs	.+18     	; 0x754 <LCD_puts_f+0x4e>
+    {
+        gScrollMode = 1;        // Scroll if text is longer than display size
+ 742:	81 e0       	ldi	r24, 0x01	; 1
+ 744:	80 93 69 01 	sts	0x0169, r24
+        gScroll = 0;
+ 748:	10 92 be 01 	sts	0x01BE, r1
+        gLCD_Start_Scroll_Timer = 3;    //Start-up delay before scrolling the text
+ 74c:	83 e0       	ldi	r24, 0x03	; 3
+ 74e:	80 93 66 01 	sts	0x0166, r24
+ 752:	04 c0       	rjmp	.+8      	; 0x75c <LCD_puts_f+0x56>
+    }
+    else
+    {
+        gScrollMode = 0;        
+ 754:	10 92 69 01 	sts	0x0169, r1
+        gScroll = 0;
+ 758:	10 92 be 01 	sts	0x01BE, r1
+    }
+
+    gLCD_Update_Required = 1;
+ 75c:	81 e0       	ldi	r24, 0x01	; 1
+ 75e:	80 93 65 01 	sts	0x0165, r24
+}
+ 762:	08 95       	ret
+
+00000764 <LCD_puts>:
+*
+*	Purpose :		Writes a string to the LCD
+*
+*****************************************************************************/
+void LCD_puts(char *pStr, char scrollmode)
+{
+ 764:	48 2f       	mov	r20, r24
+ 766:	29 2f       	mov	r18, r25
+	uint8_t i; // char i;
+	
+	while (gLCD_Update_Required);      // Wait for access to buffer
+ 768:	80 91 65 01 	lds	r24, 0x0165
+ 76c:	88 23       	and	r24, r24
+ 76e:	e1 f7       	brne	.-8      	; 0x768 <LCD_puts+0x4>
+ 770:	ae e7       	ldi	r26, 0x7E	; 126
+ 772:	b1 e0       	ldi	r27, 0x01	; 1
+ 774:	84 2f       	mov	r24, r20
+ 776:	92 2f       	mov	r25, r18
+ 778:	9c 01       	movw	r18, r24
+ 77a:	f9 01       	movw	r30, r18
+ 77c:	01 c0       	rjmp	.+2      	; 0x780 <LCD_puts+0x1c>
+
+    for (i = 0; pStr[i] && i < TEXTBUFFER_SIZE; i++)
+    {
+        gTextBuffer[i] = pStr[i];
+ 77e:	8d 93       	st	X+, r24
+ 780:	9e 2f       	mov	r25, r30
+ 782:	94 1b       	sub	r25, r20
+{
+	uint8_t i; // char i;
+	
+	while (gLCD_Update_Required);      // Wait for access to buffer
+
+    for (i = 0; pStr[i] && i < TEXTBUFFER_SIZE; i++)
+ 784:	80 81       	ld	r24, Z
+ 786:	88 23       	and	r24, r24
+ 788:	29 f0       	breq	.+10     	; 0x794 <LCD_puts+0x30>
+ 78a:	31 96       	adiw	r30, 0x01	; 1
+ 78c:	21 e0       	ldi	r18, 0x01	; 1
+ 78e:	ae 3b       	cpi	r26, 0xBE	; 190
+ 790:	b2 07       	cpc	r27, r18
+ 792:	a9 f7       	brne	.-22     	; 0x77e <LCD_puts+0x1a>
+    {
+        gTextBuffer[i] = pStr[i];
+    }
+
+    gTextBuffer[i] = '\0';
+ 794:	e9 2f       	mov	r30, r25
+ 796:	f0 e0       	ldi	r31, 0x00	; 0
+ 798:	e2 58       	subi	r30, 0x82	; 130
+ 79a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 79c:	10 82       	st	Z, r1
+
+    if (i > 6)
+ 79e:	97 30       	cpi	r25, 0x07	; 7
+ 7a0:	48 f0       	brcs	.+18     	; 0x7b4 <LCD_puts+0x50>
+    {
+        gScrollMode = 1;        // Scroll if text is longer than display size
+ 7a2:	81 e0       	ldi	r24, 0x01	; 1
+ 7a4:	80 93 69 01 	sts	0x0169, r24
+        gScroll = 0;
+ 7a8:	10 92 be 01 	sts	0x01BE, r1
+        gLCD_Start_Scroll_Timer = 3;    //Start-up delay before scrolling the text
+ 7ac:	83 e0       	ldi	r24, 0x03	; 3
+ 7ae:	80 93 66 01 	sts	0x0166, r24
+ 7b2:	04 c0       	rjmp	.+8      	; 0x7bc <LCD_puts+0x58>
+    }
+    else
+    {
+        gScrollMode = 0;        
+ 7b4:	10 92 69 01 	sts	0x0169, r1
+        gScroll = 0;
+ 7b8:	10 92 be 01 	sts	0x01BE, r1
+    }
+
+    gLCD_Update_Required = 1;
+ 7bc:	81 e0       	ldi	r24, 0x01	; 1
+ 7be:	80 93 65 01 	sts	0x0165, r24
+}
+ 7c2:	08 95       	ret
+
+000007c4 <LCD_putc>:
+*****************************************************************************/
+// mt void LCD_putc(char digit, char character)
+// mt void LCD_putc(char digit, char character)
+void LCD_putc(uint8_t digit, char character)
+{
+    if (digit < TEXTBUFFER_SIZE)
+ 7c4:	80 34       	cpi	r24, 0x40	; 64
+ 7c6:	28 f4       	brcc	.+10     	; 0x7d2 <LCD_putc+0xe>
+        gTextBuffer[digit] = character;
+ 7c8:	e8 2f       	mov	r30, r24
+ 7ca:	f0 e0       	ldi	r31, 0x00	; 0
+ 7cc:	e2 58       	subi	r30, 0x82	; 130
+ 7ce:	fe 4f       	sbci	r31, 0xFE	; 254
+ 7d0:	60 83       	st	Z, r22
+ 7d2:	08 95       	ret
+
+000007d4 <LCD_Clear>:
+*
+*	Purpose :		Clear the LCD
+*
+*****************************************************************************/
+void LCD_Clear(void)
+{
+ 7d4:	ee e7       	ldi	r30, 0x7E	; 126
+ 7d6:	f1 e0       	ldi	r31, 0x01	; 1
+    uint8_t i; // char i;
+	   
+    for (i=0; i<TEXTBUFFER_SIZE; i++)
+        gTextBuffer[i] = '\0'; // JP changed from ' ' to stop LCD_puts_f buffer overrun
+ 7d8:	11 92       	st	Z+, r1
+*****************************************************************************/
+void LCD_Clear(void)
+{
+    uint8_t i; // char i;
+	   
+    for (i=0; i<TEXTBUFFER_SIZE; i++)
+ 7da:	81 e0       	ldi	r24, 0x01	; 1
+ 7dc:	ee 3b       	cpi	r30, 0xBE	; 190
+ 7de:	f8 07       	cpc	r31, r24
+ 7e0:	d9 f7       	brne	.-10     	; 0x7d8 <LCD_Clear+0x4>
+        gTextBuffer[i] = '\0'; // JP changed from ' ' to stop LCD_puts_f buffer overrun
+}
+ 7e2:	08 95       	ret
+
+000007e4 <LCD_Colon>:
+*	Purpose :		Enable/disable colons on the LCD
+*
+*****************************************************************************/
+void LCD_Colon(char show)
+{
+    gColon = show;
+ 7e4:	80 93 68 01 	sts	0x0168, r24
+}
+ 7e8:	08 95       	ret
+
+000007ea <LCD_UpdateRequired>:
+*
+*	Purpose :		Tells the LCD that there is new data to be presented
+*
+*****************************************************************************/
+void LCD_UpdateRequired(char update, char scrollmode)
+{
+ 7ea:	98 2f       	mov	r25, r24
+
+    while (gLCD_Update_Required);
+ 7ec:	80 91 65 01 	lds	r24, 0x0165
+ 7f0:	88 23       	and	r24, r24
+ 7f2:	e1 f7       	brne	.-8      	; 0x7ec <LCD_UpdateRequired+0x2>
+    
+    gScrollMode = scrollmode;
+ 7f4:	60 93 69 01 	sts	0x0169, r22
+    gScroll = 0;
+ 7f8:	10 92 be 01 	sts	0x01BE, r1
+
+    gLCD_Update_Required = update;
+ 7fc:	90 93 65 01 	sts	0x0165, r25
+}
+ 800:	08 95       	ret
+
+00000802 <LCD_FlashReset>:
+*	Purpose :		This function resets the blinking cycle of a flashing digit
+*
+*****************************************************************************/
+void LCD_FlashReset(void)
+{
+    gFlashTimer = 0;
+ 802:	10 92 67 01 	sts	0x0167, r1
+}
+ 806:	08 95       	ret
+
+00000808 <SetContrast>:
+*****************************************************************************/
+
+
+
+void SetContrast(char input)
+{
+ 808:	98 2f       	mov	r25, r24
+ 80a:	ee e7       	ldi	r30, 0x7E	; 126
+ 80c:	f1 e0       	ldi	r31, 0x01	; 1
+void LCD_Clear(void)
+{
+    uint8_t i; // char i;
+	   
+    for (i=0; i<TEXTBUFFER_SIZE; i++)
+        gTextBuffer[i] = '\0'; // JP changed from ' ' to stop LCD_puts_f buffer overrun
+ 80e:	11 92       	st	Z+, r1
+*****************************************************************************/
+void LCD_Clear(void)
+{
+    uint8_t i; // char i;
+	   
+    for (i=0; i<TEXTBUFFER_SIZE; i++)
+ 810:	81 e0       	ldi	r24, 0x01	; 1
+ 812:	ee 3b       	cpi	r30, 0xBE	; 190
+ 814:	f8 07       	cpc	r31, r24
+ 816:	d9 f7       	brne	.-10     	; 0x80e <SetContrast+0x6>
+// mt void LCD_putc(char digit, char character)
+// mt void LCD_putc(char digit, char character)
+void LCD_putc(uint8_t digit, char character)
+{
+    if (digit < TEXTBUFFER_SIZE)
+        gTextBuffer[digit] = character;
+ 818:	81 e4       	ldi	r24, 0x41	; 65
+ 81a:	80 93 7e 01 	sts	0x017E, r24
+*
+*****************************************************************************/
+void LCD_UpdateRequired(char update, char scrollmode)
+{
+
+    while (gLCD_Update_Required);
+ 81e:	82 e4       	ldi	r24, 0x42	; 66
+ 820:	80 93 7f 01 	sts	0x017F, r24
+ 824:	83 e4       	ldi	r24, 0x43	; 67
+ 826:	80 93 80 01 	sts	0x0180, r24
+ 82a:	84 e4       	ldi	r24, 0x44	; 68
+ 82c:	80 93 81 01 	sts	0x0181, r24
+ 830:	85 e4       	ldi	r24, 0x45	; 69
+ 832:	80 93 82 01 	sts	0x0182, r24
+ 836:	86 e4       	ldi	r24, 0x46	; 70
+ 838:	80 93 83 01 	sts	0x0183, r24
+ 83c:	80 91 65 01 	lds	r24, 0x0165
+ 840:	88 23       	and	r24, r24
+ 842:	e1 f7       	brne	.-8      	; 0x83c <SetContrast+0x34>
+    
+    gScrollMode = scrollmode;
+ 844:	10 92 69 01 	sts	0x0169, r1
+    gScroll = 0;
+ 848:	10 92 be 01 	sts	0x01BE, r1
+
+    gLCD_Update_Required = update;
+ 84c:	81 e0       	ldi	r24, 0x01	; 1
+ 84e:	80 93 65 01 	sts	0x0165, r24
+    LCD_putc(4, 'E');
+    LCD_putc(5, 'F');
+
+    LCD_UpdateRequired(TRUE, 0);
+
+    LCD_CONTRAST_LEVEL(input);
+ 852:	9f 70       	andi	r25, 0x0F	; 15
+ 854:	90 93 e7 00 	sts	0x00E7, r25
+
+}
+ 858:	08 95       	ret
+
+0000085a <StoreEEPROM>:
+*
+*   Purpose :       Write byte(s) to the EEPROM
+*
+*****************************************************************************/
+void StoreEEPROM(char *pBuffer, char num_bytes, unsigned int EE_START_ADR)
+{
+ 85a:	fc 01       	movw	r30, r24
+ 85c:	80 e0       	ldi	r24, 0x00	; 0
+ 85e:	14 c0       	rjmp	.+40     	; 0x888 <StoreEEPROM+0x2e>
+    unsigned char i;
+    for (i=0;i<num_bytes;i++) {
+        // mt __EEPUT(EEPROM_START_ADR++, pBuffer[i]); // Store parameters
+		eeprom_write_byte_169(&EE_START_ADR, pBuffer[i]);
+ 860:	90 81       	ld	r25, Z
+	return EEDR;
+}
+
+static inline void eeprom_write_byte_169(uint16_t *addr, uint8_t val) 
+{
+	cli();
+ 862:	f8 94       	cli
+ 864:	01 c0       	rjmp	.+2      	; 0x868 <StoreEEPROM+0xe>
+	/* Wait for completion of previous write */
+	while(EECR & (1<<EEWE)) asm volatile ("nop"::);
+ 866:	00 00       	nop
+ 868:	f9 99       	sbic	0x1f, 1	; 31
+ 86a:	fd cf       	rjmp	.-6      	; 0x866 <StoreEEPROM+0xc>
+	/* Set up address and Data Registers */
+	EEAR = *addr;
+ 86c:	52 bd       	out	0x22, r21	; 34
+ 86e:	41 bd       	out	0x21, r20	; 33
+	EEDR = val;
+ 870:	90 bd       	out	0x20, r25	; 32
+	/* Write logical one to EEMWE */
+	EECR |= (1<<EEMWE);
+ 872:	fa 9a       	sbi	0x1f, 2	; 31
+	/* Start eeprom write by setting EEWE */
+	EECR |= (1<<EEWE);
+ 874:	f9 9a       	sbi	0x1f, 1	; 31
+ 876:	01 c0       	rjmp	.+2      	; 0x87a <StoreEEPROM+0x20>
+	while(EECR & (1<<EEWE)) asm volatile ("nop"::);
+ 878:	00 00       	nop
+ 87a:	f9 99       	sbic	0x1f, 1	; 31
+ 87c:	fd cf       	rjmp	.-6      	; 0x878 <StoreEEPROM+0x1e>
+	sei();
+ 87e:	78 94       	sei
+		EE_START_ADR++;
+ 880:	4f 5f       	subi	r20, 0xFF	; 255
+ 882:	5f 4f       	sbci	r21, 0xFF	; 255
+*
+*****************************************************************************/
+void StoreEEPROM(char *pBuffer, char num_bytes, unsigned int EE_START_ADR)
+{
+    unsigned char i;
+    for (i=0;i<num_bytes;i++) {
+ 884:	8f 5f       	subi	r24, 0xFF	; 255
+ 886:	31 96       	adiw	r30, 0x01	; 1
+ 888:	86 17       	cp	r24, r22
+ 88a:	50 f3       	brcs	.-44     	; 0x860 <StoreEEPROM+0x6>
+        // mt __EEPUT(EEPROM_START_ADR++, pBuffer[i]); // Store parameters
+		eeprom_write_byte_169(&EE_START_ADR, pBuffer[i]);
+		EE_START_ADR++;
+	}
+}
+ 88c:	08 95       	ret
+
+0000088e <LoadEEPROM>:
+*   Purpose :       Write byte(s) to the EEPROM
+*
+*****************************************************************************/
+
+void LoadEEPROM(char *pBuffer, char num_bytes, unsigned int EE_START_ADR)
+{
+ 88e:	fc 01       	movw	r30, r24
+ 890:	90 e0       	ldi	r25, 0x00	; 0
+ 892:	0b c0       	rjmp	.+22     	; 0x8aa <LoadEEPROM+0x1c>
+
+static inline uint8_t eeprom_read_byte_169(const uint16_t *addr)
+{
+	// cli();
+	/* Wait for completion of previous write */
+	while(EECR & (1<<EEWE)) asm volatile ("nop"::);
+ 894:	00 00       	nop
+ 896:	f9 99       	sbic	0x1f, 1	; 31
+ 898:	fd cf       	rjmp	.-6      	; 0x894 <LoadEEPROM+0x6>
+	/* Set up address register */
+	EEAR = *addr;
+ 89a:	52 bd       	out	0x22, r21	; 34
+ 89c:	41 bd       	out	0x21, r20	; 33
+	/* Start eeprom read by writing EERE */
+	EECR |= (1<<EERE);
+ 89e:	f8 9a       	sbi	0x1f, 0	; 31
+	/* Return data from Data Register */
+	// sei();
+	return EEDR;
+ 8a0:	80 b5       	in	r24, 0x20	; 32
+    unsigned char i;
+    for (i=0;i<num_bytes;i++) {
+        // mt __EEGET(pBuffer[i], EEPROM_START_ADR++); // Load parameters
+		pBuffer[i]=eeprom_read_byte_169(&EE_START_ADR);
+ 8a2:	81 93       	st	Z+, r24
+		EE_START_ADR++;
+ 8a4:	4f 5f       	subi	r20, 0xFF	; 255
+ 8a6:	5f 4f       	sbci	r21, 0xFF	; 255
+*****************************************************************************/
+
+void LoadEEPROM(char *pBuffer, char num_bytes, unsigned int EE_START_ADR)
+{
+    unsigned char i;
+    for (i=0;i<num_bytes;i++) {
+ 8a8:	9f 5f       	subi	r25, 0xFF	; 255
+ 8aa:	96 17       	cp	r25, r22
+ 8ac:	a0 f3       	brcs	.-24     	; 0x896 <LoadEEPROM+0x8>
+        // mt __EEGET(pBuffer[i], EEPROM_START_ADR++); // Load parameters
+		pBuffer[i]=eeprom_read_byte_169(&EE_START_ADR);
+		EE_START_ADR++;
+	}
+}
+ 8ae:	08 95       	ret
+
+000008b0 <_exit>:
+ 8b0:	f8 94       	cli
+
+000008b2 <__stop_program>:
+ 8b2:	ff cf       	rjmp	.-2      	; 0x8b2 <__stop_program>

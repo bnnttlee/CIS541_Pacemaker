@@ -1,0 +1,863 @@
+   1               		.file	"Demonstrator.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	CHAR2BCD2
+  18               	CHAR2BCD2:
+  19               	.LFB12:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 482F      		mov r20,r24
+  25               	.LM2:
+  26 0002 6AE0      		ldi r22,lo8(10)
+  27 0004 0E94 0000 		call __udivmodqi4
+  28               	.LVL1:
+  29 0008 282F      		mov r18,r24
+  30 000a 30E0      		ldi r19,lo8(0)
+  31 000c 84E0      		ldi r24,4
+  32 000e 220F      	1:	lsl r18
+  33 0010 331F      		rol r19
+  34 0012 8A95      		dec r24
+  35 0014 01F4      		brne 1b
+  36 0016 842F      		mov r24,r20
+  37 0018 0E94 0000 		call __udivmodqi4
+  38               	.LM3:
+  39 001c 892F      		mov r24,r25
+  40 001e 822B      		or r24,r18
+  41               	/* epilogue start */
+  42 0020 0895      		ret
+  43               	.LFE12:
+  45               	.global	RTC_init
+  47               	RTC_init:
+  48               	.LFB13:
+  49               	.LM4:
+  50               	/* prologue: function */
+  51               	/* frame size = 0 */
+  52               	.LM5:
+  53 0022 80E0      		ldi r24,lo8(0)
+  54 0024 90E0      		ldi r25,hi8(0)
+  55               	.LVL2:
+  56               	.LBB11:
+  57               	.LBB12:
+  58               	.LBB13:
+  59               	.LM6:
+  60 0026 20E3      		ldi r18,lo8(30000)
+  61 0028 35E7      		ldi r19,hi8(30000)
+  62               	.L4:
+  63 002a F901      		movw r30,r18
+  64               	.LVL3:
+  65               	/* #APP */
+  66               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  67 002c 3197      		1: sbiw r30,1
+  68 002e 01F4      		brne 1b
+  69               	 ;  0 "" 2
+  70               	/* #NOAPP */
+  71               	.LBE13:
+  72               	.LBE12:
+  73               	.LM7:
+  74 0030 0196      		adiw r24,1
+  75 0032 8A30      		cpi r24,10
+  76 0034 9105      		cpc r25,__zero_reg__
+  77 0036 01F4      		brne .L4
+  78               	.LBE11:
+  79               	.LM8:
+  80               	/* #APP */
+  81               	 ;  197 "Demonstrator.c" 1
+  82 0038 F894      		cli
+  83               	 ;  0 "" 2
+  84               	.LM9:
+  85               	/* #NOAPP */
+  86 003a 8091 7000 		lds r24,112
+  87               	.LVL4:
+  88 003e 8E7F      		andi r24,lo8(-2)
+  89 0040 8093 7000 		sts 112,r24
+  90               	.LM10:
+  91 0044 88E0      		ldi r24,lo8(8)
+  92 0046 8093 B600 		sts 182,r24
+  93               	.LM11:
+  94 004a 1092 B200 		sts 178,__zero_reg__
+  95               	.LM12:
+  96 004e 8091 B000 		lds r24,176
+  97 0052 8560      		ori r24,lo8(5)
+  98 0054 8093 B000 		sts 176,r24
+  99               	.L5:
+ 100               	.LM13:
+ 101 0058 2091 B600 		lds r18,182
+ 102 005c 8091 B600 		lds r24,182
+ 103 0060 90E0      		ldi r25,lo8(0)
+ 104 0062 8470      		andi r24,lo8(4)
+ 105 0064 9070      		andi r25,hi8(4)
+ 106 0066 30E0      		ldi r19,lo8(0)
+ 107 0068 2170      		andi r18,lo8(1)
+ 108 006a 3070      		andi r19,hi8(1)
+ 109 006c 822B      		or r24,r18
+ 110 006e 932B      		or r25,r19
+ 111 0070 892B      		or r24,r25
+ 112 0072 01F4      		brne .L5
+ 113               	.LM14:
+ 114 0074 8FEF      		ldi r24,lo8(-1)
+ 115 0076 87BB      		out 55-32,r24
+ 116               	.LM15:
+ 117 0078 8091 7000 		lds r24,112
+ 118 007c 8160      		ori r24,lo8(1)
+ 119 007e 8093 7000 		sts 112,r24
+ 120               	.LM16:
+ 121               	/* #APP */
+ 122               	 ;  214 "Demonstrator.c" 1
+ 123 0082 7894      		sei
+ 124               	 ;  0 "" 2
+ 125               	.LM17:
+ 126               	/* #NOAPP */
+ 127 0084 1092 0000 		sts gSECOND,__zero_reg__
+ 128               	.LM18:
+ 129 0088 1092 0000 		sts gMINUTE,__zero_reg__
+ 130               	.LM19:
+ 131 008c 1092 0000 		sts gHOUR,__zero_reg__
+ 132               	/* epilogue start */
+ 133               	.LM20:
+ 134 0090 0895      		ret
+ 135               	.LFE13:
+ 137               	.global	__vector_5
+ 139               	__vector_5:
+ 140               	.LFB14:
+ 141               	.LM21:
+ 142 0092 1F92      		push __zero_reg__
+ 143 0094 0F92      		push r0
+ 144 0096 0FB6      		in r0,__SREG__
+ 145 0098 0F92      		push r0
+ 146 009a 1124      		clr __zero_reg__
+ 147 009c 8F93      		push r24
+ 148               	/* prologue: Signal */
+ 149               	/* frame size = 0 */
+ 150               	.LM22:
+ 151 009e 8091 0000 		lds r24,gSECOND
+ 152 00a2 8F5F      		subi r24,lo8(-(1))
+ 153 00a4 8093 0000 		sts gSECOND,r24
+ 154               	.LM23:
+ 155 00a8 8C33      		cpi r24,lo8(60)
+ 156 00aa 01F4      		brne .L11
+ 157               	.LM24:
+ 158 00ac 1092 0000 		sts gSECOND,__zero_reg__
+ 159               	.LM25:
+ 160 00b0 8091 0000 		lds r24,gMINUTE
+ 161 00b4 8F5F      		subi r24,lo8(-(1))
+ 162 00b6 8093 0000 		sts gMINUTE,r24
+ 163               	.LM26:
+ 164 00ba 8C33      		cpi r24,lo8(60)
+ 165 00bc 00F0      		brlo .L11
+ 166               	.LM27:
+ 167 00be 1092 0000 		sts gMINUTE,__zero_reg__
+ 168               	.LM28:
+ 169 00c2 8091 0000 		lds r24,gHOUR
+ 170 00c6 8F5F      		subi r24,lo8(-(1))
+ 171 00c8 8093 0000 		sts gHOUR,r24
+ 172               	.LM29:
+ 173 00cc 8D30      		cpi r24,lo8(13)
+ 174 00ce 00F0      		brlo .L11
+ 175               	.LM30:
+ 176 00d0 1092 0000 		sts gHOUR,__zero_reg__
+ 177               	.L11:
+ 178               	/* epilogue start */
+ 179               	.LM31:
+ 180 00d4 8F91      		pop r24
+ 181 00d6 0F90      		pop r0
+ 182 00d8 0FBE      		out __SREG__,r0
+ 183 00da 0F90      		pop r0
+ 184 00dc 1F90      		pop __zero_reg__
+ 185 00de 1895      		reti
+ 186               	.LFE14:
+ 188               	.global	showClock
+ 190               	showClock:
+ 191               	.LFB11:
+ 192               	.LM32:
+ 193 00e0 EF92      		push r14
+ 194 00e2 FF92      		push r15
+ 195 00e4 0F93      		push r16
+ 196 00e6 1F93      		push r17
+ 197               	/* prologue: function */
+ 198               	/* frame size = 0 */
+ 199               	.LM33:
+ 200 00e8 4091 0000 		lds r20,gHOUR
+ 201               	.LVL5:
+ 202               	.LBB14:
+ 203               	.LBB15:
+ 204               	.LM34:
+ 205 00ec 842F      		mov r24,r20
+ 206 00ee 6AE0      		ldi r22,lo8(10)
+ 207 00f0 0E94 0000 		call __udivmodqi4
+ 208 00f4 282F      		mov r18,r24
+ 209 00f6 30E0      		ldi r19,lo8(0)
+ 210 00f8 E4E0      		ldi r30,4
+ 211 00fa 220F      	1:	lsl r18
+ 212 00fc 331F      		rol r19
+ 213 00fe EA95      		dec r30
+ 214 0100 01F4      		brne 1b
+ 215 0102 842F      		mov r24,r20
+ 216 0104 0E94 0000 		call __udivmodqi4
+ 217 0108 F92E      		mov r15,r25
+ 218               	.LVL6:
+ 219 010a F22A      		or r15,r18
+ 220               	.LBE15:
+ 221               	.LBE14:
+ 222               	.LM35:
+ 223 010c 4091 0000 		lds r20,gMINUTE
+ 224               	.LVL7:
+ 225               	.LBB16:
+ 226               	.LBB17:
+ 227               	.LM36:
+ 228 0110 842F      		mov r24,r20
+ 229 0112 0E94 0000 		call __udivmodqi4
+ 230 0116 282F      		mov r18,r24
+ 231 0118 30E0      		ldi r19,lo8(0)
+ 232 011a 74E0      		ldi r23,4
+ 233 011c 220F      	1:	lsl r18
+ 234 011e 331F      		rol r19
+ 235 0120 7A95      		dec r23
+ 236 0122 01F4      		brne 1b
+ 237 0124 842F      		mov r24,r20
+ 238 0126 0E94 0000 		call __udivmodqi4
+ 239 012a 092F      		mov r16,r25
+ 240               	.LVL8:
+ 241 012c 022B      		or r16,r18
+ 242               	.LBE17:
+ 243               	.LBE16:
+ 244               	.LM37:
+ 245 012e 4091 0000 		lds r20,gSECOND
+ 246               	.LVL9:
+ 247               	.LBB18:
+ 248               	.LBB19:
+ 249               	.LM38:
+ 250 0132 842F      		mov r24,r20
+ 251 0134 0E94 0000 		call __udivmodqi4
+ 252 0138 282F      		mov r18,r24
+ 253 013a 30E0      		ldi r19,lo8(0)
+ 254 013c 54E0      		ldi r21,4
+ 255 013e 220F      	1:	lsl r18
+ 256 0140 331F      		rol r19
+ 257 0142 5A95      		dec r21
+ 258 0144 01F4      		brne 1b
+ 259 0146 842F      		mov r24,r20
+ 260 0148 0E94 0000 		call __udivmodqi4
+ 261 014c 192F      		mov r17,r25
+ 262               	.LVL10:
+ 263 014e 122B      		or r17,r18
+ 264               	.LBE19:
+ 265               	.LBE18:
+ 266               	.LM39:
+ 267 0150 E12E      		mov r14,r17
+ 268 0152 E294      		swap r14
+ 269 0154 9FE0      		ldi r25,lo8(15)
+ 270 0156 E922      		and r14,r25
+ 271               	.LM40:
+ 272 0158 80E0      		ldi r24,lo8(THE_TIME_IS)
+ 273 015a 90E0      		ldi r25,hi8(THE_TIME_IS)
+ 274 015c 0E94 0000 		call sendFString
+ 275               	.LVL11:
+ 276               	.LM41:
+ 277 0160 8F2D      		mov r24,r15
+ 278 0162 8295      		swap r24
+ 279 0164 8F70      		andi r24,lo8(15)
+ 280               	.LM42:
+ 281 0166 805D      		subi r24,lo8(-(48))
+ 282 0168 0E94 0000 		call sendChar
+ 283               	.LM43:
+ 284 016c 8FE0      		ldi r24,lo8(15)
+ 285 016e F822      		and r15,r24
+ 286 0170 8F2D      		mov r24,r15
+ 287 0172 805D      		subi r24,lo8(-(48))
+ 288 0174 0E94 0000 		call sendChar
+ 289               	.LM44:
+ 290 0178 8AE3      		ldi r24,lo8(58)
+ 291 017a 0E94 0000 		call sendChar
+ 292               	.LM45:
+ 293 017e 802F      		mov r24,r16
+ 294 0180 8295      		swap r24
+ 295 0182 8F70      		andi r24,lo8(15)
+ 296               	.LM46:
+ 297 0184 805D      		subi r24,lo8(-(48))
+ 298 0186 0E94 0000 		call sendChar
+ 299               	.LM47:
+ 300 018a 0F70      		andi r16,lo8(15)
+ 301 018c 802F      		mov r24,r16
+ 302 018e 805D      		subi r24,lo8(-(48))
+ 303 0190 0E94 0000 		call sendChar
+ 304               	.LM48:
+ 305 0194 8AE3      		ldi r24,lo8(58)
+ 306 0196 0E94 0000 		call sendChar
+ 307               	.LM49:
+ 308 019a 8E2D      		mov r24,r14
+ 309 019c 805D      		subi r24,lo8(-(48))
+ 310 019e 0E94 0000 		call sendChar
+ 311               	.LM50:
+ 312 01a2 1F70      		andi r17,lo8(15)
+ 313 01a4 812F      		mov r24,r17
+ 314 01a6 805D      		subi r24,lo8(-(48))
+ 315 01a8 0E94 0000 		call sendChar
+ 316               	.LM51:
+ 317 01ac 8DE0      		ldi r24,lo8(13)
+ 318 01ae 0E94 0000 		call sendChar
+ 319               	/* epilogue start */
+ 320               	.LM52:
+ 321 01b2 1F91      		pop r17
+ 322               	.LVL12:
+ 323 01b4 0F91      		pop r16
+ 324               	.LVL13:
+ 325 01b6 FF90      		pop r15
+ 326               	.LVL14:
+ 327 01b8 EF90      		pop r14
+ 328 01ba 0895      		ret
+ 329               	.LFE11:
+ 331               	.global	setHour
+ 333               	setHour:
+ 334               	.LFB10:
+ 335               	.LM53:
+ 336               	.LVL15:
+ 337 01bc DF93      		push r29
+ 338 01be CF93      		push r28
+ 339 01c0 00D0      		rcall .
+ 340 01c2 0F92      		push __tmp_reg__
+ 341 01c4 CDB7      		in r28,__SP_L__
+ 342 01c6 DEB7      		in r29,__SP_H__
+ 343               	/* prologue: function */
+ 344               	/* frame size = 3 */
+ 345 01c8 9C01      		movw r18,r24
+ 346               	.LM54:
+ 347 01ca DE01      		movw r26,r28
+ 348 01cc 1196      		adiw r26,1
+ 349 01ce E0E0      		ldi r30,lo8(C.4.1560)
+ 350 01d0 F0E0      		ldi r31,hi8(C.4.1560)
+ 351 01d2 83E0      		ldi r24,lo8(3)
+ 352               	.LVL16:
+ 353               	.L15:
+ 354 01d4 0190      		ld r0,Z+
+ 355 01d6 0D92      		st X+,r0
+ 356 01d8 8150      		subi r24,lo8(-(-1))
+ 357 01da 01F4      		brne .L15
+ 358               	.LM55:
+ 359 01dc F901      		movw r30,r18
+ 360 01de 8481      		ldd r24,Z+4
+ 361 01e0 8983      		std Y+1,r24
+ 362               	.LM56:
+ 363 01e2 8581      		ldd r24,Z+5
+ 364 01e4 8A83      		std Y+2,r24
+ 365               	.LM57:
+ 366 01e6 CE01      		movw r24,r28
+ 367 01e8 0196      		adiw r24,1
+ 368 01ea 0E94 0000 		call atoi
+ 369               	.LVL17:
+ 370               	.LM58:
+ 371 01ee 8D30      		cpi r24,13
+ 372 01f0 9105      		cpc r25,__zero_reg__
+ 373               	.LVL18:
+ 374 01f2 04F4      		brge .L16
+ 375               	.LM59:
+ 376 01f4 8093 0000 		sts gHOUR,r24
+ 377 01f8 00C0      		rjmp .L18
+ 378               	.L16:
+ 379               	.LM60:
+ 380 01fa 80E0      		ldi r24,lo8(ERROR_NUMBER)
+ 381 01fc 90E0      		ldi r25,hi8(ERROR_NUMBER)
+ 382               	.LVL19:
+ 383 01fe 0E94 0000 		call sendFString
+ 384               	.LM61:
+ 385 0202 80E0      		ldi r24,lo8(ERROR_12)
+ 386 0204 90E0      		ldi r25,hi8(ERROR_12)
+ 387 0206 0E94 0000 		call sendFString
+ 388               	.LVL20:
+ 389               	.L18:
+ 390               	/* epilogue start */
+ 391               	.LM62:
+ 392 020a 0F90      		pop __tmp_reg__
+ 393 020c 0F90      		pop __tmp_reg__
+ 394 020e 0F90      		pop __tmp_reg__
+ 395 0210 CF91      		pop r28
+ 396 0212 DF91      		pop r29
+ 397 0214 0895      		ret
+ 398               	.LFE10:
+ 400               	.global	setMinute
+ 402               	setMinute:
+ 403               	.LFB9:
+ 404               	.LM63:
+ 405               	.LVL21:
+ 406 0216 DF93      		push r29
+ 407 0218 CF93      		push r28
+ 408 021a 00D0      		rcall .
+ 409 021c 0F92      		push __tmp_reg__
+ 410 021e CDB7      		in r28,__SP_L__
+ 411 0220 DEB7      		in r29,__SP_H__
+ 412               	/* prologue: function */
+ 413               	/* frame size = 3 */
+ 414 0222 9C01      		movw r18,r24
+ 415               	.LM64:
+ 416 0224 DE01      		movw r26,r28
+ 417 0226 1196      		adiw r26,1
+ 418 0228 E0E0      		ldi r30,lo8(C.2.1549)
+ 419 022a F0E0      		ldi r31,hi8(C.2.1549)
+ 420 022c 83E0      		ldi r24,lo8(3)
+ 421               	.LVL22:
+ 422               	.L21:
+ 423 022e 0190      		ld r0,Z+
+ 424 0230 0D92      		st X+,r0
+ 425 0232 8150      		subi r24,lo8(-(-1))
+ 426 0234 01F4      		brne .L21
+ 427               	.LM65:
+ 428 0236 F901      		movw r30,r18
+ 429 0238 8381      		ldd r24,Z+3
+ 430 023a 8983      		std Y+1,r24
+ 431               	.LM66:
+ 432 023c 8481      		ldd r24,Z+4
+ 433 023e 8A83      		std Y+2,r24
+ 434               	.LM67:
+ 435 0240 CE01      		movw r24,r28
+ 436 0242 0196      		adiw r24,1
+ 437 0244 0E94 0000 		call atoi
+ 438               	.LVL23:
+ 439               	.LM68:
+ 440 0248 8D33      		cpi r24,61
+ 441 024a 9105      		cpc r25,__zero_reg__
+ 442               	.LVL24:
+ 443 024c 04F4      		brge .L22
+ 444               	.LM69:
+ 445 024e 8093 0000 		sts gMINUTE,r24
+ 446 0252 00C0      		rjmp .L24
+ 447               	.L22:
+ 448               	.LM70:
+ 449 0254 80E0      		ldi r24,lo8(ERROR_NUMBER)
+ 450 0256 90E0      		ldi r25,hi8(ERROR_NUMBER)
+ 451               	.LVL25:
+ 452 0258 0E94 0000 		call sendFString
+ 453               	.LM71:
+ 454 025c 80E0      		ldi r24,lo8(ERROR_60)
+ 455 025e 90E0      		ldi r25,hi8(ERROR_60)
+ 456 0260 0E94 0000 		call sendFString
+ 457               	.LVL26:
+ 458               	.L24:
+ 459               	/* epilogue start */
+ 460               	.LM72:
+ 461 0264 0F90      		pop __tmp_reg__
+ 462 0266 0F90      		pop __tmp_reg__
+ 463 0268 0F90      		pop __tmp_reg__
+ 464 026a CF91      		pop r28
+ 465 026c DF91      		pop r29
+ 466 026e 0895      		ret
+ 467               	.LFE9:
+ 469               	.global	setSecond
+ 471               	setSecond:
+ 472               	.LFB8:
+ 473               	.LM73:
+ 474               	.LVL27:
+ 475 0270 DF93      		push r29
+ 476 0272 CF93      		push r28
+ 477 0274 00D0      		rcall .
+ 478 0276 0F92      		push __tmp_reg__
+ 479 0278 CDB7      		in r28,__SP_L__
+ 480 027a DEB7      		in r29,__SP_H__
+ 481               	/* prologue: function */
+ 482               	/* frame size = 3 */
+ 483 027c 9C01      		movw r18,r24
+ 484               	.LM74:
+ 485 027e DE01      		movw r26,r28
+ 486 0280 1196      		adiw r26,1
+ 487 0282 E0E0      		ldi r30,lo8(C.0.1538)
+ 488 0284 F0E0      		ldi r31,hi8(C.0.1538)
+ 489 0286 83E0      		ldi r24,lo8(3)
+ 490               	.LVL28:
+ 491               	.L27:
+ 492 0288 0190      		ld r0,Z+
+ 493 028a 0D92      		st X+,r0
+ 494 028c 8150      		subi r24,lo8(-(-1))
+ 495 028e 01F4      		brne .L27
+ 496               	.LM75:
+ 497 0290 F901      		movw r30,r18
+ 498 0292 8381      		ldd r24,Z+3
+ 499 0294 8983      		std Y+1,r24
+ 500               	.LM76:
+ 501 0296 8481      		ldd r24,Z+4
+ 502 0298 8A83      		std Y+2,r24
+ 503               	.LM77:
+ 504 029a CE01      		movw r24,r28
+ 505 029c 0196      		adiw r24,1
+ 506 029e 0E94 0000 		call atoi
+ 507               	.LVL29:
+ 508               	.LM78:
+ 509 02a2 8D33      		cpi r24,61
+ 510 02a4 9105      		cpc r25,__zero_reg__
+ 511               	.LVL30:
+ 512 02a6 04F4      		brge .L28
+ 513               	.LM79:
+ 514 02a8 8093 0000 		sts gSECOND,r24
+ 515 02ac 00C0      		rjmp .L30
+ 516               	.L28:
+ 517               	.LM80:
+ 518 02ae 80E0      		ldi r24,lo8(ERROR_NUMBER)
+ 519 02b0 90E0      		ldi r25,hi8(ERROR_NUMBER)
+ 520               	.LVL31:
+ 521 02b2 0E94 0000 		call sendFString
+ 522               	.LM81:
+ 523 02b6 80E0      		ldi r24,lo8(ERROR_60)
+ 524 02b8 90E0      		ldi r25,hi8(ERROR_60)
+ 525 02ba 0E94 0000 		call sendFString
+ 526               	.LVL32:
+ 527               	.L30:
+ 528               	/* epilogue start */
+ 529               	.LM82:
+ 530 02be 0F90      		pop __tmp_reg__
+ 531 02c0 0F90      		pop __tmp_reg__
+ 532 02c2 0F90      		pop __tmp_reg__
+ 533 02c4 CF91      		pop r28
+ 534 02c6 DF91      		pop r29
+ 535 02c8 0895      		ret
+ 536               	.LFE8:
+ 538               	.global	parseInput
+ 540               	parseInput:
+ 541               	.LFB7:
+ 542               	.LM83:
+ 543               	.LVL33:
+ 544 02ca CF93      		push r28
+ 545 02cc DF93      		push r29
+ 546               	/* prologue: function */
+ 547               	/* frame size = 0 */
+ 548 02ce EC01      		movw r28,r24
+ 549               	.LM84:
+ 550 02d0 8881      		ld r24,Y
+ 551               	.LVL34:
+ 552 02d2 8836      		cpi r24,lo8(104)
+ 553 02d4 01F0      		breq .L36
+ 554 02d6 8936      		cpi r24,lo8(105)
+ 555 02d8 00F4      		brsh .L39
+ 556 02da 8436      		cpi r24,lo8(100)
+ 557 02dc 01F0      		breq .L34
+ 558 02de 8736      		cpi r24,lo8(103)
+ 559 02e0 01F0      		breq .+2
+ 560 02e2 00C0      		rjmp .L33
+ 561 02e4 00C0      		rjmp .L44
+ 562               	.L39:
+ 563 02e6 8D36      		cpi r24,lo8(109)
+ 564 02e8 01F0      		breq .L37
+ 565 02ea 8337      		cpi r24,lo8(115)
+ 566 02ec 01F0      		breq .+2
+ 567 02ee 00C0      		rjmp .L33
+ 568 02f0 00C0      		rjmp .L45
+ 569               	.L44:
+ 570               	.LM85:
+ 571 02f2 8981      		ldd r24,Y+1
+ 572 02f4 8536      		cpi r24,lo8(101)
+ 573 02f6 01F0      		breq .+2
+ 574 02f8 00C0      		rjmp .L40
+ 575 02fa 8A81      		ldd r24,Y+2
+ 576 02fc 8437      		cpi r24,lo8(116)
+ 577 02fe 01F0      		breq .+2
+ 578 0300 00C0      		rjmp .L40
+ 579               	.LM86:
+ 580 0302 0E94 0000 		call showClock
+ 581 0306 00C0      		rjmp .L40
+ 582               	.L45:
+ 583               	.LM87:
+ 584 0308 8981      		ldd r24,Y+1
+ 585 030a 8536      		cpi r24,lo8(101)
+ 586 030c 01F4      		brne .L40
+ 587 030e 8A81      		ldd r24,Y+2
+ 588 0310 8336      		cpi r24,lo8(99)
+ 589 0312 01F4      		brne .L40
+ 590               	.LM88:
+ 591 0314 CE01      		movw r24,r28
+ 592 0316 0E94 0000 		call setSecond
+ 593 031a 00C0      		rjmp .L40
+ 594               	.L37:
+ 595               	.LM89:
+ 596 031c 8981      		ldd r24,Y+1
+ 597 031e 8936      		cpi r24,lo8(105)
+ 598 0320 01F4      		brne .L40
+ 599 0322 8A81      		ldd r24,Y+2
+ 600 0324 8E36      		cpi r24,lo8(110)
+ 601 0326 01F4      		brne .L40
+ 602               	.LM90:
+ 603 0328 CE01      		movw r24,r28
+ 604 032a 0E94 0000 		call setMinute
+ 605 032e 00C0      		rjmp .L40
+ 606               	.L36:
+ 607               	.LM91:
+ 608 0330 8981      		ldd r24,Y+1
+ 609 0332 8F36      		cpi r24,lo8(111)
+ 610 0334 01F4      		brne .L40
+ 611 0336 8A81      		ldd r24,Y+2
+ 612 0338 8537      		cpi r24,lo8(117)
+ 613 033a 01F4      		brne .L40
+ 614 033c 8B81      		ldd r24,Y+3
+ 615 033e 8237      		cpi r24,lo8(114)
+ 616 0340 01F4      		brne .L40
+ 617               	.LM92:
+ 618 0342 CE01      		movw r24,r28
+ 619 0344 0E94 0000 		call setHour
+ 620 0348 00C0      		rjmp .L40
+ 621               	.L34:
+ 622               	.LM93:
+ 623 034a 8981      		ldd r24,Y+1
+ 624 034c 8536      		cpi r24,lo8(101)
+ 625 034e 01F4      		brne .L41
+ 626 0350 8A81      		ldd r24,Y+2
+ 627 0352 8D36      		cpi r24,lo8(109)
+ 628 0354 01F4      		brne .L41
+ 629 0356 8B81      		ldd r24,Y+3
+ 630 0358 8F36      		cpi r24,lo8(111)
+ 631 035a 01F4      		brne .L41
+ 632 035c 8C81      		ldd r24,Y+4
+ 633 035e 8F33      		cpi r24,lo8(63)
+ 634 0360 01F4      		brne .L41
+ 635               	.LM94:
+ 636 0362 80E0      		ldi r24,lo8(TALKING_TO)
+ 637 0364 90E0      		ldi r25,hi8(TALKING_TO)
+ 638 0366 0E94 0000 		call sendFString
+ 639               	.L41:
+ 640               	.LM95:
+ 641 036a 80E0      		ldi r24,lo8(WHO_DEMO)
+ 642 036c 90E0      		ldi r25,hi8(WHO_DEMO)
+ 643 036e 00C0      		rjmp .L43
+ 644               	.L33:
+ 645               	.LM96:
+ 646 0370 80E0      		ldi r24,lo8(BAD_COMMAND1)
+ 647 0372 90E0      		ldi r25,hi8(BAD_COMMAND1)
+ 648 0374 0E94 0000 		call sendFString
+ 649               	.LM97:
+ 650 0378 8881      		ld r24,Y
+ 651 037a 0E94 0000 		call sendChar
+ 652               	.LM98:
+ 653 037e 80E0      		ldi r24,lo8(BAD_COMMAND2)
+ 654 0380 90E0      		ldi r25,hi8(BAD_COMMAND2)
+ 655               	.L43:
+ 656 0382 0E94 0000 		call sendFString
+ 657               	.L40:
+ 658               	.LM99:
+ 659 0386 1882      		st Y,__zero_reg__
+ 660               	/* epilogue start */
+ 661               	.LM100:
+ 662 0388 DF91      		pop r29
+ 663 038a CF91      		pop r28
+ 664               	.LVL35:
+ 665 038c 0895      		ret
+ 666               	.LFE7:
+ 668               	.global	initializer
+ 670               	initializer:
+ 671               	.LFB6:
+ 672               	.LM101:
+ 673 038e EF92      		push r14
+ 674 0390 FF92      		push r15
+ 675 0392 0F93      		push r16
+ 676 0394 1F93      		push r17
+ 677               	/* prologue: function */
+ 678               	/* frame size = 0 */
+ 679               	.LM102:
+ 680 0396 0E94 0000 		call OSCCAL_calibration
+ 681               	.LM103:
+ 682 039a 0E94 0000 		call USARTinit
+ 683               	.LM104:
+ 684 039e 0E94 0000 		call RTC_init
+ 685               	.LM105:
+ 686 03a2 80E0      		ldi r24,lo8(TALKING_TO)
+ 687 03a4 90E0      		ldi r25,hi8(TALKING_TO)
+ 688 03a6 0E94 0000 		call sendFString
+ 689               	.LM106:
+ 690 03aa 80E0      		ldi r24,lo8(WHO_DEMO)
+ 691 03ac 90E0      		ldi r25,hi8(WHO_DEMO)
+ 692 03ae 0E94 0000 		call sendFString
+ 693               	.LM107:
+ 694 03b2 F0E0      		ldi r31,lo8(ENTER)
+ 695 03b4 EF2E      		mov r14,r31
+ 696 03b6 F0E0      		ldi r31,hi8(ENTER)
+ 697 03b8 FF2E      		mov r15,r31
+ 698 03ba C701      		movw r24,r14
+ 699 03bc 0E94 0000 		call sendFString
+ 700               	.LM108:
+ 701 03c0 80E0      		ldi r24,lo8(TEXT_GET)
+ 702 03c2 90E0      		ldi r25,hi8(TEXT_GET)
+ 703 03c4 0E94 0000 		call sendFString
+ 704               	.LM109:
+ 705 03c8 C701      		movw r24,r14
+ 706 03ca 0E94 0000 		call sendFString
+ 707               	.LM110:
+ 708 03ce 80E0      		ldi r24,lo8(TEXT_SEC)
+ 709 03d0 90E0      		ldi r25,hi8(TEXT_SEC)
+ 710 03d2 0E94 0000 		call sendFString
+ 711               	.LM111:
+ 712 03d6 00E0      		ldi r16,lo8(TEXT_TOXX)
+ 713 03d8 10E0      		ldi r17,hi8(TEXT_TOXX)
+ 714 03da C801      		movw r24,r16
+ 715 03dc 0E94 0000 		call sendFString
+ 716               	.LM112:
+ 717 03e0 C701      		movw r24,r14
+ 718 03e2 0E94 0000 		call sendFString
+ 719               	.LM113:
+ 720 03e6 80E0      		ldi r24,lo8(TEXT_MIN)
+ 721 03e8 90E0      		ldi r25,hi8(TEXT_MIN)
+ 722 03ea 0E94 0000 		call sendFString
+ 723               	.LM114:
+ 724 03ee C801      		movw r24,r16
+ 725 03f0 0E94 0000 		call sendFString
+ 726               	.LM115:
+ 727 03f4 C701      		movw r24,r14
+ 728 03f6 0E94 0000 		call sendFString
+ 729               	.LM116:
+ 730 03fa 80E0      		ldi r24,lo8(TEXT_HOUR)
+ 731 03fc 90E0      		ldi r25,hi8(TEXT_HOUR)
+ 732 03fe 0E94 0000 		call sendFString
+ 733               	.LM117:
+ 734 0402 C801      		movw r24,r16
+ 735 0404 0E94 0000 		call sendFString
+ 736               	/* epilogue start */
+ 737               	.LM118:
+ 738 0408 1F91      		pop r17
+ 739 040a 0F91      		pop r16
+ 740 040c FF90      		pop r15
+ 741 040e EF90      		pop r14
+ 742 0410 0895      		ret
+ 743               	.LFE6:
+ 745               	.global	TALKING_TO
+ 746               		.section	.progmem.data,"a",@progbits
+ 749               	TALKING_TO:
+ 750 0000 0D59 6F75 		.string	"\rYou are talking to the "
+ 750      2061 7265 
+ 750      2074 616C 
+ 750      6B69 6E67 
+ 750      2074 6F20 
+ 751               	.global	WHO_DEMO
+ 754               	WHO_DEMO:
+ 755 0019 2752 6561 		.string	"'Real Time Clock' demo.\r"
+ 755      6C20 5469 
+ 755      6D65 2043 
+ 755      6C6F 636B 
+ 755      2720 6465 
+ 756               	.global	BAD_COMMAND1
+ 759               	BAD_COMMAND1:
+ 760 0032 0D59 6F75 		.string	"\rYou sent: '"
+ 760      2073 656E 
+ 760      743A 2027 
+ 760      00
+ 761               	.global	BAD_COMMAND2
+ 764               	BAD_COMMAND2:
+ 765 003f 2720 2D20 		.string	"' - I don't understand.\r"
+ 765      4920 646F 
+ 765      6E27 7420 
+ 765      756E 6465 
+ 765      7273 7461 
+ 766               	.global	ENTER
+ 769               	ENTER:
+ 770 0058 456E 7465 		.string	"Enter "
+ 770      7220 00
+ 771               	.global	TEXT_GET
+ 774               	TEXT_GET:
+ 775 005f 2767 6574 		.string	"'get' to get the time and date.\r"
+ 775      2720 746F 
+ 775      2067 6574 
+ 775      2074 6865 
+ 775      2074 696D 
+ 776               	.global	TEXT_SEC
+ 779               	TEXT_SEC:
+ 780 0080 2773 6563 		.string	"'secXX' to set the second"
+ 780      5858 2720 
+ 780      746F 2073 
+ 780      6574 2074 
+ 780      6865 2073 
+ 781               	.global	TEXT_MIN
+ 784               	TEXT_MIN:
+ 785 009a 276D 696E 		.string	"'minXX' to set the minute"
+ 785      5858 2720 
+ 785      746F 2073 
+ 785      6574 2074 
+ 785      6865 206D 
+ 786               	.global	TEXT_HOUR
+ 789               	TEXT_HOUR:
+ 790 00b4 2768 6F75 		.string	"'hourXX' to set the hour"
+ 790      7258 5827 
+ 790      2074 6F20 
+ 790      7365 7420 
+ 790      7468 6520 
+ 791               	.global	TEXT_TOXX
+ 794               	TEXT_TOXX:
+ 795 00cd 2074 6F20 		.string	" to XX.\r"
+ 795      5858 2E0D 
+ 795      00
+ 796               	.global	ERROR_NUMBER
+ 799               	ERROR_NUMBER:
+ 800 00d6 0D45 5252 		.string	"\rERROR - number must be less than "
+ 800      4F52 202D 
+ 800      206E 756D 
+ 800      6265 7220 
+ 800      6D75 7374 
+ 801               	.global	ERROR_60
+ 804               	ERROR_60:
+ 805 00f9 2036 302E 		.string	" 60.\r"
+ 805      0D00 
+ 806               	.global	ERROR_12
+ 809               	ERROR_12:
+ 810 00ff 2031 322E 		.string	" 12.\r"
+ 810      0D00 
+ 811               	.global	THE_TIME_IS
+ 814               	THE_TIME_IS:
+ 815 0105 5468 6520 		.string	"The time is: "
+ 815      7469 6D65 
+ 815      2069 733A 
+ 815      2000 
+ 816               		.data
+ 819               	C.4.1560:
+ 820 0000 0000 00   		.skip 3,0
+ 823               	C.2.1549:
+ 824 0003 0000 00   		.skip 3,0
+ 827               	C.0.1538:
+ 828 0006 0000 00   		.skip 3,0
+ 829               		.comm gSECOND,1,1
+ 830               		.comm gMINUTE,1,1
+ 831               		.comm gHOUR,1,1
+ 920               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Demonstrator.c
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:18     .text:00000000 CHAR2BCD2
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:47     .text:00000022 RTC_init
+                            *COM*:00000001 gSECOND
+                            *COM*:00000001 gMINUTE
+                            *COM*:00000001 gHOUR
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:139    .text:00000092 __vector_5
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:190    .text:000000e0 showClock
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:814    .progmem.data:00000105 THE_TIME_IS
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:333    .text:000001bc setHour
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:819    .data:00000000 C.4.1560
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:799    .progmem.data:000000d6 ERROR_NUMBER
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:809    .progmem.data:000000ff ERROR_12
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:402    .text:00000216 setMinute
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:823    .data:00000003 C.2.1549
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:804    .progmem.data:000000f9 ERROR_60
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:471    .text:00000270 setSecond
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:827    .data:00000006 C.0.1538
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:540    .text:000002ca parseInput
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:749    .progmem.data:00000000 TALKING_TO
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:754    .progmem.data:00000019 WHO_DEMO
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:759    .progmem.data:00000032 BAD_COMMAND1
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:764    .progmem.data:0000003f BAD_COMMAND2
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:670    .text:0000038e initializer
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:769    .progmem.data:00000058 ENTER
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:774    .progmem.data:0000005f TEXT_GET
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:779    .progmem.data:00000080 TEXT_SEC
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:794    .progmem.data:000000cd TEXT_TOXX
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:784    .progmem.data:0000009a TEXT_MIN
+C:\Users\Bennett\AppData\Local\Temp/ccpKceGL.s:789    .progmem.data:000000b4 TEXT_HOUR
+
+UNDEFINED SYMBOLS
+__udivmodqi4
+sendFString
+sendChar
+atoi
+OSCCAL_calibration
+USARTinit
+__do_copy_data
+__do_clear_bss

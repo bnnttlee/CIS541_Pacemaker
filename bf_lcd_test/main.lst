@@ -1,0 +1,64 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	Initialization
+  18               	Initialization:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 0E94 0000 		call LCD_Init
+  25               	/* epilogue start */
+  26               	.LM3:
+  27 0004 0895      		ret
+  28               	.LFE3:
+  30               	.global	main
+  32               	main:
+  33               	.LFB2:
+  34               	.LM4:
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	.LBB5:
+  38               	.LBB6:
+  39               	.LM5:
+  40 0006 0E94 0000 		call LCD_Init
+  41               	.LBE6:
+  42               	.LBE5:
+  43               	.LM6:
+  44               	/* #APP */
+  45               	 ;  44 "main.c" 1
+  46 000a 7894      		sei
+  47               	 ;  0 "" 2
+  48               	.LM7:
+  49               	/* #NOAPP */
+  50 000c 81E0      		ldi r24,lo8(1)
+  51 000e 64E1      		ldi r22,lo8(20)
+  52 0010 0E94 0000 		call LCD_putc
+  53               	.LM8:
+  54 0014 80E0      		ldi r24,lo8(0)
+  55 0016 0E94 0000 		call LCD_Colon
+  56               	.L4:
+  57 001a 00C0      		rjmp .L4
+  58               	.LFE2:
+  92               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:18     .text:00000000 Initialization
+C:\Users\Bennett\AppData\Local\Temp/ccRExdLd.s:32     .text:00000006 main
+
+UNDEFINED SYMBOLS
+LCD_Init
+LCD_putc
+LCD_Colon

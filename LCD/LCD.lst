@@ -1,0 +1,47 @@
+   1               		.file	"LCD.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8FEF      		ldi r24,lo8(-1)
+  25 0002 8AB9      		out 42-32,r24
+  26               	.LM3:
+  27 0004 81E0      		ldi r24,lo8(1)
+  28 0006 8BB9      		out 43-32,r24
+  29               	.LM4:
+  30 0008 0E94 0000 		call LCD_Init
+  31               	.LM5:
+  32 000c 8FE6      		ldi r24,lo8(111)
+  33 000e 90E0      		ldi r25,hi8(111)
+  34 0010 61E0      		ldi r22,lo8(1)
+  35 0012 0E94 0000 		call LCD_puts_f
+  36               	.LM6:
+  37 0016 81E0      		ldi r24,lo8(1)
+  38               	.L2:
+  39 0018 8BB9      		out 43-32,r24
+  40 001a 00C0      		rjmp .L2
+  41               	.LFE2:
+  67               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 LCD.c
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/cc9qEOIG.s:18     .text:00000000 main
+
+UNDEFINED SYMBOLS
+LCD_Init
+LCD_puts_f

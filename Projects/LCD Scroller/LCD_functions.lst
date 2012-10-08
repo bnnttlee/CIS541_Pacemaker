@@ -1,0 +1,377 @@
+   1               		.file	"LCD_functions.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	LCD_puts_f
+  18               	LCD_puts_f:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24 0000 382F      		mov r19,r24
+  25 0002 292F      		mov r18,r25
+  26               	.LVL1:
+  27               	.LVL2:
+  28               	.L2:
+  29               	.LM2:
+  30 0004 8091 0000 		lds r24,gLCD_Update_Required
+  31 0008 8823      		tst r24
+  32 000a 01F4      		brne .L2
+  33 000c A0E0      		ldi r26,lo8(gTextBuffer)
+  34 000e B0E0      		ldi r27,hi8(gTextBuffer)
+  35 0010 832F      		mov r24,r19
+  36 0012 922F      		mov r25,r18
+  37 0014 FC01      		movw r30,r24
+  38 0016 00C0      		rjmp .L3
+  39               	.LVL3:
+  40               	.L5:
+  41               	.LM3:
+  42 0018 8D93      		st X+,r24
+  43               	.LVL4:
+  44               	.L3:
+  45 001a 9E2F      		mov r25,r30
+  46 001c 931B      		sub r25,r19
+  47               	.LBB18:
+  48               	.LM4:
+  49               	/* #APP */
+  50               	 ;  48 "LCD_functions.c" 1
+  51 001e 8491      		lpm r24, Z
+  52               		
+  53               	 ;  0 "" 2
+  54               	/* #NOAPP */
+  55               	.LBE18:
+  56 0020 8823      		tst r24
+  57 0022 01F0      		breq .L4
+  58 0024 3196      		adiw r30,1
+  59 0026 20E0      		ldi r18,hi8(gTextBuffer+64)
+  60 0028 A030      		cpi r26,lo8(gTextBuffer+64)
+  61 002a B207      		cpc r27,r18
+  62               	.LVL5:
+  63 002c 01F4      		brne .L5
+  64               	.LVL6:
+  65               	.L4:
+  66               	.LM5:
+  67 002e E92F      		mov r30,r25
+  68 0030 F0E0      		ldi r31,lo8(0)
+  69               	.LVL7:
+  70 0032 E050      		subi r30,lo8(-(gTextBuffer))
+  71 0034 F040      		sbci r31,hi8(-(gTextBuffer))
+  72               	.LVL8:
+  73 0036 1082      		st Z,__zero_reg__
+  74               	.LM6:
+  75 0038 9730      		cpi r25,lo8(7)
+  76 003a 00F0      		brlo .L6
+  77               	.LVL9:
+  78               	.LM7:
+  79 003c 81E0      		ldi r24,lo8(1)
+  80               	.LVL10:
+  81 003e 8093 0000 		sts gScrollMode,r24
+  82               	.LM8:
+  83 0042 1092 0000 		sts gScroll,__zero_reg__
+  84               	.LM9:
+  85 0046 83E0      		ldi r24,lo8(3)
+  86 0048 8093 0000 		sts gLCD_Start_Scroll_Timer,r24
+  87 004c 00C0      		rjmp .L7
+  88               	.LVL11:
+  89               	.L6:
+  90               	.LM10:
+  91 004e 1092 0000 		sts gScrollMode,__zero_reg__
+  92               	.LM11:
+  93 0052 1092 0000 		sts gScroll,__zero_reg__
+  94               	.L7:
+  95               	.LM12:
+  96 0056 81E0      		ldi r24,lo8(1)
+  97               	.LVL12:
+  98 0058 8093 0000 		sts gLCD_Update_Required,r24
+  99               	/* epilogue start */
+ 100               	.LM13:
+ 101 005c 0895      		ret
+ 102               	.LFE2:
+ 104               	.global	LCD_puts
+ 106               	LCD_puts:
+ 107               	.LFB3:
+ 108               	.LM14:
+ 109               	.LVL13:
+ 110               	/* prologue: function */
+ 111               	/* frame size = 0 */
+ 112 005e 482F      		mov r20,r24
+ 113 0060 292F      		mov r18,r25
+ 114               	.LVL14:
+ 115               	.LVL15:
+ 116               	.L11:
+ 117               	.LM15:
+ 118 0062 8091 0000 		lds r24,gLCD_Update_Required
+ 119 0066 8823      		tst r24
+ 120 0068 01F4      		brne .L11
+ 121 006a A0E0      		ldi r26,lo8(gTextBuffer)
+ 122 006c B0E0      		ldi r27,hi8(gTextBuffer)
+ 123 006e 842F      		mov r24,r20
+ 124 0070 922F      		mov r25,r18
+ 125 0072 9C01      		movw r18,r24
+ 126               	.LVL16:
+ 127 0074 F901      		movw r30,r18
+ 128 0076 00C0      		rjmp .L12
+ 129               	.LVL17:
+ 130               	.L14:
+ 131               	.LM16:
+ 132 0078 8D93      		st X+,r24
+ 133               	.L12:
+ 134 007a 9E2F      		mov r25,r30
+ 135 007c 941B      		sub r25,r20
+ 136               	.LM17:
+ 137 007e 8081      		ld r24,Z
+ 138 0080 8823      		tst r24
+ 139 0082 01F0      		breq .L13
+ 140 0084 3196      		adiw r30,1
+ 141 0086 20E0      		ldi r18,hi8(gTextBuffer+64)
+ 142 0088 A030      		cpi r26,lo8(gTextBuffer+64)
+ 143 008a B207      		cpc r27,r18
+ 144 008c 01F4      		brne .L14
+ 145               	.L13:
+ 146               	.LM18:
+ 147 008e E92F      		mov r30,r25
+ 148 0090 F0E0      		ldi r31,lo8(0)
+ 149               	.LVL18:
+ 150 0092 E050      		subi r30,lo8(-(gTextBuffer))
+ 151 0094 F040      		sbci r31,hi8(-(gTextBuffer))
+ 152               	.LVL19:
+ 153 0096 1082      		st Z,__zero_reg__
+ 154               	.LM19:
+ 155 0098 9730      		cpi r25,lo8(7)
+ 156 009a 00F0      		brlo .L15
+ 157               	.LVL20:
+ 158               	.LM20:
+ 159 009c 81E0      		ldi r24,lo8(1)
+ 160 009e 8093 0000 		sts gScrollMode,r24
+ 161               	.LM21:
+ 162 00a2 1092 0000 		sts gScroll,__zero_reg__
+ 163               	.LM22:
+ 164 00a6 83E0      		ldi r24,lo8(3)
+ 165 00a8 8093 0000 		sts gLCD_Start_Scroll_Timer,r24
+ 166 00ac 00C0      		rjmp .L16
+ 167               	.L15:
+ 168               	.LM23:
+ 169 00ae 1092 0000 		sts gScrollMode,__zero_reg__
+ 170               	.LM24:
+ 171 00b2 1092 0000 		sts gScroll,__zero_reg__
+ 172               	.L16:
+ 173               	.LM25:
+ 174 00b6 81E0      		ldi r24,lo8(1)
+ 175 00b8 8093 0000 		sts gLCD_Update_Required,r24
+ 176               	/* epilogue start */
+ 177               	.LM26:
+ 178 00bc 0895      		ret
+ 179               	.LFE3:
+ 181               	.global	LCD_putc
+ 183               	LCD_putc:
+ 184               	.LFB4:
+ 185               	.LM27:
+ 186               	.LVL21:
+ 187               	/* prologue: function */
+ 188               	/* frame size = 0 */
+ 189               	.LM28:
+ 190 00be 8034      		cpi r24,lo8(64)
+ 191 00c0 00F4      		brsh .L21
+ 192               	.LM29:
+ 193 00c2 E82F      		mov r30,r24
+ 194 00c4 F0E0      		ldi r31,lo8(0)
+ 195               	.LVL22:
+ 196 00c6 E050      		subi r30,lo8(-(gTextBuffer))
+ 197 00c8 F040      		sbci r31,hi8(-(gTextBuffer))
+ 198               	.LVL23:
+ 199 00ca 6083      		st Z,r22
+ 200               	.LVL24:
+ 201               	.L21:
+ 202 00cc 0895      		ret
+ 203               	.LFE4:
+ 205               	.global	LCD_Clear
+ 207               	LCD_Clear:
+ 208               	.LFB5:
+ 209               	.LM30:
+ 210               	/* prologue: function */
+ 211               	/* frame size = 0 */
+ 212               	.LM31:
+ 213 00ce E0E0      		ldi r30,lo8(gTextBuffer)
+ 214 00d0 F0E0      		ldi r31,hi8(gTextBuffer)
+ 215               	.L23:
+ 216               	.LM32:
+ 217 00d2 1192      		st Z+,__zero_reg__
+ 218               	.LM33:
+ 219 00d4 80E0      		ldi r24,hi8(gTextBuffer+64)
+ 220 00d6 E030      		cpi r30,lo8(gTextBuffer+64)
+ 221 00d8 F807      		cpc r31,r24
+ 222 00da 01F4      		brne .L23
+ 223               	/* epilogue start */
+ 224               	.LM34:
+ 225 00dc 0895      		ret
+ 226               	.LFE5:
+ 228               	.global	LCD_Colon
+ 230               	LCD_Colon:
+ 231               	.LFB6:
+ 232               	.LM35:
+ 233               	.LVL25:
+ 234               	/* prologue: function */
+ 235               	/* frame size = 0 */
+ 236               	.LM36:
+ 237 00de 8093 0000 		sts gColon,r24
+ 238               	/* epilogue start */
+ 239               	.LM37:
+ 240 00e2 0895      		ret
+ 241               	.LFE6:
+ 243               	.global	LCD_UpdateRequired
+ 245               	LCD_UpdateRequired:
+ 246               	.LFB7:
+ 247               	.LM38:
+ 248               	.LVL26:
+ 249               	/* prologue: function */
+ 250               	/* frame size = 0 */
+ 251 00e4 982F      		mov r25,r24
+ 252               	.LVL27:
+ 253               	.L29:
+ 254               	.LM39:
+ 255 00e6 8091 0000 		lds r24,gLCD_Update_Required
+ 256 00ea 8823      		tst r24
+ 257 00ec 01F4      		brne .L29
+ 258               	.LM40:
+ 259 00ee 6093 0000 		sts gScrollMode,r22
+ 260               	.LM41:
+ 261 00f2 1092 0000 		sts gScroll,__zero_reg__
+ 262               	.LM42:
+ 263 00f6 9093 0000 		sts gLCD_Update_Required,r25
+ 264               	/* epilogue start */
+ 265               	.LM43:
+ 266 00fa 0895      		ret
+ 267               	.LFE7:
+ 269               	.global	LCD_FlashReset
+ 271               	LCD_FlashReset:
+ 272               	.LFB8:
+ 273               	.LM44:
+ 274               	/* prologue: function */
+ 275               	/* frame size = 0 */
+ 276               	.LM45:
+ 277 00fc 1092 0000 		sts gFlashTimer,__zero_reg__
+ 278               	/* epilogue start */
+ 279               	.LM46:
+ 280 0100 0895      		ret
+ 281               	.LFE8:
+ 283               	.global	SetContrast
+ 285               	SetContrast:
+ 286               	.LFB9:
+ 287               	.LM47:
+ 288               	.LVL28:
+ 289               	/* prologue: function */
+ 290               	/* frame size = 0 */
+ 291 0102 982F      		mov r25,r24
+ 292               	.LM48:
+ 293 0104 E0E0      		ldi r30,lo8(gTextBuffer)
+ 294 0106 F0E0      		ldi r31,hi8(gTextBuffer)
+ 295               	.LVL29:
+ 296               	.L35:
+ 297               	.LBB19:
+ 298               	.LBB20:
+ 299               	.LM49:
+ 300 0108 1192      		st Z+,__zero_reg__
+ 301               	.LM50:
+ 302 010a 80E0      		ldi r24,hi8(gTextBuffer+64)
+ 303 010c E030      		cpi r30,lo8(gTextBuffer+64)
+ 304 010e F807      		cpc r31,r24
+ 305 0110 01F4      		brne .L35
+ 306               	.LBE20:
+ 307               	.LBE19:
+ 308               	.LBB21:
+ 309               	.LBB22:
+ 310               	.LM51:
+ 311 0112 81E4      		ldi r24,lo8(65)
+ 312 0114 8093 0000 		sts gTextBuffer,r24
+ 313               	.LBE22:
+ 314               	.LBE21:
+ 315               	.LBB23:
+ 316               	.LBB24:
+ 317 0118 82E4      		ldi r24,lo8(66)
+ 318 011a 8093 0000 		sts gTextBuffer+1,r24
+ 319               	.LBE24:
+ 320               	.LBE23:
+ 321               	.LBB25:
+ 322               	.LBB26:
+ 323 011e 83E4      		ldi r24,lo8(67)
+ 324 0120 8093 0000 		sts gTextBuffer+2,r24
+ 325               	.LBE26:
+ 326               	.LBE25:
+ 327               	.LBB27:
+ 328               	.LBB28:
+ 329 0124 84E4      		ldi r24,lo8(68)
+ 330 0126 8093 0000 		sts gTextBuffer+3,r24
+ 331               	.LBE28:
+ 332               	.LBE27:
+ 333               	.LBB29:
+ 334               	.LBB30:
+ 335 012a 85E4      		ldi r24,lo8(69)
+ 336 012c 8093 0000 		sts gTextBuffer+4,r24
+ 337               	.LBE30:
+ 338               	.LBE29:
+ 339               	.LBB31:
+ 340               	.LBB32:
+ 341 0130 86E4      		ldi r24,lo8(70)
+ 342 0132 8093 0000 		sts gTextBuffer+5,r24
+ 343               	.L36:
+ 344               	.LBE32:
+ 345               	.LBE31:
+ 346               	.LBB33:
+ 347               	.LBB34:
+ 348               	.LM52:
+ 349 0136 8091 0000 		lds r24,gLCD_Update_Required
+ 350 013a 8823      		tst r24
+ 351 013c 01F4      		brne .L36
+ 352               	.LM53:
+ 353 013e 1092 0000 		sts gScrollMode,__zero_reg__
+ 354               	.LM54:
+ 355 0142 1092 0000 		sts gScroll,__zero_reg__
+ 356               	.LM55:
+ 357 0146 81E0      		ldi r24,lo8(1)
+ 358 0148 8093 0000 		sts gLCD_Update_Required,r24
+ 359               	.LBE34:
+ 360               	.LBE33:
+ 361               	.LM56:
+ 362 014c 9F70      		andi r25,lo8(15)
+ 363 014e 9093 E700 		sts 231,r25
+ 364               	/* epilogue start */
+ 365               	.LM57:
+ 366 0152 0895      		ret
+ 367               	.LFE9:
+ 369               	.global	CONTRAST
+ 370               		.data
+ 373               	CONTRAST:
+ 374 0000 0F        		.byte	15
+ 455               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 LCD_functions.c
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:18     .text:00000000 LCD_puts_f
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:106    .text:0000005e LCD_puts
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:183    .text:000000be LCD_putc
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:207    .text:000000ce LCD_Clear
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:230    .text:000000de LCD_Colon
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:245    .text:000000e4 LCD_UpdateRequired
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:271    .text:000000fc LCD_FlashReset
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:285    .text:00000102 SetContrast
+C:\Users\Bennett\AppData\Local\Temp/ccEMTu2M.s:373    .data:00000000 CONTRAST
+
+UNDEFINED SYMBOLS
+gLCD_Update_Required
+gTextBuffer
+gScrollMode
+gScroll
+gLCD_Start_Scroll_Timer
+gColon
+gFlashTimer
+__do_copy_data

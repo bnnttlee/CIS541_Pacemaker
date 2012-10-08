@@ -1,0 +1,344 @@
+   1               		.file	"Demonstrator.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	showEEPROM
+  18               	showEEPROM:
+  19               	.LFB11:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23 0000 00C0      		rjmp .L2
+  24               	.L3:
+  25               	.LBB6:
+  26               	.LBB7:
+  27               	.LM2:
+  28               	/* #APP */
+  29               	 ;  23 "eeprom169.h" 1
+  30 0002 0000      		nop
+  31               	 ;  0 "" 2
+  32               	/* #NOAPP */
+  33               	.L2:
+  34 0004 F999      		sbic 63-32,1
+  35 0006 00C0      		rjmp .L3
+  36               	.LM3:
+  37 0008 80E0      		ldi r24,lo8(256)
+  38 000a 91E0      		ldi r25,hi8(256)
+  39 000c 92BD      		out (65)+1-32,r25
+  40 000e 81BD      		out 65-32,r24
+  41               	.LM4:
+  42 0010 F89A      		sbi 63-32,0
+  43               	.LM5:
+  44 0012 60B5      		in r22,64-32
+  45               	.LVL0:
+  46               	.LBE7:
+  47               	.LBE6:
+  48               	.LM6:
+  49 0014 862F      		mov r24,r22
+  50 0016 8150      		subi r24,lo8(-(-1))
+  51 0018 8034      		cpi r24,lo8(64)
+  52 001a 00F4      		brsh .L4
+  53               	.LM7:
+  54 001c 80E0      		ldi r24,lo8(buffer.1616)
+  55 001e 90E0      		ldi r25,hi8(buffer.1616)
+  56 0020 44E0      		ldi r20,lo8(260)
+  57 0022 51E0      		ldi r21,hi8(260)
+  58 0024 0E94 0000 		call LoadEEPROM
+  59               	.LVL1:
+  60               	.LM8:
+  61 0028 80E0      		ldi r24,lo8(buffer.1616)
+  62 002a 90E0      		ldi r25,hi8(buffer.1616)
+  63 002c 61E0      		ldi r22,lo8(1)
+  64 002e 0E94 0000 		call LCD_puts
+  65 0032 0895      		ret
+  66               	.LVL2:
+  67               	.L4:
+  68               	.LM9:
+  69 0034 80E0      		ldi r24,lo8(INVALID_msg)
+  70 0036 90E0      		ldi r25,hi8(INVALID_msg)
+  71 0038 61E0      		ldi r22,lo8(1)
+  72               	.LVL3:
+  73 003a 0E94 0000 		call LCD_puts_f
+  74 003e 0895      		ret
+  75               	.LFE11:
+  77               	.global	OnMSG
+  79               	OnMSG:
+  80               	.LFB10:
+  81               	.LM10:
+  82               	.LVL4:
+  83 0040 CF93      		push r28
+  84 0042 DF93      		push r29
+  85               	/* prologue: function */
+  86               	/* frame size = 0 */
+  87 0044 EC01      		movw r28,r24
+  88               	.LM11:
+  89 0046 80E0      		ldi r24,lo8(OnMSG_msg)
+  90 0048 90E0      		ldi r25,hi8(OnMSG_msg)
+  91               	.LVL5:
+  92 004a 0E94 0000 		call sendFString
+  93 004e 6091 0000 		lds r22,temp_index.1603
+  94               	.L8:
+  95               	.LM12:
+  96 0052 FE01      		movw r30,r28
+  97 0054 E60F      		add r30,r22
+  98 0056 F11D      		adc r31,__zero_reg__
+  99 0058 8081      		ld r24,Z
+ 100 005a 6F5F      		subi r22,lo8(-(1))
+ 101 005c 8823      		tst r24
+ 102 005e 01F4      		brne .L8
+ 103 0060 6093 0000 		sts temp_index.1603,r22
+ 104               	.LBB8:
+ 105               	.LBB9:
+ 106               	.LM13:
+ 107               	/* #APP */
+ 108               	 ;  35 "eeprom169.h" 1
+ 109 0064 F894      		cli
+ 110               	 ;  0 "" 2
+ 111               	/* #NOAPP */
+ 112 0066 00C0      		rjmp .L9
+ 113               	.L10:
+ 114               	.LM14:
+ 115               	/* #APP */
+ 116               	 ;  37 "eeprom169.h" 1
+ 117 0068 0000      		nop
+ 118               	 ;  0 "" 2
+ 119               	/* #NOAPP */
+ 120               	.L9:
+ 121 006a F999      		sbic 63-32,1
+ 122 006c 00C0      		rjmp .L10
+ 123               	.LM15:
+ 124 006e 80E0      		ldi r24,lo8(256)
+ 125 0070 91E0      		ldi r25,hi8(256)
+ 126 0072 92BD      		out (65)+1-32,r25
+ 127 0074 81BD      		out 65-32,r24
+ 128               	.LM16:
+ 129 0076 60BD      		out 64-32,r22
+ 130               	.LM17:
+ 131 0078 FA9A      		sbi 63-32,2
+ 132               	.LM18:
+ 133 007a F99A      		sbi 63-32,1
+ 134 007c 00C0      		rjmp .L11
+ 135               	.L12:
+ 136               	.LM19:
+ 137               	/* #APP */
+ 138               	 ;  45 "eeprom169.h" 1
+ 139 007e 0000      		nop
+ 140               	 ;  0 "" 2
+ 141               	/* #NOAPP */
+ 142               	.L11:
+ 143 0080 F999      		sbic 63-32,1
+ 144 0082 00C0      		rjmp .L12
+ 145               	.LM20:
+ 146               	/* #APP */
+ 147               	 ;  46 "eeprom169.h" 1
+ 148 0084 7894      		sei
+ 149               	 ;  0 "" 2
+ 150               	/* #NOAPP */
+ 151               	.LBE9:
+ 152               	.LBE8:
+ 153               	.LM21:
+ 154 0086 CE01      		movw r24,r28
+ 155 0088 41E0      		ldi r20,lo8(257)
+ 156 008a 51E0      		ldi r21,hi8(257)
+ 157 008c 0E94 0000 		call StoreEEPROM
+ 158               	.LM22:
+ 159 0090 0E94 0000 		call showEEPROM
+ 160               	/* epilogue start */
+ 161               	.LM23:
+ 162 0094 DF91      		pop r29
+ 163 0096 CF91      		pop r28
+ 164               	.LVL6:
+ 165 0098 0895      		ret
+ 166               	.LFE10:
+ 168               	.global	parseInput
+ 170               	parseInput:
+ 171               	.LFB9:
+ 172               	.LM24:
+ 173               	.LVL7:
+ 174 009a CF93      		push r28
+ 175 009c DF93      		push r29
+ 176               	/* prologue: function */
+ 177               	/* frame size = 0 */
+ 178 009e EC01      		movw r28,r24
+ 179               	.LM25:
+ 180 00a0 8881      		ld r24,Y
+ 181               	.LVL8:
+ 182 00a2 8D34      		cpi r24,lo8(77)
+ 183 00a4 01F0      		breq .L17
+ 184 00a6 8436      		cpi r24,lo8(100)
+ 185 00a8 01F4      		brne .L21
+ 186               	.LM26:
+ 187 00aa 8981      		ldd r24,Y+1
+ 188 00ac 8536      		cpi r24,lo8(101)
+ 189 00ae 01F4      		brne .L20
+ 190 00b0 8A81      		ldd r24,Y+2
+ 191 00b2 8D36      		cpi r24,lo8(109)
+ 192 00b4 01F4      		brne .L20
+ 193 00b6 8B81      		ldd r24,Y+3
+ 194 00b8 8F36      		cpi r24,lo8(111)
+ 195 00ba 01F4      		brne .L20
+ 196 00bc 8C81      		ldd r24,Y+4
+ 197 00be 8F33      		cpi r24,lo8(63)
+ 198 00c0 01F4      		brne .L20
+ 199               	.LM27:
+ 200 00c2 80E0      		ldi r24,lo8(TALKING_TO)
+ 201 00c4 90E0      		ldi r25,hi8(TALKING_TO)
+ 202 00c6 0E94 0000 		call sendFString
+ 203               	.LM28:
+ 204 00ca 80E0      		ldi r24,lo8(WHO_DEMO)
+ 205 00cc 90E0      		ldi r25,hi8(WHO_DEMO)
+ 206 00ce 00C0      		rjmp .L22
+ 207               	.L17:
+ 208               	.LM29:
+ 209 00d0 8981      		ldd r24,Y+1
+ 210 00d2 8335      		cpi r24,lo8(83)
+ 211 00d4 01F4      		brne .L20
+ 212 00d6 8A81      		ldd r24,Y+2
+ 213 00d8 8734      		cpi r24,lo8(71)
+ 214 00da 01F4      		brne .L20
+ 215               	.LM30:
+ 216 00dc CE01      		movw r24,r28
+ 217 00de 0E94 0000 		call OnMSG
+ 218 00e2 00C0      		rjmp .L20
+ 219               	.L21:
+ 220               	.LM31:
+ 221 00e4 80E0      		ldi r24,lo8(BAD_COMMAND1)
+ 222 00e6 90E0      		ldi r25,hi8(BAD_COMMAND1)
+ 223 00e8 0E94 0000 		call sendFString
+ 224               	.LM32:
+ 225 00ec 8881      		ld r24,Y
+ 226 00ee 0E94 0000 		call sendChar
+ 227               	.LM33:
+ 228 00f2 80E0      		ldi r24,lo8(BAD_COMMAND2)
+ 229 00f4 90E0      		ldi r25,hi8(BAD_COMMAND2)
+ 230               	.L22:
+ 231 00f6 0E94 0000 		call sendFString
+ 232               	.L20:
+ 233               	/* epilogue start */
+ 234               	.LM34:
+ 235 00fa DF91      		pop r29
+ 236 00fc CF91      		pop r28
+ 237               	.LVL9:
+ 238 00fe 0895      		ret
+ 239               	.LFE9:
+ 241               	.global	initializer
+ 243               	initializer:
+ 244               	.LFB8:
+ 245               	.LM35:
+ 246               	/* prologue: function */
+ 247               	/* frame size = 0 */
+ 248               	.LM36:
+ 249 0100 0E94 0000 		call OSCCAL_calibration
+ 250               	.LM37:
+ 251 0104 0E94 0000 		call USARTinit
+ 252               	.LM38:
+ 253 0108 0E94 0000 		call LCD_Init
+ 254               	.LM39:
+ 255 010c 80E0      		ldi r24,lo8(TALKING_TO)
+ 256 010e 90E0      		ldi r25,hi8(TALKING_TO)
+ 257 0110 0E94 0000 		call sendFString
+ 258               	.LM40:
+ 259 0114 80E0      		ldi r24,lo8(WHO_DEMO)
+ 260 0116 90E0      		ldi r25,hi8(WHO_DEMO)
+ 261 0118 0E94 0000 		call sendFString
+ 262               	.LM41:
+ 263 011c 0E94 0000 		call showEEPROM
+ 264               	/* epilogue start */
+ 265               	.LM42:
+ 266 0120 0895      		ret
+ 267               	.LFE8:
+ 269               	.global	TALKING_TO
+ 270               		.section	.progmem.data,"a",@progbits
+ 273               	TALKING_TO:
+ 274 0000 0D0D 596F 		.string	"\r\rYou are talking to the "
+ 274      7520 6172 
+ 274      6520 7461 
+ 274      6C6B 696E 
+ 274      6720 746F 
+ 275 001a 00        		.string	""
+ 276               	.global	WHO_DEMO
+ 279               	WHO_DEMO:
+ 280 001b 2773 6372 		.string	"'scroller' demo.\r\r"
+ 280      6F6C 6C65 
+ 280      7227 2064 
+ 280      656D 6F2E 
+ 280      0D0D 00
+ 281 002e 00        		.string	""
+ 282               	.global	BAD_COMMAND1
+ 285               	BAD_COMMAND1:
+ 286 002f 0D59 6F75 		.string	"\rYou sent: '"
+ 286      2073 656E 
+ 286      743A 2027 
+ 286      00
+ 287 003c 00        		.string	""
+ 288               	.global	BAD_COMMAND2
+ 291               	BAD_COMMAND2:
+ 292 003d 2720 2D20 		.string	"' - I don't understand.\r"
+ 292      4920 646F 
+ 292      6E27 7420 
+ 292      756E 6465 
+ 292      7273 7461 
+ 293 0056 00        		.string	""
+ 294               	.global	Scroller_msg
+ 297               	Scroller_msg:
+ 298 0057 5363 726F 		.string	"Scroller demo\r"
+ 298      6C6C 6572 
+ 298      2064 656D 
+ 298      6F0D 00
+ 299 0066 00        		.string	""
+ 300               	.global	OnMSG_msg
+ 303               	OnMSG_msg:
+ 304 0067 4C6F 6164 		.string	"Loading the message to scroll\r"
+ 304      696E 6720 
+ 304      7468 6520 
+ 304      6D65 7373 
+ 304      6167 6520 
+ 305 0086 00        		.string	""
+ 306               	.global	INVALID_msg
+ 309               	INVALID_msg:
+ 310 0087 496E 7661 		.string	"Invalid message in EEPROM\r"
+ 310      6C69 6420 
+ 310      6D65 7373 
+ 310      6167 6520 
+ 310      696E 2045 
+ 311 00a2 00        		.string	""
+ 312               		.lcomm buffer.1616,64
+ 313               		.lcomm temp_index.1603,1
+ 362               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Demonstrator.c
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:18     .text:00000000 showEEPROM
+                             .bss:00000000 buffer.1616
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:309    .progmem.data:00000087 INVALID_msg
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:79     .text:00000040 OnMSG
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:303    .progmem.data:00000067 OnMSG_msg
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:312    .bss:00000040 temp_index.1603
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:170    .text:0000009a parseInput
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:273    .progmem.data:00000000 TALKING_TO
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:279    .progmem.data:0000001b WHO_DEMO
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:285    .progmem.data:0000002f BAD_COMMAND1
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:291    .progmem.data:0000003d BAD_COMMAND2
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:243    .text:00000100 initializer
+C:\Users\Bennett\AppData\Local\Temp/ccwSJkKr.s:297    .progmem.data:00000057 Scroller_msg
+
+UNDEFINED SYMBOLS
+LoadEEPROM
+LCD_puts
+LCD_puts_f
+sendFString
+StoreEEPROM
+sendChar
+OSCCAL_calibration
+USARTinit
+LCD_Init
+__do_clear_bss

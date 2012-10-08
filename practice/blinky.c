@@ -4,7 +4,7 @@
 #include <avr/interrupt.h>
 #include <inttypes.h>
 
-int TIMER_COUNT =0;
+int TIMER_COUNT = 0;
 int LED_STATE = 0;
 void Timer0_Init(void);
 
@@ -36,7 +36,7 @@ int main(){
 	//Do Nothing...
 	
 	while(1){
-	i - i+1;
+	i = i+1;
 	}
 	
 	return 0;

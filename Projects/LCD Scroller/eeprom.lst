@@ -1,0 +1,147 @@
+   1               		.file	"eeprom.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	StoreEEPROM
+  18               	StoreEEPROM:
+  19               	.LFB4:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 FC01      		movw r30,r24
+  26               	.LVL1:
+  27 0002 80E0      		ldi r24,lo8(0)
+  28               	.LVL2:
+  29 0004 00C0      		rjmp .L2
+  30               	.L7:
+  31               	.LM3:
+  32 0006 9081      		ld r25,Z
+  33               	.LBB6:
+  34               	.LBB7:
+  35               	.LM4:
+  36               	/* #APP */
+  37               	 ;  35 "eeprom169.h" 1
+  38 0008 F894      		cli
+  39               	 ;  0 "" 2
+  40               	/* #NOAPP */
+  41 000a 00C0      		rjmp .L3
+  42               	.L4:
+  43               	.LM5:
+  44               	/* #APP */
+  45               	 ;  37 "eeprom169.h" 1
+  46 000c 0000      		nop
+  47               	 ;  0 "" 2
+  48               	/* #NOAPP */
+  49               	.L3:
+  50 000e F999      		sbic 63-32,1
+  51 0010 00C0      		rjmp .L4
+  52               	.LM6:
+  53 0012 52BD      		out (65)+1-32,r21
+  54 0014 41BD      		out 65-32,r20
+  55               	.LM7:
+  56 0016 90BD      		out 64-32,r25
+  57               	.LM8:
+  58 0018 FA9A      		sbi 63-32,2
+  59               	.LM9:
+  60 001a F99A      		sbi 63-32,1
+  61 001c 00C0      		rjmp .L5
+  62               	.L6:
+  63               	.LM10:
+  64               	/* #APP */
+  65               	 ;  45 "eeprom169.h" 1
+  66 001e 0000      		nop
+  67               	 ;  0 "" 2
+  68               	/* #NOAPP */
+  69               	.L5:
+  70 0020 F999      		sbic 63-32,1
+  71 0022 00C0      		rjmp .L6
+  72               	.LM11:
+  73               	/* #APP */
+  74               	 ;  46 "eeprom169.h" 1
+  75 0024 7894      		sei
+  76               	 ;  0 "" 2
+  77               	/* #NOAPP */
+  78               	.LBE7:
+  79               	.LBE6:
+  80               	.LM12:
+  81 0026 4F5F      		subi r20,lo8(-(1))
+  82 0028 5F4F      		sbci r21,hi8(-(1))
+  83               	.LVL3:
+  84               	.LM13:
+  85 002a 8F5F      		subi r24,lo8(-(1))
+  86 002c 3196      		adiw r30,1
+  87               	.L2:
+  88 002e 8617      		cp r24,r22
+  89 0030 00F0      		brlo .L7
+  90               	/* epilogue start */
+  91               	.LM14:
+  92 0032 0895      		ret
+  93               	.LFE4:
+  95               	.global	LoadEEPROM
+  97               	LoadEEPROM:
+  98               	.LFB5:
+  99               	.LM15:
+ 100               	.LVL4:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	.LM16:
+ 104 0034 FC01      		movw r30,r24
+ 105               	.LVL5:
+ 106 0036 90E0      		ldi r25,lo8(0)
+ 107               	.LVL6:
+ 108 0038 00C0      		rjmp .L10
+ 109               	.L11:
+ 110               	.LBB8:
+ 111               	.LBB9:
+ 112               	.LM17:
+ 113               	/* #APP */
+ 114               	 ;  23 "eeprom169.h" 1
+ 115 003a 0000      		nop
+ 116               	 ;  0 "" 2
+ 117               	/* #NOAPP */
+ 118               	.L14:
+ 119 003c F999      		sbic 63-32,1
+ 120 003e 00C0      		rjmp .L11
+ 121               	.LM18:
+ 122 0040 52BD      		out (65)+1-32,r21
+ 123 0042 41BD      		out 65-32,r20
+ 124               	.LM19:
+ 125 0044 F89A      		sbi 63-32,0
+ 126               	.LM20:
+ 127 0046 80B5      		in r24,64-32
+ 128               	.LBE9:
+ 129               	.LBE8:
+ 130               	.LM21:
+ 131 0048 8193      		st Z+,r24
+ 132               	.LM22:
+ 133 004a 4F5F      		subi r20,lo8(-(1))
+ 134 004c 5F4F      		sbci r21,hi8(-(1))
+ 135               	.LVL7:
+ 136               	.LM23:
+ 137 004e 9F5F      		subi r25,lo8(-(1))
+ 138               	.L10:
+ 139 0050 9617      		cp r25,r22
+ 140 0052 00F0      		brlo .L14
+ 141               	/* epilogue start */
+ 142               	.LM24:
+ 143 0054 0895      		ret
+ 144               	.LFE5:
+ 178               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 eeprom.c
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:18     .text:00000000 StoreEEPROM
+C:\Users\Bennett\AppData\Local\Temp/ccEakIvk.s:97     .text:00000034 LoadEEPROM
+
+NO UNDEFINED SYMBOLS
