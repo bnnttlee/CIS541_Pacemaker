@@ -13,7 +13,10 @@
 unsigned char gMILLISECOND;
 unsigned char gSECOND;
 unsigned char gMINUTE;
-
+// mt static char __flash *statetext;
+//(PGM_P const char*)
+PGM_P time;
+	
 void initializer()
 {
 	// Calibrate the oscillator:
@@ -26,6 +29,8 @@ void initializer()
 	
 	// Initialize the RTC
 	RTC_init();
+	// Program initalization
+    LCD_Init();
 		
 }
 
@@ -49,6 +54,24 @@ void showClock(void)
  
 }
 
+void update_LCD(void)
+{    
+	
+	// Initial state variables
+	time = PSTR("HHMMSS");
+
+	for (;;)            // Main loop
+    {
+		if (time)
+        {
+			LCD_puts_f(time, 0);
+			LCD_Colon(1);
+			time = NULL;   
+		}
+    } //End Main loop
+	
+	return 0;
+}
 // convert a character into a binary coded decimal chracter in the range 0 to 99
 // resulting byte has tens in high nibble and ones in low nibble
 char CHAR2BCD2(char input)
