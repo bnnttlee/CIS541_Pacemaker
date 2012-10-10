@@ -1,0 +1,338 @@
+   1               		.file	"InterruptTest.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 84B1      		in r24,36-32
+  25 0002 886D      		ori r24,lo8(-40)
+  26 0004 84B9      		out 36-32,r24
+  27               	.LM3:
+  28 0006 85B1      		in r24,37-32
+  29 0008 806D      		ori r24,lo8(-48)
+  30 000a 85B9      		out 37-32,r24
+  31               	.LM4:
+  32 000c 1DB8      		out 45-32,__zero_reg__
+  33               	.LM5:
+  34 000e 8EB1      		in r24,46-32
+  35 0010 8C60      		ori r24,lo8(12)
+  36 0012 8EB9      		out 46-32,r24
+  37               	.LM6:
+  38 0014 8CE0      		ldi r24,lo8(12)
+  39 0016 8093 6B00 		sts 107,r24
+  40               	.LM7:
+  41 001a 80ED      		ldi r24,lo8(-48)
+  42 001c 8093 6C00 		sts 108,r24
+  43               	.LM8:
+  44 0020 80EC      		ldi r24,lo8(-64)
+  45 0022 8CBB      		out 60-32,r24
+  46               	.LM9:
+  47 0024 8DBB      		out 61-32,r24
+  48               	.LM10:
+  49 0026 8FEF      		ldi r24,lo8(-1)
+  50 0028 8AB9      		out 42-32,r24
+  51               	.LM11:
+  52 002a 14B8      		out 36-32,__zero_reg__
+  53               	.LM12:
+  54 002c 85B9      		out 37-32,r24
+  55               	.LM13:
+  56 002e 8BB9      		out 43-32,r24
+  57               	.LM14:
+  58 0030 5FEE      		ldi r21,lo8(-17)
+  59               	.LM15:
+  60 0032 47EF      		ldi r20,lo8(-9)
+  61               	.LM16:
+  62 0034 3BEF      		ldi r19,lo8(-5)
+  63               	.LM17:
+  64 0036 2DEF      		ldi r18,lo8(-3)
+  65               	.LM18:
+  66 0038 9EEF      		ldi r25,lo8(-2)
+  67               	.LVL0:
+  68               	.L12:
+  69               	.LBB4:
+  70               	.LBB5:
+  71               	.LM19:
+  72               	/* #APP */
+  73               	 ;  123 "InterruptTest.c" 1
+  74 003a F894      		cli
+  75               	 ;  0 "" 2
+  76               	.LM20:
+  77               	/* #NOAPP */
+  78 003c 8091 0000 		lds r24,KEY_VALID
+  79               	.LVL1:
+  80 0040 8823      		tst r24
+  81 0042 01F0      		breq .L3
+  82               	.LM21:
+  83 0044 8091 0000 		lds r24,KEY
+  84               	.LVL2:
+  85               	.LM22:
+  86 0048 1092 0000 		sts KEY_VALID,__zero_reg__
+  87               	.L3:
+  88               	.LM23:
+  89               	/* #APP */
+  90               	 ;  133 "InterruptTest.c" 1
+  91 004c 7894      		sei
+  92               	 ;  0 "" 2
+  93               	/* #NOAPP */
+  94               	.LBE5:
+  95               	.LBE4:
+  96               	.LM24:
+  97 004e 8430      		cpi r24,lo8(4)
+  98 0050 01F4      		brne .L4
+  99 0052 9BB9      		out 43-32,r25
+ 100 0054 00C0      		rjmp .L12
+ 101               	.L4:
+ 102               	.LM25:
+ 103 0056 8230      		cpi r24,lo8(2)
+ 104 0058 01F4      		brne .L6
+ 105 005a 2BB9      		out 43-32,r18
+ 106 005c 00C0      		rjmp .L12
+ 107               	.L6:
+ 108               	.LM26:
+ 109 005e 8330      		cpi r24,lo8(3)
+ 110 0060 01F4      		brne .L7
+ 111 0062 3BB9      		out 43-32,r19
+ 112 0064 00C0      		rjmp .L12
+ 113               	.L7:
+ 114               	.LM27:
+ 115 0066 8530      		cpi r24,lo8(5)
+ 116 0068 01F4      		brne .L8
+ 117 006a 4BB9      		out 43-32,r20
+ 118 006c 00C0      		rjmp .L12
+ 119               	.L8:
+ 120               	.LM28:
+ 121 006e 8130      		cpi r24,lo8(1)
+ 122 0070 01F4      		brne .L12
+ 123 0072 5BB9      		out 43-32,r21
+ 124 0074 00C0      		rjmp .L12
+ 125               	.LFE2:
+ 127               	.global	PinChangeInterrupt
+ 129               	PinChangeInterrupt:
+ 130               	.LFB5:
+ 131               	.LM29:
+ 132               	/* prologue: function */
+ 133               	/* frame size = 0 */
+ 134               	.LM30:
+ 135 0076 83B1      		in r24,35-32
+ 136               	.LM31:
+ 137 0078 9CB1      		in r25,44-32
+ 138 007a 9095      		com r25
+ 139 007c 9C70      		andi r25,lo8(12)
+ 140 007e 8095      		com r24
+ 141 0080 807D      		andi r24,lo8(-48)
+ 142 0082 982B      		or r25,r24
+ 143               	.LM32:
+ 144 0084 96FF      		sbrs r25,6
+ 145 0086 00C0      		rjmp .L14
+ 146 0088 94E0      		ldi r25,lo8(4)
+ 147               	.LVL3:
+ 148 008a 00C0      		rjmp .L15
+ 149               	.LVL4:
+ 150               	.L14:
+ 151               	.LM33:
+ 152 008c 97FF      		sbrs r25,7
+ 153 008e 00C0      		rjmp .L16
+ 154 0090 95E0      		ldi r25,lo8(5)
+ 155               	.LVL5:
+ 156 0092 00C0      		rjmp .L15
+ 157               	.LVL6:
+ 158               	.L16:
+ 159               	.LM34:
+ 160 0094 92FF      		sbrs r25,2
+ 161 0096 00C0      		rjmp .L17
+ 162 0098 93E0      		ldi r25,lo8(3)
+ 163               	.LVL7:
+ 164 009a 00C0      		rjmp .L15
+ 165               	.LVL8:
+ 166               	.L17:
+ 167               	.LM35:
+ 168 009c 93FF      		sbrs r25,3
+ 169 009e 00C0      		rjmp .L18
+ 170 00a0 92E0      		ldi r25,lo8(2)
+ 171               	.LVL9:
+ 172 00a2 00C0      		rjmp .L15
+ 173               	.LVL10:
+ 174               	.L18:
+ 175               	.LM36:
+ 176 00a4 94FF      		sbrs r25,4
+ 177 00a6 00C0      		rjmp .L19
+ 178 00a8 91E0      		ldi r25,lo8(1)
+ 179               	.LVL11:
+ 180               	.L15:
+ 181               	.LM37:
+ 182 00aa 8091 0000 		lds r24,KEY_VALID
+ 183 00ae 8823      		tst r24
+ 184 00b0 01F4      		brne .L19
+ 185               	.LM38:
+ 186 00b2 9093 0000 		sts KEY,r25
+ 187               	.LM39:
+ 188 00b6 81E0      		ldi r24,lo8(1)
+ 189 00b8 8093 0000 		sts KEY_VALID,r24
+ 190               	.L19:
+ 191               	.LM40:
+ 192 00bc 80EC      		ldi r24,lo8(-64)
+ 193 00be 8CBB      		out 60-32,r24
+ 194               	/* epilogue start */
+ 195               	.LM41:
+ 196 00c0 0895      		ret
+ 197               	.LFE5:
+ 199               	.global	__vector_3
+ 201               	__vector_3:
+ 202               	.LFB4:
+ 203               	.LM42:
+ 204 00c2 1F92      		push __zero_reg__
+ 205 00c4 0F92      		push r0
+ 206 00c6 0FB6      		in r0,__SREG__
+ 207 00c8 0F92      		push r0
+ 208 00ca 1124      		clr __zero_reg__
+ 209 00cc 2F93      		push r18
+ 210 00ce 3F93      		push r19
+ 211 00d0 4F93      		push r20
+ 212 00d2 5F93      		push r21
+ 213 00d4 6F93      		push r22
+ 214 00d6 7F93      		push r23
+ 215 00d8 8F93      		push r24
+ 216 00da 9F93      		push r25
+ 217 00dc AF93      		push r26
+ 218 00de BF93      		push r27
+ 219 00e0 EF93      		push r30
+ 220 00e2 FF93      		push r31
+ 221               	/* prologue: Signal */
+ 222               	/* frame size = 0 */
+ 223               	.LM43:
+ 224 00e4 0E94 0000 		call PinChangeInterrupt
+ 225               	/* epilogue start */
+ 226               	.LM44:
+ 227 00e8 FF91      		pop r31
+ 228 00ea EF91      		pop r30
+ 229 00ec BF91      		pop r27
+ 230 00ee AF91      		pop r26
+ 231 00f0 9F91      		pop r25
+ 232 00f2 8F91      		pop r24
+ 233 00f4 7F91      		pop r23
+ 234 00f6 6F91      		pop r22
+ 235 00f8 5F91      		pop r21
+ 236 00fa 4F91      		pop r20
+ 237 00fc 3F91      		pop r19
+ 238 00fe 2F91      		pop r18
+ 239 0100 0F90      		pop r0
+ 240 0102 0FBE      		out __SREG__,r0
+ 241 0104 0F90      		pop r0
+ 242 0106 1F90      		pop __zero_reg__
+ 243 0108 1895      		reti
+ 244               	.LFE4:
+ 246               	.global	__vector_2
+ 248               	__vector_2:
+ 249               	.LFB3:
+ 250               	.LM45:
+ 251 010a 1F92      		push __zero_reg__
+ 252 010c 0F92      		push r0
+ 253 010e 0FB6      		in r0,__SREG__
+ 254 0110 0F92      		push r0
+ 255 0112 1124      		clr __zero_reg__
+ 256 0114 2F93      		push r18
+ 257 0116 3F93      		push r19
+ 258 0118 4F93      		push r20
+ 259 011a 5F93      		push r21
+ 260 011c 6F93      		push r22
+ 261 011e 7F93      		push r23
+ 262 0120 8F93      		push r24
+ 263 0122 9F93      		push r25
+ 264 0124 AF93      		push r26
+ 265 0126 BF93      		push r27
+ 266 0128 EF93      		push r30
+ 267 012a FF93      		push r31
+ 268               	/* prologue: Signal */
+ 269               	/* frame size = 0 */
+ 270               	.LM46:
+ 271 012c 0E94 0000 		call PinChangeInterrupt
+ 272               	/* epilogue start */
+ 273               	.LM47:
+ 274 0130 FF91      		pop r31
+ 275 0132 EF91      		pop r30
+ 276 0134 BF91      		pop r27
+ 277 0136 AF91      		pop r26
+ 278 0138 9F91      		pop r25
+ 279 013a 8F91      		pop r24
+ 280 013c 7F91      		pop r23
+ 281 013e 6F91      		pop r22
+ 282 0140 5F91      		pop r21
+ 283 0142 4F91      		pop r20
+ 284 0144 3F91      		pop r19
+ 285 0146 2F91      		pop r18
+ 286 0148 0F90      		pop r0
+ 287 014a 0FBE      		out __SREG__,r0
+ 288 014c 0F90      		pop r0
+ 289 014e 1F90      		pop __zero_reg__
+ 290 0150 1895      		reti
+ 291               	.LFE3:
+ 293               	.global	getkey
+ 295               	getkey:
+ 296               	.LFB6:
+ 297               	.LM48:
+ 298               	/* prologue: function */
+ 299               	/* frame size = 0 */
+ 300               	.LM49:
+ 301               	/* #APP */
+ 302               	 ;  123 "InterruptTest.c" 1
+ 303 0152 F894      		cli
+ 304               	 ;  0 "" 2
+ 305               	.LM50:
+ 306               	/* #NOAPP */
+ 307 0154 8091 0000 		lds r24,KEY_VALID
+ 308 0158 8823      		tst r24
+ 309 015a 01F0      		breq .L27
+ 310               	.LM51:
+ 311 015c 8091 0000 		lds r24,KEY
+ 312               	.LVL12:
+ 313               	.LM52:
+ 314 0160 1092 0000 		sts KEY_VALID,__zero_reg__
+ 315               	.L27:
+ 316               	.LM53:
+ 317               	/* #APP */
+ 318               	 ;  133 "InterruptTest.c" 1
+ 319 0164 7894      		sei
+ 320               	 ;  0 "" 2
+ 321               	.LVL13:
+ 322               	/* epilogue start */
+ 323               	.LM54:
+ 324               	/* #NOAPP */
+ 325 0166 0895      		ret
+ 326               	.LFE6:
+ 328               	.global	KEY
+ 329               	.global	KEY
+ 330               		.section .bss
+ 333               	KEY:
+ 334 0000 00        		.skip 1,0
+ 335               	.global	KEY_VALID
+ 336               	.global	KEY_VALID
+ 339               	KEY_VALID:
+ 340 0001 00        		.skip 1,0
+ 397               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 InterruptTest.c
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:18     .text:00000000 main
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:339    .bss:00000001 KEY_VALID
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:333    .bss:00000000 KEY
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:129    .text:00000076 PinChangeInterrupt
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:201    .text:000000c2 __vector_3
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:248    .text:0000010a __vector_2
+C:\Users\Bennett\AppData\Local\Temp/ccjHxq27.s:295    .text:00000152 getkey
+
+UNDEFINED SYMBOLS
+__do_clear_bss

@@ -9,6 +9,7 @@
 #include <avr/pgmspace.h>
 #include <avr/sleep.h>
 #include <inttypes.h>
+#include <string.h>
 
 #include "main.h"
 #include "lcd_functions.h"
@@ -36,7 +37,7 @@ int main(void)
 	PGM_P statetext;
 	
 	// Initial state variables
-	statetext = PSTR("HHMMSS");
+	statetext = PSTR("Hello World");
 	//digit = CHAR2BCD2(number);
 
 	// Program initalization
@@ -48,6 +49,7 @@ int main(void)
 		if (statetext)
         {
 			LCD_puts_f(statetext, 1);
+			
 			LCD_Colon(1);
 			statetext = NULL;   
 		}

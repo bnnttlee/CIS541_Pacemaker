@@ -70,7 +70,7 @@ FORMAT = ihex
 
 
 # Target file name (without extension).
-TARGET = Blinky
+TARGET = InterruptTest
 
 
 # Object files directory

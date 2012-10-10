@@ -484,26 +484,26 @@
  559               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 lcd_driver.c
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:2      *ABS*:0000003f __SREG__
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:3      *ABS*:0000003e __SP_H__
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:4      *ABS*:0000003d __SP_L__
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:5      *ABS*:00000034 __CCP__
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:18     .text:00000000 LCD_WriteDigit
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:447    .progmem.data:00000000 LCD_character_table
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:2      *ABS*:0000003f __SREG__
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:5      *ABS*:00000034 __CCP__
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:18     .text:00000000 LCD_WriteDigit
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:447    .progmem.data:00000000 LCD_character_table
                             *COM*:00000014 LCD_Data
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:134    .text:00000074 LCD_AllSegments
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:162    .text:00000088 LCD_Init
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:423    .bss:00000000 gLCD_Update_Required
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:197    .text:000000b4 __vector_22
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:505    .data:00000000 LCD_timer.1402
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:134    .text:00000074 LCD_AllSegments
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:162    .text:00000088 LCD_Init
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:423    .bss:00000000 gLCD_Update_Required
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:197    .text:000000b4 __vector_22
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:505    .data:00000000 LCD_timer.1402
                             *COM*:00000001 gScrollMode
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:429    .bss:00000001 gLCD_Start_Scroll_Timer
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:429    .bss:00000001 gLCD_Start_Scroll_Timer
                             *COM*:00000001 gScroll
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:435    .bss:00000002 gFlashTimer
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:435    .bss:00000002 gFlashTimer
                             *COM*:00000019 gTextBuffer
-C:\Users\Bennett\AppData\Local\Temp/ccSN2GDI.s:441    .bss:00000003 gColon
+C:\Users\Bennett\AppData\Local\Temp/ccot6p0G.s:441    .bss:00000003 gColon
 
 UNDEFINED SYMBOLS
 __do_copy_data
